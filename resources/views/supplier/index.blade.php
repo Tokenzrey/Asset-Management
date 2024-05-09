@@ -2,7 +2,7 @@
 
 @section('menunya')
 <h2>
-    Master <i class="fa fa-solid fa-arrow-right"></i> Data Supplier
+    Master <i class="fa fa-solid fa-arrow-right"></i> Data Vendor
 </h2>
 @endsection
 
@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Supplier</h4>
+                    <h4 class="card-title">Data Vendor</h4>
                     @if (session('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
@@ -35,7 +35,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <img src="{{ asset('simas/images/inventory.png') }}" alt="" width="70px">
-                                    <h3 class="modal-title"><b>Tambah Supplier</b></h3>
+                                    <h3 class="modal-title"><b>Tambah Vendor</b></h3>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>
@@ -47,17 +47,17 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <label><b>Nama Supplier</b></label>
+                                                    <label><b>Nama Vendor</b></label>
                                                     <input type="text" class="form-control" id="nama"
-                                                        placeholder="Masukkan Nama Supplier" name="nama" required>
+                                                        placeholder="Masukkan Nama Vendor" name="nama" required>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-md-12 mt-2">
-                                                    <label><b>Alamat Supplier</b></label>
+                                                    <label><b>Alamat Vendor</b></label>
                                                     <input type="text" class="form-control" id="alamat"
-                                                        placeholder="Masukkan alamat Supplier" name="alamat" required>
+                                                        placeholder="Masukkan alamat Vendor" name="alamat" required>
                                                 </div>
                                             </div>
 

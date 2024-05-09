@@ -27,7 +27,7 @@
             <ul aria-expanded="false">
                 <li><a href="{{ route('user.index') }}">Data Pengguna</a></li>
                 <li><a href="{{ route('divisi.index') }}">Data Divisi</a></li>
-                <li><a href="{{ route('supplier.index') }}">Data Supplier</a></li>
+                <li><a href="{{ route('supplier.index') }}">Data Vendor</a></li>
                 <li><a href="{{ route('kategori.index') }}">Data Kategori</a></li>
                 <li><a href="{{ route('ruang.index') }}">Data Ruangan</a></li>
                 <li><a href="{{ route('jenis_pemeliharaan.index') }}">Data Jenis Pemeliharaan</a></li>
