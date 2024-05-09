@@ -42,7 +42,6 @@
             <ul aria-expanded="false">
                 <li><a href="{{ route('aset.index') }}">Data Aset</a></li>
                 <li><a href="{{ route('aset.history') }}">History Aset</a></li>
-                <li><a href="{{ route('mutasi.index') }}">Mutasi Aset</a></li>
                 <li><a href="{{ route('aset.scan_qrcode') }}">Scann QrCode</a></li>
                 <li><a href="{{ route('jadwal_pemeliharaan.index') }}">Penjadwalan Pemeliharaan</a></li>
             </ul>

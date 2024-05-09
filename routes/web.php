@@ -100,11 +100,11 @@ Route::get('/aset/history/restore/{id}', [AsetController::class, 'restore'])->mi
 Route::get('/aset/history_delete/{id}', [AsetController::class, 'destroy_history'])->middleware('ceksesi', 'cekuserstatus')->name('aset.destroy_history');
 
 //mutasi aset
-Route::get('/aset/mutasi', [MutasiController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('mutasi.index');
-Route::post('/aset/mutasi/create', [MutasiController::class, 'store_tambah'])->middleware('ceksesi')->name('mutasi.store_tambah');
-Route::post('/aset/mutasi/reduce', [MutasiController::class, 'store_kurang'])->middleware('ceksesi')->name('mutasi.store_kurang');
-Route::get('/aset/mutasi/data', [MutasiController::class, 'data'])->middleware('ceksesi', 'cekuserstatus')->name('mutasi.data');
-Route::get('/aset/mutasi/{id}', [MutasiController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('mutasi.destroy');
+// Route::get('/aset/mutasi', [MutasiController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('mutasi.index');
+// Route::post('/aset/mutasi/create', [MutasiController::class, 'store_tambah'])->middleware('ceksesi')->name('mutasi.store_tambah');
+// Route::post('/aset/mutasi/reduce', [MutasiController::class, 'store_kurang'])->middleware('ceksesi')->name('mutasi.store_kurang');
+// Route::get('/aset/mutasi/data', [MutasiController::class, 'data'])->middleware('ceksesi', 'cekuserstatus')->name('mutasi.data');
+// Route::get('/aset/mutasi/{id}', [MutasiController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('mutasi.destroy');
 
 //export & import data aset
 Route::get('/export-data-aset', [AsetController::class, 'aset_export'])->middleware('ceksesi', 'cekuserstatus')->name('aset.export');
