@@ -65,10 +65,10 @@ Route::get('/ruang/delete/{id}', [RuangController::class, 'destroy'])->middlewar
 
 //jenis_pemeliharaan
 Route::get('/jenis_pemeliharaan', [JenisPemeliharaanController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('jenis_pemeliharaan.index');
-Route::post('/jenis_pemeliharaan/create', [JenisPemeliharaanController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')-> name('jenis_pemeliharaan.store');
+Route::post('/jenis_pemeliharaan/create', [JenisPemeliharaanController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')->name('jenis_pemeliharaan.store');
 Route::get('/jenis_pemeliharaan/show/{id}', [JenisPemeliharaanController::class, 'show'])->middleware('ceksesi', 'cekuserstatus')->name('jenis_pemeliharaan.show');
 Route::put('/jenis_pemeliharaan/update/{id}', [JenisPemeliharaanController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('jenis_pemeliharaan.update');
-Route::get('jenis_pemeliharaan/delete/{id}', [  JenisPemeliharaanController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('jenis_pemeliharaan.destroy');
+Route::get('jenis_pemeliharaan/delete/{id}', [JenisPemeliharaanController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('jenis_pemeliharaan.destroy');
 
 //anggaran dana
 // Route::get('/anggaran_dana', [AnggaranDanaController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.index');
@@ -112,19 +112,19 @@ Route::post('/import-data-aset', [AsetController::class, 'aset_import'])->middle
 
 //jadwal pemeliharaan (maintenance)
 Route::get('/jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('jadwal_pemeliharaan.index');
-Route::post('/jadwal_pemeliharaan/create', [JadwalPemeliharaanController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')-> name('jadwal_pemeliharaan.store');
+Route::post('/jadwal_pemeliharaan/create', [JadwalPemeliharaanController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')->name('jadwal_pemeliharaan.store');
 Route::get('/jadwal_pemeliharaan/show/{id}', [JadwalPemeliharaanController::class, 'show'])->middleware('ceksesi', 'cekuserstatus')->name('jadwal_pemeliharaan.show');
 Route::put('/jadwal_pemeliharaan/update/{id}', [JadwalPemeliharaanController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('jadwal_pemeliharaan.update');
 Route::get('jadwal_pemeliharaan/delete/{id}', [JadwalPemeliharaanController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('jadwal_pemeliharaan.destroy');
 
 //report
 Route::get('/report', [ReportController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('report.index');
-Route::get('/report/ruang', [ReportController::class, 'report_ruang'])->middleware('ceksesi', 'cekuserstatus')->name('report.ruang');
-Route::get('/report/user', [ReportController::class, 'report_pengguna'])->middleware('ceksesi', 'cekuserstatus')->name('report.pengguna');
-Route::get('/report/supplier', [ReportController::class, 'report_supplier'])->middleware('ceksesi', 'cekuserstatus')->name('report.supplier');
+// Route::get('/report/ruang', [ReportController::class, 'report_ruang'])->middleware('ceksesi', 'cekuserstatus')->name('report.ruang');
+// Route::get('/report/user', [ReportController::class, 'report_pengguna'])->middleware('ceksesi', 'cekuserstatus')->name('report.pengguna');
+// Route::get('/report/supplier', [ReportController::class, 'report_supplier'])->middleware('ceksesi', 'cekuserstatus')->name('report.supplier');
 Route::get('/report/aset', [ReportController::class, 'report_aset'])->middleware('ceksesi', 'cekuserstatus')->name('report.aset');
 Route::get('/report/peminjaman', [ReportController::class, 'report_peminjaman'])->middleware('ceksesi', 'cekuserstatus')->name('report.peminjaman');
-Route::get('/report/history_peminjaman', [ReportController::class, 'report_history_peminjaman'])->middleware('ceksesi', 'cekuserstatus')->name('report.history_peminjaman');
+// Route::get('/report/history_peminjaman', [ReportController::class, 'report_history_peminjaman'])->middleware('ceksesi', 'cekuserstatus')->name('report.history_peminjaman');
 
 //admin & user
 Route::get('/peminjaman', [PeminjamanController::class, 'index'])->middleware('ceksesi')->name('peminjaman.index');
@@ -140,4 +140,3 @@ Route::get('/peminjaman/data_history_peminjaman/{id}', [PeminjamanController::cl
 //user peminjaman
 Route::get('/peminjaman/scan_qrcode', [PeminjamanController::class, 'qrcode'])->middleware('ceksesi')->name('peminjaman.qrcode');
 Route::get('/peminjaman/history', [PeminjamanController::class, 'history_peminjaman_user'])->middleware('ceksesi')->name('peminjaman.user-history');
-

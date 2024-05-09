@@ -23,55 +23,6 @@
 
     <body class="">
         <section class="content">
-            <!-- Small boxes (Stat box) -->
-
-            <div class="row">
-                <div class="col-lg-4 col-xs-6">
-                    <!-- small box -->
-
-                    <div class="small-box bg-white rounded">
-                        <div class="inner">
-                            <h3 class="text-white"></h3>
-                            <p class="text-primary"><b>Report <br> Divisi</b></p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-warehouse"></i>
-                        </div>
-                        <a href="{{ route('report.ruang') }}" class="small-box bg-primary text-white text-center">Print <i
-                                class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- ./col -->
-                <div class="col-lg-4 col-xs-6">
-                    <div class="small-box bg-white rounded">
-                        <div class="inner">
-                            <h3 class="text-white"></h3>
-                            <p class="text-primary"><b>Report <br>Pengguna</b></p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                        </div>
-                        <a href="{{ route('report.pengguna') }}" class="small-box bg-primary text-white text-center">Print <i
-                                class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-4 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-white rounded">
-                        <div class="inner">
-                            <h3 class="text-white"></h3>
-                            <p class="text-primary"><b>Report <br> Supplier</b></p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <a href="{{ route('report.supplier') }}" class="small-box bg-primary text-white text-center">Print <i
-                                class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-lg-4 col-xs-6">
                     <!-- small box -->
@@ -99,20 +50,6 @@
                             <i class="fas fa-th-list"></i>
                         </div>
                         <a href="{{ route('report.peminjaman') }}" class="small-box bg-primary text-white text-center">Print <i
-                                class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-white rounded">
-                        <div class="inner">
-                            <h3 class="text-white"></h3>
-                            <p class="text-primary"><b>Report <br> History Peminjaman</b></p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <a href="{{ route('report.history_peminjaman') }}" class="small-box bg-primary text-white text-center">Print <i
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
