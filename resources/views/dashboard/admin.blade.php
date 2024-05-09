@@ -198,106 +198,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="row">
-                                <div class="col-xl-6 col-sm-6">
-                                    <div class="card small-box rounded">
-                                        <div class="card-body ">
-                                            <div class="mb-3">
-                                                <div class="col">
-                                                    <h3 class="fs-42 font-w700">{{ $jml_user }}</h3>
-                                                </div>
-                                                <div class="icon">
-                                                    <i class="fas fa-users"></i>
-                                                </div>
-                                            </div>
-                                            <span class="fs-18 font-w500 d-block text-center text-dark">Jumlah
-                                                Pengguna</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-sm-6">
-                                    <div class="card small-box rounded">
-                                        <div class="card-body ">
-                                            <div class="mb-3">
-                                                <div class="col">
-                                                    <h3 class="fs-42 font-w700">{{ $jml_kategori }}</h3>
-                                                </div>
-                                                <div class="icon">
-                                                    <i class="fas fa-list-alt"></i>
-                                                </div>
-                                            </div>
-                                            <span class="fs-18 font-w500 d-block text-center text-dark">Jumlah
-                                                Kategori</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-sm-6">
-                                    <div class="card small-box rounded">
-                                        <div class="card-body ">
-                                            <div class="mb-3">
-                                                <div class="col">
-                                                    <h3 class="fs-42 font-w700">{{ $jml_ruang }}</h3>
-                                                </div>
-                                                <div class="icon">
-                                                    <i class="fas fa-warehouse"></i>
-                                                </div>
-                                            </div>
-                                            <span class="fs-18 font-w500 d-block text-center text-dark">Jumlah Ruang</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-sm-6">
-                                    <div class="card small-box rounded">
-                                        <div class="card-body ">
-                                            <div class="mb-3">
-                                                <div class="col">
-                                                    <h3 class="fs-42 font-w700">{{ $jml_divisi }}</h3>
-                                                </div>
-                                                <div class="icon">
-                                                    <i class="fas fa-bookmark"></i>
-                                                </div>
-                                            </div>
-                                            <span class="fs-18 font-w500 d-block text-center text-dark">Jumlah
-                                                Divisi</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-sm-6">
-                                    <div class="card small-box rounded">
-                                        <div class="card-body ">
-                                            <div class="mb-3">
-                                                <div class="col">
-                                                    <h3 class="fs-42 font-w700">{{ $jml_jp }}</h3>
-                                                </div>
-                                                <div class="icon">
-                                                    <i class="fas fa-wrench"></i>
-                                                </div>
-                                            </div>
-                                            <span class="fs-15 font-w500 d-block text-center text-dark">Jumlah Jadwal
-                                                Pemeliharaan</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-sm-6">
-                                    <div class="card small-box rounded">
-                                        <div class="card-body ">
-                                            <div class="mb-3">
-                                                <div class="col">
-                                                    <h3 class="fs-42 font-w700">{{ $jml_ad }}</h3>
-                                                </div>
-                                                <div class="icon">
-                                                    <i class="fas fa-file"></i>
-                                                </div>
-                                            </div>
-                                            <span class="fs-15 font-w500 d-block text-center text-dark">Jumlah Jenis
-                                                Anggaran Dana</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-xl-6 ">
+                    <div class="row h-100">
+                        <div class="card">
                         </div>
                     </div>
                 </div>
@@ -335,7 +238,7 @@
                     <div class="card-body">
                         <div class="table-responsive" id="cetak">
                             @csrf
-                            <table class="table table-striped" id="example3" class="display">
+                            <table class="table table-striped mb-2" id="example3" class="display">
                                 <thead>
                                     <tr class="text-center">
                                         <th>No</th>
@@ -401,6 +304,9 @@
             </div>
         </div>
     </div>
+    <script>
+
+    </script>
 @endsection
 
 @section('footer')
