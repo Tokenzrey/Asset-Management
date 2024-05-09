@@ -88,21 +88,23 @@
                                                                 value="{{ old('kode') }}" required>
                                                         </div>
 
-                                                        <div class="col-xl-6 ">
-                                                            <label><b>Nama Aset</b></label>
-                                                            <input type="text" class="form-control" id="nama"
-                                                                placeholder="Masukkan Nama Aset" name="nama"
-                                                                value="{{ old('nama') }}" required>
+                                                        <div class="col-xl-6">
+                                                            <label><b>Tanggal Pembelian</b></label>
+                                                            <input type="date" class="form-control"
+                                                                id="tanggal_pembelian"
+                                                                placeholder="Masukkan Tanggal Pembelian"
+                                                                name="tanggal_pembelian"
+                                                                value="{{ old('tanggal_pembelian') }}" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="row">
                                                         <div class="col-xl-6 mt-2">
-                                                            <label><b>Supplier</b></label>
+                                                            <label><b>Vendor</b></label>
                                                             <select class="form-control" name="supplier_id" id="supplier_id"
                                                                 required>
                                                                 <option value="" hidden>Pilih
-                                                                    Supplier</option>
+                                                                    Vendor</option>
                                                                 @foreach ($supplier as $data)
                                                                     <option value="{{ $data->id }}"
                                                                         {{ $sup == $data->id ? 'selected' : '' }}>
@@ -122,21 +124,11 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-xl-6 mt-2">
-                                                            <label><b>Tanggal Pembelian</b></label>
-                                                            <input type="date" class="form-control"
-                                                                id="tanggal_pembelian"
-                                                                placeholder="Masukkan Tanggal Pembelian"
-                                                                name="tanggal_pembelian"
-                                                                value="{{ old('tanggal_pembelian') }}" required>
-                                                        </div>
-                                                        <div class="col-xl-6 mt-2">
-                                                            <label><b>Tanggal Akhir Garansi</b></label>
-                                                            <input type="date" class="form-control"
-                                                                id="tanggal_akhir_garansi"
-                                                                placeholder="Masukkan Tanggal Akhir Garansi"
-                                                                name="tanggal_akhir_garansi"
-                                                                value="{{ old('tanggal_akhir_garansi') }}" required>
+                                                        <div class="col-xl-12 mt-2">
+                                                            <label><b>Nama Aset</b></label>
+                                                            <input type="text" class="form-control" id="nama"
+                                                                placeholder="Masukkan Nama Aset" name="nama"
+                                                                value="{{ old('nama') }}" required>
                                                         </div>
                                                     </div>
 
@@ -158,10 +150,21 @@
                                                                 value="{{ old('brand') }}" required>
                                                         </div>
                                                         <div class="col-xl-6 mt-2">
-                                                            <label><b>Harga</b></label>
-                                                            <input type="number" class="form-control" id="nilai_harga"
-                                                                placeholder="Masukkan Harga Aset" name="nilai_harga"
-                                                                value="{{ old('nilai_harga') }}" required>
+                                                            <label><b>Jenis
+                                                                    Pemeliharan</b></label>
+                                                            <select class="form-control" name="jenis_pemeliharaan_id"
+                                                                id="jenis_pemeliharaan_id" required>
+                                                                <option value="" hidden>Pilih
+                                                                    Jenis
+                                                                    Pemeliharaan
+                                                                </option>
+                                                                @foreach ($jenis_pemeliharaan as $data)
+                                                                    <option value="{{ $data->id }}"
+                                                                        {{ $jp == $data->id ? 'selected' : '' }}>
+                                                                        {{ $data->nama }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
 
@@ -195,26 +198,6 @@
                                                             </select>
                                                         </div>
                                                     </div>
-
-                                                    <div class="row">
-                                                        <div class="col-xl-12 mt-2">
-                                                            <label><b>Anggaran Dana
-                                                                </b></label>
-                                                            <select class="form-control" name="anggaran_dana_id"
-                                                                id="anggaran_dana_id" required>
-                                                                <option value="" hidden>Pilih
-                                                                    Anggaran Dana
-                                                                </option>
-                                                                @foreach ($anggaran_dana as $data)
-                                                                    <option value="{{ $data->id }}"
-                                                                        {{ $ad == $data->id ? 'selected' : '' }}>
-                                                                        {{ $data->nama }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
                                                     <div class="row">
                                                         <div class="col-xl-6 mt-2">
                                                             <label><b>Ruang
@@ -242,39 +225,6 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="row">
-                                                        <div class="col-xl-6 mt-2">
-                                                            <label><b>Jenis
-                                                                    Pemeliharan</b></label>
-                                                            <select class="form-control" name="jenis_pemeliharaan_id"
-                                                                id="jenis_pemeliharaan_id" required>
-                                                                <option value="" hidden>Pilih
-                                                                    Jenis
-                                                                    Pemeliharaan
-                                                                </option>
-                                                                @foreach ($jenis_pemeliharaan as $data)
-                                                                    <option value="{{ $data->id }}"
-                                                                        {{ $jp == $data->id ? 'selected' : '' }}>
-                                                                        {{ $data->nama }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-xl-6 mt-2">
-                                                            <label><b>Jumlah</b></label>
-                                                            <input type="number" class="form-control" id="jumlah"
-                                                                placeholder="Masukkan Jumlah Stok" name="jumlah"
-                                                                value="{{ old('jumlah') }}" required>
-                                                        </div>
-                                                        <div class="col-xl-6 mt-2">
-                                                            <label><b>Satuan</b></label>
-                                                            <input type="text" class="form-control" id="satuan"
-                                                                placeholder="Masukkan Satuan Aset" name="satuan"
-                                                                value="{{ old('satuan') }}" required>
-                                                        </div>
-                                                    </div>
                                                     <div class="row">
                                                         <div class="col-xl-12 mt-2">
                                                             <label><b>Deskripsi</b></label>
@@ -426,20 +376,21 @@
                                                                                 value="{{ $item->kode }}" required>
                                                                         </div>
 
-                                                                        <div class="col-xl-6 ">
-                                                                            <label><b>Nama
-                                                                                    Aset</b></label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="nama"
-                                                                                placeholder="Masukkan Nama Aset"
-                                                                                name="nama"
-                                                                                value="{{ $item->nama }}" required>
+                                                                        <div class="col-xl-6 mt-2">
+                                                                            <label><b>Tanggal
+                                                                                    Pembelian</b></label>
+                                                                            <input type="date" class="form-control"
+                                                                                id="tanggal_pembelian"
+                                                                                placeholder="Masukkan Tanggal Pembelian"
+                                                                                name="tanggal_pembelian"
+                                                                                value="{{ $item->tanggal_pembelian }}"
+                                                                                required>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="row">
                                                                         <div class="col-xl-6 mt-2">
-                                                                            <label><b>Supplier</b></label>
+                                                                            <label><b>Vendor</b></label>
                                                                             <select class="form-control"
                                                                                 name="supplier_id" id="supplier_id"
                                                                                 required>
@@ -469,26 +420,14 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-xl-6 mt-2">
-                                                                            <label><b>Tanggal
-                                                                                    Pembelian</b></label>
-                                                                            <input type="date" class="form-control"
-                                                                                id="tanggal_pembelian"
-                                                                                placeholder="Masukkan Tanggal Pembelian"
-                                                                                name="tanggal_pembelian"
-                                                                                value="{{ $item->tanggal_pembelian }}"
-                                                                                required>
-                                                                        </div>
-                                                                        <div class="col-xl-6 mt-2">
-                                                                            <label><b>Tanggal
-                                                                                    Akhir
-                                                                                    Garansi</b></label>
-                                                                            <input type="date" class="form-control"
-                                                                                id="tanggalakhirgaransi"
-                                                                                placeholder="Masukkan Tanggal Akhir Garansi"
-                                                                                name="tanggal_akhir_garansi"
-                                                                                value="{{ $item->tanggal_akhir_garansi }}"
-                                                                                required>
+                                                                        <div class="col-xl-12 ">
+                                                                            <label><b>Nama
+                                                                                    Aset</b></label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="nama"
+                                                                                placeholder="Masukkan Nama Aset"
+                                                                                name="nama"
+                                                                                value="{{ $item->nama }}" required>
                                                                         </div>
                                                                     </div>
 
@@ -520,12 +459,23 @@
                                                                                 value="{{ $item->brand }}" required>
                                                                         </div>
                                                                         <div class="col-xl-6 mt-2">
-                                                                            <label><b>Harga</b></label>
-                                                                            <input type="number" class="form-control"
-                                                                                id="nilai_harga"
-                                                                                placeholder="Masukkan Harga Aset"
-                                                                                name="nilai_harga"
-                                                                                value="{{ $item->nilai_harga }}" required>
+                                                                            <label><b>Jenis
+                                                                                    Pemeliharaan</b></label>
+                                                                            <select class="form-control"
+                                                                                name="jenis_pemeliharaan_id"
+                                                                                id="jenis_pemeliharaan_id" required>
+                                                                                <option
+                                                                                    value="{{ $item->jenis_pemeliharaan_id }}"
+                                                                                    hidden>
+                                                                                    {{ $item->jenis_pemeliharaan->nama }}
+                                                                                </option>
+                                                                                @foreach ($jenis_pemeliharaan as $data)
+                                                                                    <option value="{{ $data->id }}"
+                                                                                        {{ $jp == $data->id ? 'selected' : '' }}>
+                                                                                        {{ $data->nama }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
                                                                         </div>
                                                                     </div>
 
@@ -565,29 +515,6 @@
                                                                     </div>
 
                                                                     <div class="row">
-                                                                        <div class="col-xl-12 mt-2">
-                                                                            <label><b>Anggaran
-                                                                                    Dana
-                                                                                </b></label>
-                                                                            <select class="form-control"
-                                                                                name="anggaran_dana_id"
-                                                                                id="anggaran_dana_id" required>
-                                                                                <option
-                                                                                    value="{{ $item->anggaran_dana_id }}"
-                                                                                    hidden>
-                                                                                    {{ $item->anggaran_dana->nama }}
-                                                                                </option>
-                                                                                @foreach ($anggaran_dana as $data)
-                                                                                    <option value="{{ $data->id }}"
-                                                                                        {{ $ad == $data->id ? 'selected' : '' }}>
-                                                                                        {{ $data->nama }}
-                                                                                    </option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row">
                                                                         <div class="col-xl-6 mt-2">
                                                                             <label><b>Ruang
                                                                                     Aset</b></label>
@@ -614,46 +541,6 @@
                                                                                 placeholder="Masukkan Penempatan Aset"
                                                                                 name="tempat"
                                                                                 value="{{ $item->tempat }}" required>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row">
-                                                                        <div class="col-xl-6 mt-2">
-                                                                            <label><b>Jenis
-                                                                                    Pemeliharaan</b></label>
-                                                                            <select class="form-control"
-                                                                                name="jenis_pemeliharaan_id"
-                                                                                id="jenis_pemeliharaan_id" required>
-                                                                                <option
-                                                                                    value="{{ $item->jenis_pemeliharaan_id }}"
-                                                                                    hidden>
-                                                                                    {{ $item->jenis_pemeliharaan->nama }}
-                                                                                </option>
-                                                                                @foreach ($jenis_pemeliharaan as $data)
-                                                                                    <option value="{{ $data->id }}"
-                                                                                        {{ $jp == $data->id ? 'selected' : '' }}>
-                                                                                        {{ $data->nama }}
-                                                                                    </option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-xl-6 mt-2">
-                                                                            <label><b>Jumlah</b></label>
-                                                                            <input type="number" class="form-control"
-                                                                                id="jumlah"
-                                                                                placeholder="Masukkan Jumlah Stok"
-                                                                                name="jumlah"
-                                                                                value="{{ $item->jumlah }}" required>
-                                                                        </div>
-                                                                        <div class="col-xl-6 mt-2">
-                                                                            <label><b>Satuan</b></label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="satuan"
-                                                                                placeholder="Masukkan satuan aset"
-                                                                                name="satuan"
-                                                                                value="{{ $item->satuan }}" required>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">

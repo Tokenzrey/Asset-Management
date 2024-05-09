@@ -95,39 +95,15 @@
                                                 </h5>
                                             </div>
                                             <div class="col-md-6">
-                                                <h5 class="mt-2">Supplier :
+                                                <h5 class="mt-2">Vendor :
                                                     {{ $aset->supplier->nama }}
                                                 </h5>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h5 class="mt-2">Harga Aset :
-                                                    Rp. {{ number_format($aset->nilai_harga, 0, ',', '.') }}
-                                                </h5>
-                                            </div>
-                                            <div class="col-md-6">
                                                 <h5 class="mt-2">Nama Penerima :
                                                     {{ $aset->nama_penerima }}
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <h5 class="mt-2"> Tanggal Pembelian:
-                                                    {{ $aset->tanggal_pembelian }}
-                                                </h5>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h5 class="mt-2">Garansi Sampai :
-                                                    {{ $aset->tanggal_akhir_garansi }}
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <h5 class="mt-2">Kondisi :
-                                                    {{ $aset->kondisi }}
                                                 </h5>
                                             </div>
                                             <div class="col-md-6">
@@ -138,8 +114,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h5 class="mt-2">Ruang Aset :
-                                                    {{ $aset->ruang->nama }}
+                                                <h5 class="mt-2"> Tanggal Pembelian:
+                                                    {{ $aset->tanggal_pembelian }}
                                                 </h5>
                                             </div>
                                             <div class="col-md-6">
@@ -150,23 +126,33 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h5 class="mt-2">Jenis Pemeliharaan :
-                                                    {{ $aset->jenis_pemeliharaan->nama }}
+                                                <h5 class="mt-2">Kondisi :
+                                                    {{ $aset->kondisi }}
                                                 </h5>
                                             </div>
                                             <div class="col-md-6">
-                                                <h5 class="mt-2">Anggaran Dana :
-                                                    {{ $aset->anggaran_dana->nama }}
+                                                <h5 class="mt-2">Jenis Pemeliharaan :
+                                                    {{ $aset->jenis_pemeliharaan->nama }}
                                                 </h5>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
+                                                <h5 class="mt-2">Ruang Aset :
+                                                    {{ $aset->ruang->nama }}
+                                                </h5>
+                                            </div>
+                                            <div class="col-md-6">
                                                 <h5 class="mt-2">Jumlah Stok :
                                                     {{ $aset->jumlah }}
                                                 </h5>
                                             </div>
-                                            <div class="col-md-6">
+                                        </div>
+                                        <div class="row">
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
                                                 <h5 class="mt-2">Deskripsi :
                                                     {{ $aset->deskripsi }}
                                                 </h5>
@@ -185,24 +171,26 @@
                                                 @method('PUT')
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-xl-4">
+                                                        <div class="col-xl-6">
                                                             <label><b>Kode</b></label>
                                                             <input type="text" class="form-control" id="kode"
                                                                 placeholder="Masukkan Kode" name="kode"
                                                                 value="{{ $aset->kode }}" required>
                                                         </div>
 
-                                                        <div class="col-xl-8 ">
-                                                            <label><b>Nama Aset</b></label>
-                                                            <input type="text" class="form-control" id="nama"
-                                                                placeholder="Masukkan Nama Aset" name="nama"
-                                                                value="{{ $aset->nama }}" required>
+                                                        <div class="col-xl-6 mt-2">
+                                                            <label><b>Tanggal Pembelian</b></label>
+                                                            <input type="date" class="form-control"
+                                                                id="tanggal_pembelian"
+                                                                placeholder="Masukkan Tanggal Pembelian"
+                                                                name="tanggal_pembelian"
+                                                                value="{{ $aset->tanggal_pembelian }}" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="row">
                                                         <div class="col-xl-6 mt-2">
-                                                            <label><b>Supplier</b></label>
+                                                            <label><b>Vendor</b></label>
                                                             <select class="form-control" name="supplier_id"
                                                                 id="supplier_id" required>
                                                                 <option value="{{ $aset->supplier_id }}" hidden>
@@ -225,21 +213,11 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-xl-6 mt-2">
-                                                            <label><b>Tanggal Pembelian</b></label>
-                                                            <input type="date" class="form-control"
-                                                                id="tanggal_pembelian"
-                                                                placeholder="Masukkan Tanggal Pembelian"
-                                                                name="tanggal_pembelian"
-                                                                value="{{ $aset->tanggal_pembelian }}" required>
-                                                        </div>
-                                                        <div class="col-xl-6 mt-2">
-                                                            <label><b>Tanggal Akhir Garansi</b></label>
-                                                            <input type="date" class="form-control"
-                                                                id="tanggalakhirgaransi"
-                                                                placeholder="Masukkan Tanggal Akhir Garansi"
-                                                                name="tanggal_akhir_garansi"
-                                                                value="{{ $aset->tanggal_akhir_garansi }}" required>
+                                                        <div class="col-xl-12 ">
+                                                            <label><b>Nama Aset</b></label>
+                                                            <input type="text" class="form-control" id="nama"
+                                                                placeholder="Masukkan Nama Aset" name="nama"
+                                                                value="{{ $aset->nama }}" required>
                                                         </div>
                                                     </div>
 
@@ -268,10 +246,19 @@
                                                                 value="{{ $aset->brand }}" required>
                                                         </div>
                                                         <div class="col-xl-6 mt-2">
-                                                            <label><b>Harga</b></label>
-                                                            <input type="number" class="form-control" id="nilai_harga"
-                                                                placeholder="Masukkan Harga Aset" name="nilai_harga"
-                                                                value="{{ $aset->nilai_harga }}" required>
+                                                            <label><b>Jenis Pemeliharaan</b></label>
+                                                            <select class="form-control" name="jenis_pemeliharaan_id"
+                                                                id="jenis_pemeliharaan_id" required>
+                                                                <option value="{{ $aset->jenis_pemeliharaan_id }}" hidden>
+                                                                    {{ $aset->jenis_pemeliharaan->nama }}
+                                                                </option>
+                                                                @foreach ($jenis_pemeliharaan as $data)
+                                                                    <option value="{{ $data->id }}"
+                                                                        {{ $jp == $data->id ? 'selected' : '' }}>
+                                                                        {{ $data->nama }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
 
@@ -307,23 +294,6 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-xl-12 mt-2">
-                                                            <label><b>Anggaran Dana </b></label>
-                                                            <select class="form-control" name="anggaran_dana_id"
-                                                                id="anggaran_dana_id" required>
-                                                                <option value="{{ $aset->anggaran_dana_id }}" hidden>
-                                                                    {{ $aset->anggaran_dana->nama }}</option>
-                                                                @foreach ($anggaran_dana as $data)
-                                                                    <option value="{{ $data->id }}"
-                                                                        {{ $ad == $data->id ? 'selected' : '' }}>
-                                                                        {{ $data->nama }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
                                                         <div class="col-xl-6 mt-2">
                                                             <label><b>Ruang Aset</b></label>
                                                             <select class="form-control" name="ruang_id" id="ruang_id"
@@ -345,30 +315,6 @@
                                                             <input type="text" class="form-control" id="tempat"
                                                                 placeholder="Masukkan Penempatan Aset" name="tempat"
                                                                 value="{{ $aset->tempat }}" required>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-xl-6 mt-2">
-                                                            <label><b>Jenis Pemeliharaan</b></label>
-                                                            <select class="form-control" name="jenis_pemeliharaan_id"
-                                                                id="jenis_pemeliharaan_id" required>
-                                                                <option value="{{ $aset->jenis_pemeliharaan_id }}" hidden>
-                                                                    {{ $aset->jenis_pemeliharaan->nama }}
-                                                                </option>
-                                                                @foreach ($jenis_pemeliharaan as $data)
-                                                                    <option value="{{ $data->id }}"
-                                                                        {{ $jp == $data->id ? 'selected' : '' }}>
-                                                                        {{ $data->nama }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-xl-6 mt-2">
-                                                            <label><b>Jumlah Stok</b></label>
-                                                            <input type="number" class="form-control" id="jumlah"
-                                                                placeholder="Masukkan Jumlah Stok" name="jumlah"
-                                                                value="{{ $aset->jumlah }}" required>
                                                         </div>
                                                     </div>
                                                     <div class="row">

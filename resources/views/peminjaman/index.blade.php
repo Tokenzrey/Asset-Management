@@ -39,7 +39,6 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title mb-1"><b>{{ $aset->nama }}</b></strong>
-                        <p class="btn btn-stok text-white"> Stok {{ $aset->jumlah }}</p>
                     </div>
                     <div class="card-body">
                         <div class="mx-auto d-block">
@@ -55,10 +54,6 @@
                                 <u>Kategori </u>{{ $aset->kategori->nama }} <br>
                                 <u>Ruang </u>{{ $aset->ruang->nama }} <br>
                                 <u>Tempat </u>{{ $aset->tempat }}
-                                @if (session('userdata')['status'] == 'ADMIN')
-                                    <br>
-                                    <u>Nilai Harga </u>Rp. {{ number_format($aset->nilai_harga, 0, ',', '.') }}
-                                @endif
                             </div>
                         </div>
                         <hr>
@@ -112,13 +107,6 @@
                                     <label for="tanggal_kembali"><b>Tanggal Pengembalian</b></label>
                                     <input type="date" class="form-control" id="tanggal_kembali"
                                         placeholder="Tanggal Pengembalian" name="tanggal_kembali" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-12 mt-2">
-                                    <label for="jumlah_request"><b>Jumlah</b></label>
-                                    <input type="number" class="form-control" id="jumlah_request"
-                                        placeholder="Jumlah Request" name="jumlah_request" required>
                                 </div>
                             </div>
                             <div class="row">
