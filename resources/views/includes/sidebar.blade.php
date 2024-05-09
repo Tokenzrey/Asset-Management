@@ -13,7 +13,8 @@
 
 <ul class="metismenu" id="menu">
     @if (session('userdata')['status'] == 'ADMIN')
-        <li><a href="{{ route('dashboard.admin') }}">
+        <li>
+            <a href="{{ route('dashboard.admin') }}">
                 <i class="fas fa-home"></i>
                 <span class="nav-text">Dashboard</span>
             </a>
@@ -34,7 +35,8 @@
             </ul>
         </li>
 
-        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                 <i class="fa fa-briefcase"></i>
                 <span class="nav-text">Aset </span>
             </a>
