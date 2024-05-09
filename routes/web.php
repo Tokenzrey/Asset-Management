@@ -71,11 +71,11 @@ Route::put('/jenis_pemeliharaan/update/{id}', [JenisPemeliharaanController::clas
 Route::get('jenis_pemeliharaan/delete/{id}', [  JenisPemeliharaanController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('jenis_pemeliharaan.destroy');
 
 //anggaran dana
-Route::get('/anggaran_dana', [AnggaranDanaController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.index');
-Route::post('/anggaran_dana/create', [AnggaranDanaController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.store');
-Route::get('/anggaran_dana/show/{id}', [AnggaranDanaController::class, 'show'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.show');
-Route::put('/anggaran_dana/update/{id}', [AnggaranDanaController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.update');
-Route::get('/anggaran_dana/delete/{id}', [AnggaranDanaController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.destroy');
+// Route::get('/anggaran_dana', [AnggaranDanaController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.index');
+// Route::post('/anggaran_dana/create', [AnggaranDanaController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.store');
+// Route::get('/anggaran_dana/show/{id}', [AnggaranDanaController::class, 'show'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.show');
+// Route::put('/anggaran_dana/update/{id}', [AnggaranDanaController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.update');
+// Route::get('/anggaran_dana/delete/{id}', [AnggaranDanaController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.destroy');
 
 //supplier
 Route::get('/supplier', [SupplierController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.index');

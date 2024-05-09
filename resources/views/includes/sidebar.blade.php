@@ -30,7 +30,6 @@
                 <li><a href="{{ route('supplier.index') }}">Data Supplier</a></li>
                 <li><a href="{{ route('kategori.index') }}">Data Kategori</a></li>
                 <li><a href="{{ route('ruang.index') }}">Data Ruangan</a></li>
-                <li><a href="{{ route('anggaran_dana.index') }}">Data Anggaran Dana</a></li>
                 <li><a href="{{ route('jenis_pemeliharaan.index') }}">Data Jenis Pemeliharaan</a></li>
             </ul>
         </li>
