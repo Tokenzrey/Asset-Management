@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <div class="table-responsive" id="cetak">
                                 @csrf
-                                <table class="table table-striped" id="example3" class="display">
+                                <table class="table table-striped mb-2" id="example3" class="display">
                                     <thead>
                                         <tr class="text-center">
                                             <th>No</th>
