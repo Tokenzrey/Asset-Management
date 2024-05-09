@@ -37,7 +37,6 @@
                                             <th>Kategori</th>
                                             <th>Gambar</th>
                                             <th>Tanggal Pinjam</th>
-                                            <th>Tanggal Kembali</th>
                                             <th>Keperluan</th>
                                         </tr>
                                     </thead>
@@ -74,7 +73,6 @@
                                                     @endif
                                                 </td>
                                                 <td>{{ $item->tanggal_pinjam }}</td>
-                                                <td>{{ $item->tanggal_kembali }}</td>
                                                 <td>{{ $item->keperluan }}</td>
                                             </tr>
                                         @endforeach

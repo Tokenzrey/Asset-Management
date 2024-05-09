@@ -96,25 +96,13 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h5 class="mt-2">Tanggal Pinjam :
-                                                    {{ $peminjaman->tanggal_pinjam }}
-                                                </h5>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h5 class="mt-2">Tanggal Kembali :
-                                                    {{ $peminjaman->tanggal_kembali }}
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
                                                 <h5 class="mt-2">Brand Aset :
                                                     {{ $peminjaman->aset->brand }}
                                                 </h5>
                                             </div>
                                             <div class="col-md-6">
-                                                <h5 class="mt-2">Harga Aset :
-                                                    {{ $peminjaman->aset->nilai_harga }}
+                                                <h5 class="mt-2">Tanggal Pinjam :
+                                                    {{ $peminjaman->tanggal_pinjam }}
                                                 </h5>
                                             </div>
                                         </div>
