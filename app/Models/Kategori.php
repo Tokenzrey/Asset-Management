@@ -15,4 +15,8 @@ class Kategori extends Model
 
     protected $hidden = [];
 
+    public function aset()
+    {
+        return $this->hasMany(Aset::class, 'kategori_id', 'id');
+    }
 }
