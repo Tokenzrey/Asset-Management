@@ -45,7 +45,7 @@ class DashboardController extends Controller
         $ruang = Ruang::where('aktif', '=', 'y')->get();
         $user = User::where('aktif', '=', 'y')->get();
 
-        $kategoriAsset_count = Kategori::withCount('assets')->get()->pluck('assets_count', 'nama')->toArray();
+        $kategoriAsset_count = Kategori::withCount('aset')->get()->pluck('assets_count', 'nama')->toArray();
 
         return view('dashboard.admin', [
             'viewTotalPeminjaman'       => $totalPeminjaman,
