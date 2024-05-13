@@ -79,7 +79,7 @@ class DashboardController extends Controller
                 'kategori.nama as nama_kategori',
                 'peminjaman.id as id_peminjaman',
                 'peminjaman.tanggal_pinjam',
-                'peminjaman.tanggal_kembali',
+                // 'peminjaman.tanggal_kembali',
                 'peminjaman.keperluan',
                 'peminjaman.status as status_peminjaman'
             )

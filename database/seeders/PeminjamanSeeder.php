@@ -23,7 +23,7 @@ class PeminjamanSeeder extends Seeder
                 'user_id'                  => 1,
                 'aset_id'                  => 1,
                 'tanggal_pinjam'           => Carbon::parse('2023-01-01'),
-                'tanggal_kembali'          => Carbon::parse('2023-02-01'),
+                // 'tanggal_kembali'          => Carbon::parse('2023-02-01'),
                 'jumlah_request'           => 1,
                 'status'                   => 'SELESAI',
                 'keperluan'                => 'pribadi'
