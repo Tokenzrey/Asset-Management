@@ -18,29 +18,29 @@ class ReportController extends Controller
         return view('report.index');
     }
 
-    public function report_ruang()
-    {
-        $ruang = Ruang::where('aktif', '=', 'y')->get();
-        return view('report.ruang',[
-            'ruang' => $ruang
-        ]);
-    }
+    // public function report_ruang()
+    // {
+    //     $ruang = Ruang::where('aktif', '=', 'y')->get();
+    //     return view('report.ruang',[
+    //         'ruang' => $ruang
+    //     ]);
+    // }
 
-    public  function report_pengguna()
-    {
-        $pengguna = User::where('aktif', '=', 'y')->get();
-        return view('report.pengguna',[
-            'pengguna' => $pengguna
-        ]);
-    }
+    // public  function report_pengguna()
+    // {
+    //     $pengguna = User::where('aktif', '=', 'y')->get();
+    //     return view('report.pengguna',[
+    //         'pengguna' => $pengguna
+    //     ]);
+    // }
 
-    public  function report_supplier()
-    {
-        $supplier = Supplier::where('aktif', '=', 'y')->get();
-        return view('report.supplier',[
-            'supplier' => $supplier
-        ]);
-    }
+    // public  function report_supplier()
+    // {
+    //     $supplier = Supplier::where('aktif', '=', 'y')->get();
+    //     return view('report.supplier',[
+    //         'supplier' => $supplier
+    //     ]);
+    // }
 
     public  function report_aset()
     {

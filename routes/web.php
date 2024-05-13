@@ -124,7 +124,7 @@ Route::get('/report', [ReportController::class, 'index'])->middleware('ceksesi',
 // Route::get('/report/supplier', [ReportController::class, 'report_supplier'])->middleware('ceksesi', 'cekuserstatus')->name('report.supplier');
 Route::get('/report/aset', [ReportController::class, 'report_aset'])->middleware('ceksesi', 'cekuserstatus')->name('report.aset');
 Route::get('/report/peminjaman', [ReportController::class, 'report_peminjaman'])->middleware('ceksesi', 'cekuserstatus')->name('report.peminjaman');
-// Route::get('/report/history_peminjaman', [ReportController::class, 'report_history_peminjaman'])->middleware('ceksesi', 'cekuserstatus')->name('report.history_peminjaman');
+Route::get('/report/history_peminjaman', [ReportController::class, 'report_history_peminjaman'])->middleware('ceksesi', 'cekuserstatus')->name('report.history_peminjaman');
 
 //admin & user
 Route::get('/peminjaman', [PeminjamanController::class, 'index'])->middleware('ceksesi')->name('peminjaman.index');
