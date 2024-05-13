@@ -15,9 +15,9 @@ class Aset extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'kode', 'nama', 'jumlah', 'satuan', 'tanggal_pembelian', 'nilai_harga', 'brand', 'aktif',
-        'tempat', 'kondisi', 'gambar', 'tanggal_akhir_garansi', 'nama_penerima', 'deskripsi',
-        'kategori_id', 'anggaran_dana_id', 'jenis_pemeliharaan_id', 'ruang_id', 'supplier_id'
+        'kode', 'nama', 'jumlah', 'satuan', 'tanggal_pembelian', 'brand', 'aktif',
+        'tempat', 'kondisi', 'gambar', 'nama_penerima', 'deskripsi',
+        'kategori_id', 'jenis_pemeliharaan_id', 'ruang_id', 'supplier_id'
     ];
 
     protected $rules = [
@@ -26,15 +26,12 @@ class Aset extends Model
             'jumlah'                => 'required',
             'satuan'                => 'required',
             'gambar'                => 'required|mimes:png,jpg,jpeg,jfif',
-            'nilai_harga'           => 'required|min:3',
             'brand'                 => 'required|min:3',
             'nama_penerima'         => 'required|min:3',
             'tempat'                => 'required|min:3',
             'kondisi'               => 'required',
             'tanggal_pembelian'     => 'required',
-            'tanggal_akhir_garansi' => 'required',
             'kategori_id'           => 'required',
-            'anggaran_dana_id'      => 'required',
             'jenis_pemeliharaan_id' => 'required',
             'ruang_id'              => 'required',
             'supplier_id'           => 'required'
@@ -49,14 +46,8 @@ class Aset extends Model
         ];
     }
 
-
-
     public function kategori(){
         return $this->belongsTo(Kategori::class, 'kategori_id', 'id');
-    }
-
-    public function anggaran_dana(){
-        return $this->belongsTo(AnggaranDana::class, 'anggaran_dana_id', 'id');
     }
 
     public function jenis_pemeliharaan(){
