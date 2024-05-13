@@ -29,8 +29,8 @@ class MutasiController extends Controller
                         ->orWhere('aset.kode', 'like', '%' . strtolower($keyword_search) . '%')
                         ->orWhere('aset.tempat', 'like', '%' . strtolower($keyword_search) . '%')
                         ->orWhere('kategori.nama', 'like', '%' . strtolower($keyword_search) . '%')
-                        ->orWhere('ruang.nama', 'like', '%' . strtolower($keyword_search) . '%')
-                        ->orWhere('aset.nilai_harga', 'like', '%' . strtolower($keyword_search) . '%');
+                        ->orWhere('ruang.nama', 'like', '%' . strtolower($keyword_search) . '%');
+                        // ->orWhere('aset.nilai_harga', 'like', '%' . strtolower($keyword_search) . '%');
                 });
             })
             ->where('aset.aktif', '=', 'y')
@@ -70,14 +70,14 @@ class MutasiController extends Controller
             'aset_id'               => $aset_id,
             'user_id'               => $user,
             'jumlah_request'        => $request->jumlah_request,
-            'nilai_harga_request'   => $request->nilai_harga_request,
+            // 'nilai_harga_request'   => $request->nilai_harga_request,
             'gambar'                => ($gambar) ? $gambar : null,
             'keterangan'            => $request->keterangan,
             'status'                => 'Bertambah'
         ]);
         if ($mutasi && $mutasi->aktif == 'y' || $mutasi === null) {
             $aset->jumlah += $request->jumlah_request;
-            $aset->nilai_harga += $request->nilai_harga_request;
+            // $aset->nilai_harga += $request->nilai_harga_request;
             $aset->save();
         }
         Alert::success('Success', 'Aset berhasil dimutasi!');
@@ -116,14 +116,14 @@ class MutasiController extends Controller
             'aset_id'               => $aset_id,
             'user_id'               => $user,
             'jumlah_request'        => $request->jumlah_request,
-            'nilai_harga_request'   => $request->nilai_harga_request,
+            // 'nilai_harga_request'   => $request->nilai_harga_request,
             'status'                => 'Berkurang',
             'gambar'                => ($gambar) ? $gambar : null,
             'keterangan'            => $request->keterangan,
         ]);
         if ($mutasi && $mutasi->aktif == 'y' || $mutasi === null) {
             $aset->jumlah -= $request->jumlah_request;
-            $aset->nilai_harga -= $request->nilai_harga_request;
+            // $aset->nilai_harga -= $request->nilai_harga_request;
             $aset->save();
         }
         Alert::success('Success', 'Aset berhasil dimutasi!');

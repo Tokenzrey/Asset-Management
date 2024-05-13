@@ -1,5 +1,6 @@
 <?php
 
+/*
 namespace App\Http\Controllers;
 
 use App\Models\AnggaranDana;
@@ -59,4 +60,5 @@ class AnggaranDanaController extends Controller
         Alert::success('Success', 'Data Anggaran Dana Berhasil Di Hapus');
         return redirect()->route('anggaran_dana.index');
     }
-}
+} 
+*/

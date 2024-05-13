@@ -37,8 +37,8 @@ class PeminjamanController extends Controller
                     $query->where('aset.nama', 'like', '%' . strtolower($keyword_search) . '%')
                         ->orWhere('aset.tempat', 'like', '%' . strtolower($keyword_search) . '%')
                         ->orWhere('kategori.nama', 'like', '%' . strtolower($keyword_search) . '%')
-                        ->orWhere('ruang.nama', 'like', '%' . strtolower($keyword_search) . '%')
-                        ->orWhere('aset.nilai_harga', 'like', '%' . strtolower($keyword_search) . '%');
+                        ->orWhere('ruang.nama', 'like', '%' . strtolower($keyword_search) . '%');
+                        // ->orWhere('aset.nilai_harga', 'like', '%' . strtolower($keyword_search) . '%');
                 });
             })
             ->where('aset.aktif', '=', 'y')

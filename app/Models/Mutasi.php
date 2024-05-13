@@ -14,7 +14,9 @@ class Mutasi extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'jumlah_request', 'nilai_harga_request', 'status', 'gambar', 'keterangan',
+        'jumlah_request', 
+        // 'nilai_harga_request', 
+        'status', 'gambar', 'keterangan',
         'user_id', 'aset_id', 'aktif', 'created_at', 'updated_at'
     ];
 

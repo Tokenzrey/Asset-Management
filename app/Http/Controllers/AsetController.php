@@ -9,7 +9,7 @@ use App\Models\Aset;
 use App\Models\Ruang;
 use App\Models\Kategori;
 use App\Models\Supplier;
-use App\Models\AnggaranDana;
+// use App\Models\AnggaranDana;
 use Illuminate\Http\Request;
 use App\Models\JenisPemeliharaan;
 use Maatwebsite\Excel\Facades\Excel;
@@ -21,14 +21,14 @@ class AsetController extends Controller
     {
         $aset = Aset::where('aktif', '=', 'y')->get();
         $kategori = Kategori::where('aktif', '=', 'y')->get();
-        $anggaran_dana = AnggaranDana::where('aktif', '=', 'y')->get();
+        // $anggaran_dana = AnggaranDana::where('aktif', '=', 'y')->get();
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
         $ruang = Ruang::where('aktif', '=', 'y')->get();
         $supplier = Supplier::where('aktif', '=', 'y')->get();
         return view('aset.index', [
             'aset'                  => $aset,
             'kategori'              => $kategori,
-            'anggaran_dana'         => $anggaran_dana,
+            // 'anggaran_dana'         => $anggaran_dana,
             'ruang'                 => $ruang,
             'jenis_pemeliharaan'    => $jenis_pemeliharaan,
             'supplier'              => $supplier,
@@ -57,8 +57,8 @@ class AsetController extends Controller
             'jumlah'                => $request->jumlah,
             'satuan'                => $request->satuan,
             'tanggal_pembelian'     => $request->tanggal_pembelian,
-            'tanggal_akhir_garansi' => $request->tanggal_akhir_garansi,
-            'nilai_harga'           => $request->nilai_harga,
+            // 'tanggal_akhir_garansi' => $request->tanggal_akhir_garansi,
+            // 'nilai_harga'           => $request->nilai_harga,
             'brand'                 => $request->brand,
             'kondisi'               => $request->kondisi,
             'gambar'                => ($gambar) ? $gambar : null,
@@ -66,7 +66,7 @@ class AsetController extends Controller
             'tempat'                => $request->tempat,
             'deskripsi'             => $request->deskripsi,
             'kategori_id'           => $request->kategori_id,
-            'anggaran_dana_id'      => $request->anggaran_dana_id,
+            // 'anggaran_dana_id'      => $request->anggaran_dana_id,
             'jenis_pemeliharaan_id' => $request->jenis_pemeliharaan_id,
             'ruang_id'              => $request->ruang_id,
             'supplier_id'           => $request->supplier_id
@@ -80,7 +80,7 @@ class AsetController extends Controller
         $aset               = Aset::find($id);
         $supplier           = Supplier::where('aktif', '=', 'y')->get();
         $kategori           = Kategori::where('aktif', '=', 'y')->get();
-        $anggaran_dana      = AnggaranDana::where('aktif', '=', 'y')->get();
+        // $anggaran_dana      = AnggaranDana::where('aktif', '=', 'y')->get();
         $ruang              = Ruang::where('aktif', '=', 'y');
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y');
 
@@ -88,7 +88,7 @@ class AsetController extends Controller
             'aset'                  => $aset,
             'supplier'              => $supplier,
             'kategori'              => $kategori,
-            'anggaran_dana'         => $anggaran_dana,
+            // 'anggaran_dana'         => $anggaran_dana,
             'ruang'                 => $ruang,
             'jenis_pemeliharaan'    => $jenis_pemeliharaan,
             'kondisi'               => ['Baik', 'Rusak Ringan', 'Rusak Berat']
@@ -122,15 +122,15 @@ class AsetController extends Controller
             'jumlah'                => $request->jumlah,
             'satuan'                => $request->satuan,
             'tanggal_pembelian'     => $request->tanggal_pembelian,
-            'tanggal_akhir_garansi' => $request->tanggal_akhir_garansi,
-            'nilai_harga'           => $request->nilai_harga,
+            // 'tanggal_akhir_garansi' => $request->tanggal_akhir_garansi,
+            // 'nilai_harga'           => $request->nilai_harga,
             'brand'                 => $request->brand,
             'kondisi'               => $request->kondisi,
             'nama_penerima'         => $request->nama_penerima,
             'tempat'                => $request->tempat,
             'deskripsi'             => $request->deskripsi,
             'kategori_id'           => $request->kategori_id,
-            'anggaran_dana_id'      => $request->anggaran_dana_id,
+            // 'anggaran_dana_id'      => $request->anggaran_dana_id,
             'jenis_pemeliharaan_id' => $request->jenis_pemeliharaan_id,
             'ruang_id'              => $request->ruang_id,
             'supplier_id'           => $request->supplier_id
@@ -199,14 +199,14 @@ class AsetController extends Controller
     {
         $aset = Aset::where('aktif', '=', 't')->get();
         $kategori = Kategori::where('aktif', '=', 'y')->get();
-        $anggaran_dana = AnggaranDana::where('aktif', '=', 'y')->get();
+        // $anggaran_dana = AnggaranDana::where('aktif', '=', 'y')->get();
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
         $ruang = Ruang::where('aktif', '=', 'y')->get();
         $supplier = Supplier::where('aktif', '=', 'y')->get();
         return view('aset.history', [
             'aset'                  => $aset,
             'kategori'              => $kategori,
-            'anggaran_dana'         => $anggaran_dana,
+            // 'anggaran_dana'         => $anggaran_dana,
             'ruang'                 => $ruang,
             'jenis_pemeliharaan'    => $jenis_pemeliharaan,
             'supplier'              => $supplier,

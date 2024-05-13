@@ -20,11 +20,11 @@ class CreateAsetTable extends Migration
             $table->integer('jumlah');
             $table->string('satuan', 100);
             $table->date('tanggal_pembelian');
-            $table->bigInteger('nilai_harga');
+            // $table->bigInteger('nilai_harga');
             $table->string('brand', 100);
             $table->string('kondisi', 100);
             $table->string('gambar', 200);
-            $table->date('tanggal_akhir_garansi');
+            // $table->date('tanggal_akhir_garansi');
             $table->string('nama_penerima');
             $table->string('tempat', 100);
             $table->string('deskripsi')->nullable();
@@ -33,8 +33,8 @@ class CreateAsetTable extends Migration
             $table->unsignedBigInteger('kategori_id');
             $table->foreign('kategori_id')->references('id')->on('kategori');
 
-            $table->unsignedBigInteger('anggaran_dana_id');
-            $table->foreign('anggaran_dana_id')->references('id')->on('anggaran_dana');
+            // $table->unsignedBigInteger('anggaran_dana_id');
+            // $table->foreign('anggaran_dana_id')->references('id')->on('anggaran_dana');
 
             $table->unsignedBigInteger('jenis_pemeliharaan_id');
             $table->foreign('jenis_pemeliharaan_id')->references('id')->on('jenis_pemeliharaan');
