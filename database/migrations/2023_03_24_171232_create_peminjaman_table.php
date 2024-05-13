@@ -22,7 +22,7 @@ class CreatePeminjamanTable extends Migration
             $table->foreign('aset_id')->references('id')->on('aset');
 
             $table->date('tanggal_pinjam');
-            $table->date('tanggal_kembali');
+            // $table->date('tanggal_kembali');
 
             $table->integer('jumlah_request');
             $table->enum('status', ['PROSES', 'DITERIMA', 'DITOLAK', 'SELESAI']);

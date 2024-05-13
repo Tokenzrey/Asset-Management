@@ -90,7 +90,7 @@ class PeminjamanController extends Controller
             'aset_id' => $aset_id,
             'user_id' => $user,
             'tanggal_pinjam' => $request->tanggal_pinjam,
-            'tanggal_kembali' => $request->tanggal_kembali,
+            // 'tanggal_kembali' => $request->tanggal_kembali,
             'jumlah_request' => $request->jumlah_request,
             'keperluan' => $request->keperluan
         ]);
