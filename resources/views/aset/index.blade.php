@@ -1,9 +1,9 @@
 @extends('includes.template')
 
 @section('menunya')
-<h2>
-    Aset <i class="fa fa-solid fa-arrow-right"></i> Data Aset
-</h2>
+    <h2>
+        Aset <i class="fa fa-solid fa-arrow-right"></i> Data Aset
+    </h2>
 @endsection
 
 @section('content')
@@ -297,7 +297,6 @@
                                             <th>#</th>
                                             <th>Kode</th>
                                             <th>Nama</th>
-                                            <th>Jumlah</th>
                                             <th>Gambar</th>
                                             <th>Kondisi</th>
                                             <th>Ruang</th>
@@ -313,7 +312,6 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $item->kode }}</td>
                                                 <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->jumlah }} {{ $item->satuan }}</td>
                                                 <td>
                                                     @if ($item['gambar'])
                                                         <img class="img-thumbnail"

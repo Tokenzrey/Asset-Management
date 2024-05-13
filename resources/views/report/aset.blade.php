@@ -23,13 +23,12 @@
                 <th>No</th>
                 <th>Kode</th>
                 <th>Nama</th>
-                <th>Harga</th>
                 <th>Kondisi</th>
                 <th>Gambar</th>
                 <th>Ruang</th>
                 <th>Tempat</th>
                 <th>Kategori</th>
-                <th>Supplier</th>
+                <th>Vendor</th>
                 <th>Dibuat</th>
             </tr>
         </thead>
@@ -42,7 +41,6 @@
                     <td>{{ $no++ }}</td>
                     <td>{{ $item->kode }}</td>
                     <td>{{ $item->nama }}</td>
-                    <td>{{ $item->nilai_harga }}</td>
                     <td>{{ $item->kondisi }}</td>
                     <td>
                         @if ($item['gambar'])

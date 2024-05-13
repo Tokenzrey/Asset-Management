@@ -18,7 +18,9 @@
         <button type="button" class="btn btn-link btn-xs" style="color: black;" data-bs-toggle="modal" data-bs-target=".modal">
             <i class="fa fa-bell-o fa-lg text-primary" style="font-size: 23px;">
                 @if ($total_jp_notif > 0)
-                    <input id="button_notif" style="background-color: red; width: 20px; height: 20px; border-radius: 100%; text-align: center; border: none; font-size: 15px; line-height: 20px; color: white;" value="{{ $total_jp_notif }}" readonly />
+                    <input id="button_notif"
+                        style="background-color: red; width: 20px; height: 20px; border-radius: 100%; text-align: center; border: none; font-size: 15px; line-height: 20px; color: white;"
+                        value="{{ $total_jp_notif }}" readonly />
                 @endif
             </i>
         </button>
@@ -48,84 +50,105 @@
                                 $nama_aset = $alert->aset->nama;
                                 if ($alert->tanggal_mulai == date('Y-m-d', strtotime('+1 day'))) {
                                     $tanggal_mulai = $alert->tanggal_mulai;
-                                    echo
-                                        "<div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>Aset
-                                            <a style='color:red'>" . $nama_aset . "</a>
-                                                Besok akan dilakukan maintenance di tanggal
-                                            <a style='color:red'>" . date('d-m-Y', strtotime($alert->tanggal_mulai)) . "</a>, Tolong dipersiapkan!  ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
-                                                route('jadwal_pemeliharaan.index') . "'\">Check
-                                            </button>
-                                        </div>";
+                                    echo "<div style='padding:5px' style='width:50px'>
+                                                                                                                                                                                                                                                                                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>Aset
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        $nama_aset .
+                                        "</a>
+                                                                                                                                                                                                                                                                                                                Besok akan dilakukan maintenance di tanggal
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        date('d-m-Y', strtotime($alert->tanggal_mulai)) .
+                                        "</a>, Tolong dipersiapkan!  ||
+                                                                                                                                                                                                                                                                                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
+                                        route('jadwal_pemeliharaan.index') .
+                                        "'\">Check
+                                                                                                                                                                                                                                                                                                            </button>
+                                                                                                                                                                                                                                                                                                        </div>";
                                 } elseif ($alert->tanggal_mulai == date('Y-m-d', strtotime('+2 day'))) {
-                                    echo
-                                        "<div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i> Aset
-                                            <a style='color:red'>" . $nama_aset . "</a>
-                                                2 hari lagi akan dilakukan maintenance di tanggal
-                                            <a style='color:red'>" . date('d-m-Y', strtotime($alert->tanggal_mulai)) . "</a>,
-                                                Tolong dipersiapkan!  ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
-                                                route('jadwal_pemeliharaan.index') . "'\">Check
-                                            </button>
-                                        </div>";
+                                    echo "<div style='padding:5px' style='width:50px'>
+                                                                                                                                                                                                                                                                                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i> Aset
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        $nama_aset .
+                                        "</a>
+                                                                                                                                                                                                                                                                                                                2 hari lagi akan dilakukan maintenance di tanggal
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        date('d-m-Y', strtotime($alert->tanggal_mulai)) .
+                                        "</a>,
+                                                                                                                                                                                                                                                                                                                Tolong dipersiapkan!  ||
+                                                                                                                                                                                                                                                                                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
+                                        route('jadwal_pemeliharaan.index') .
+                                        "'\">Check
+                                                                                                                                                                                                                                                                                                            </button>
+                                                                                                                                                                                                                                                                                                        </div>";
                                 } elseif ($alert->tanggal_mulai == date('Y-m-d', strtotime('+3 day'))) {
-                                    echo
-                                        "<div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i> Aset
-                                            <a style='color:red'>" . $nama_aset . "</a>
-                                                3 hari lagi akan dilakukan maintenance di tanggal
-                                            <a style='color:red'>" . date('d-m-Y', strtotime($alert->tanggal_mulai)) . "</a>
-                                                , Tolong dipersiapkan!  ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
-                                                route('jadwal_pemeliharaan.index') . "'\">Check
-                                            </button>
-                                        </div>";
+                                    echo "<div style='padding:5px' style='width:50px'>
+                                                                                                                                                                                                                                                                                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i> Aset
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        $nama_aset .
+                                        "</a>
+                                                                                                                                                                                                                                                                                                                3 hari lagi akan dilakukan maintenance di tanggal
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        date('d-m-Y', strtotime($alert->tanggal_mulai)) .
+                                        "</a>
+                                                                                                                                                                                                                                                                                                                , Tolong dipersiapkan!  ||
+                                                                                                                                                                                                                                                                                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
+                                        route('jadwal_pemeliharaan.index') .
+                                        "'\">Check
+                                                                                                                                                                                                                                                                                                            </button>
+                                                                                                                                                                                                                                                                                                        </div>";
                                 } elseif ($alert->tanggal_mulai == $today) {
-                                    echo
-                                        "<div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
-                                                Hari ini adalah waktunya maintenance Aset
-                                            <a style='color:red'>" . $nama_aset . "</a>
-                                                tepat di tanggal
-                                            <a style='color:red'>" . date('d-m-Y', strtotime($alert->tanggal_mulai)) . "</a>
-                                                , Segera lakukan maintenance!  ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
-                                                route('jadwal_pemeliharaan.index') . "'\">Check
-                                            </button>
-                                        </div>";
-                                }elseif ($alert->tanggal_selesai == $today) {
-                                    echo
-                                        "<div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
-                                                Hari ini adalah batas waktu selesai maintenance Aset
-                                            <a style='color:red'>" . $nama_aset . "</a>
-                                                tepat di tanggal
-                                            <a style='color:red'>" . date('d-m-Y', strtotime($alert->tanggal_selesai)) . "</a>
-                                                , Segera lakukan konfirmasi perubahan maintenance!  ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
-                                                route('jadwal_pemeliharaan.index') . "'\">Check
-                                            </button>
-                                        </div>";
+                                    echo "<div style='padding:5px' style='width:50px'>
+                                                                                                                                                                                                                                                                                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
+                                                                                                                                                                                                                                                                                                                Hari ini adalah waktunya maintenance Aset
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        $nama_aset .
+                                        "</a>
+                                                                                                                                                                                                                                                                                                                tepat di tanggal
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        date('d-m-Y', strtotime($alert->tanggal_mulai)) .
+                                        "</a>
+                                                                                                                                                                                                                                                                                                                , Segera lakukan maintenance!  ||
+                                                                                                                                                                                                                                                                                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
+                                        route('jadwal_pemeliharaan.index') .
+                                        "'\">Check
+                                                                                                                                                                                                                                                                                                            </button>
+                                                                                                                                                                                                                                                                                                        </div>";
+                                } elseif ($alert->tanggal_selesai == $today) {
+                                    echo "<div style='padding:5px' style='width:50px'>
+                                                                                                                                                                                                                                                                                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
+                                                                                                                                                                                                                                                                                                                Hari ini adalah batas waktu selesai maintenance Aset
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        $nama_aset .
+                                        "</a>
+                                                                                                                                                                                                                                                                                                                tepat di tanggal
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        date('d-m-Y', strtotime($alert->tanggal_selesai)) .
+                                        "</a>
+                                                                                                                                                                                                                                                                                                                , Segera lakukan konfirmasi perubahan maintenance!  ||
+                                                                                                                                                                                                                                                                                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
+                                        route('jadwal_pemeliharaan.index') .
+                                        "'\">Check
+                                                                                                                                                                                                                                                                                                            </button>
+                                                                                                                                                                                                                                                                                                        </div>";
                                 } elseif ($alert->tanggal_mulai < $today) {
                                     $datetime1 = new DateTime($today);
                                     $datetime2 = new DateTime($alert->tanggal_mulai);
                                     $interval = $datetime1->diff($datetime2);
                                     $daysDiff = $interval->format('%a');
-                                    echo
-                                        "<div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
-                                                Aset
-                                            <a style='color:red'>" . $nama_aset .
-                                                "<span style='color:black'> Jadwal maintenance </span>" .
-                                                date('d-m-Y', strtotime($alert->tanggal_mulai)) .
-                                            "</a>
-                                            , Telah melewati batas maintenance aset yang dijadwalkan selama {$daysDiff} hari ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
-                                                route('jadwal_pemeliharaan.index') . "'\">Check
-                                            </button>
-                                        </div>";
+                                    echo "<div style='padding:5px' style='width:50px'>
+                                                                                                                                                                                                                                                                                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
+                                                                                                                                                                                                                                                                                                                Aset
+                                                                                                                                                                                                                                                                                                            <a style='color:red'>" .
+                                        $nama_aset .
+                                        "<span style='color:black'> Jadwal maintenance </span>" .
+                                        date('d-m-Y', strtotime($alert->tanggal_mulai)) .
+                                        "</a>
+                                                                                                                                                                                                                                                                                                            , Telah melewati batas maintenance aset yang dijadwalkan selama {$daysDiff} hari ||
+                                                                                                                                                                                                                                                                                                            <button class='badge badge-primary' onclick=\"window.location.href='" .
+                                        route('jadwal_pemeliharaan.index') .
+                                        "'\">Check
+                                                                                                                                                                                                                                                                                                            </button>
+                                                                                                                                                                                                                                                                                                        </div>";
                                 } else {
                                     echo '';
                                 }
@@ -201,6 +224,7 @@
                 <div class="col-xl-6 ">
                     <div class="row h-100">
                         <div class="card">
+                            <canvas id="myChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -214,7 +238,6 @@
             <div class="card">
                 <div class="row">
                     <div class="col-12">
-
                         <div class="card-header">
                             @if (session('error'))
                                 <div class="alert alert-danger">
@@ -255,35 +278,35 @@
                                 @endphp
                                 <tbody>
                                     @foreach ($history_peminjaman as $item)
-                                    <?php
-                                    $btn = '';
-                                    if ($item->status == 'PROSES'):
-                                        $badge = 'badge-info';
-                                        $btn =
-                                            '<button data-id="' .
-                                            $item->id .
-                                            '" data-status="diterima" data-href="' .
-                                            url('peminjaman/update?id=' . $item->id . '&status=diterima') .
-                                            '" class="btn btn-success btn-sm btn-terima">Diterima</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <button data-id="' .
-                                            $item->id .
-                                            '" data-status="ditolak" data-href="' .
-                                            url('peminjaman/update?id=' . $item->id . '&status=ditolak') .
-                                            '" class="btn btn-danger btn-sm btn-tolak">Ditolak</button>';
-                                    elseif ($item->status == 'DITERIMA'):
-                                        $badge = 'badge-success';
-                                        $btn = '<button data-id="' . $item->id . '" data-status="selesai" data-href="' . url('peminjaman/update?id=' . $item->id . '&status=selesai') . '" class="btn btn-selesai btn-sm">Selesai</button>';
-                                    elseif ($item->status == 'SELESAI'):
-                                        $badge = 'badge-success';
-                                    else:
-                                        $badge = 'badge-danger';
-                                    endif;
-                                    ?>
+                                        <?php
+                                        $btn = '';
+                                        if ($item->status == 'PROSES'):
+                                            $badge = 'badge-info';
+                                            $btn =
+                                                '<button data-id="' .
+                                                $item->id .
+                                                '" data-status="diterima" data-href="' .
+                                                url('peminjaman/update?id=' . $item->id . '&status=diterima') .
+                                                '" class="btn btn-success btn-sm btn-terima">Diterima</button>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <button data-id="' .
+                                                $item->id .
+                                                '" data-status="ditolak" data-href="' .
+                                                url('peminjaman/update?id=' . $item->id . '&status=ditolak') .
+                                                '" class="btn btn-danger btn-sm btn-tolak">Ditolak</button>';
+                                        elseif ($item->status == 'DITERIMA'):
+                                            $badge = 'badge-success';
+                                            $btn = '<button data-id="' . $item->id . '" data-status="selesai" data-href="' . url('peminjaman/update?id=' . $item->id . '&status=selesai') . '" class="btn btn-selesai btn-sm">Selesai</button>';
+                                        elseif ($item->status == 'SELESAI'):
+                                            $badge = 'badge-success';
+                                        else:
+                                            $badge = 'badge-danger';
+                                        endif;
+                                        ?>
                                         <tr class="text-center">
                                             <td>{{ $no++ }}</td>
                                             <td><span
-                                                class="badge {{ $badge }} text-center">{{ $item->status }}</span>
-                                        </td>
+                                                    class="badge {{ $badge }} text-center">{{ $item->status }}</span>
+                                            </td>
                                             <td>{{ $item->user->nama }}</td>
                                             <td>{{ $item->aset->nama }}</td>
                                             <td>
@@ -304,8 +327,42 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('simas/vendor/chart.js/Chart.bundle.min.js') }}"></script>
     <script>
+        const kategori = {!! json_encode($kategoriAsset_count) !!}; // Menggunakan Blade untuk menyisipkan variabel PHP ke dalam JavaScript
+        console.log(kategori);
+    </script>
+    <script>
+        // Data untuk chart
+        const data = {
+            labels: ['BP', 'MP', 'KB', 'PK'],
+            datasets: [{
+                data: [12, 19, 3, 5], // Contoh data
+                backgroundColor: [
+                    'red',
+                    'blue',
+                    'yellow',
+                    'green',
+                ]
+            }]
+        };
 
+        // Opsi untuk chart
+        const options = {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Chart Pie'
+            }
+        };
+
+        // Inisialisasi chart
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: data,
+            options: options
+        });
     </script>
 @endsection
 
