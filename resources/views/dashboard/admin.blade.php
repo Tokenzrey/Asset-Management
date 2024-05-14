@@ -329,7 +329,7 @@ SIMAS PT ABC
             responsive: true,
             title: {
                 display: true,
-                text: 'Chart Pie'
+                text: 'Jumlah aset per kategori'
             }
         };
 
