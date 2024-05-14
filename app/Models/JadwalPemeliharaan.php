@@ -15,13 +15,6 @@ class JadwalPemeliharaan extends Model
     protected $primary = 'id';
     protected $fillable = ['aktif', 'aset_id','tanggal_mulai', 'tanggal_selesai', 'status'];
 
-    // public function getReminders()
-    // {
-    //     return self::where('tanggal_selesai', Carbon::today())
-    //                ->where('tanggal_mulai', '>', Carbon::today())
-    //                ->get();
-    // }
-
     protected $hidden = [];
 
     public function aset()

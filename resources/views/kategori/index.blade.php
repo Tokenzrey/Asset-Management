@@ -51,6 +51,11 @@
                                                     <input type="text" class="form-control" id="nama"
                                                         placeholder="Masukkan Nama Kategori" name="nama" required>
                                                 </div>
+                                                <div class="col-md-12">
+                                                    <label><b>Masa Manfaat</b></label>
+                                                    <input type="number" class="form-control" id="masa_manfaat"
+                                                          name="masa_manfaat" required maxlength="3">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex">
