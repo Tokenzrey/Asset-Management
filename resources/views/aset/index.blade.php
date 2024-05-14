@@ -54,12 +54,12 @@
                             </div>
                             <div>
                             </div>
-                            <a href="{{ route('aset.history') }}">
+                            {{-- <a href="{{ route('aset.history') }}">
                                 <button type="button" class="btn btn-primary-history mb-2 text-white"
                                     style="margin-bottom: 1rem;">
                                     <i class="fas fa-history"></i> History
                                 </button>
-                            </a>
+                            </a> --}}
 
                             <!-- center modal tambah data -->
                             <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
