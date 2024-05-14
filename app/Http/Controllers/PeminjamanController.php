@@ -74,7 +74,9 @@ class PeminjamanController extends Controller
             return back()->with('error', 'Aset tidak ditemukan!');
         }
 
-        if ($request->jumlah_request > $aset->jumlah) {
+        $jumlah_request = 1;
+
+        if ($jumlah_request > $aset->jumlah) {
             Alert::error('Error', 'Jumlah permintaan melebihi stok aset yang tersedia');
             return redirect()->route('peminjaman.index');
         }
@@ -91,7 +93,8 @@ class PeminjamanController extends Controller
             'user_id' => $user,
             'tanggal_pinjam' => $request->tanggal_pinjam,
             // 'tanggal_kembali' => $request->tanggal_kembali,
-            'jumlah_request' => $request->jumlah_request,
+            // 'jumlah_request' => $request->jumlah_request,
+            'jumlah_request' => $jumlah_request,
             'keperluan' => $request->keperluan
         ]);
 

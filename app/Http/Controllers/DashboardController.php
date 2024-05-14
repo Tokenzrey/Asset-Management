@@ -26,7 +26,7 @@ class DashboardController extends Controller
         $jml_ruang = Ruang::where('aktif', '=', 'y')->count();
         $jml_divisi = Divisi::where('aktif', '=', 'y')->count();
         $jml_jp = JadwalPemeliharaan::where('aktif', '=', 'y')->count();
-        $jml_ad = AnggaranDana::where('aktif', '=', 'y')->count();
+        // $jml_ad = AnggaranDana::where('aktif', '=', 'y')->count();
 
         $today = date('Y-m-d');
         $alert_maintenance = JadwalPemeliharaan::where(function ($query) {
@@ -56,7 +56,7 @@ class DashboardController extends Controller
             'jml_ruang'                 => $jml_ruang,
             'jml_divisi'                => $jml_divisi,
             'jml_jp'                    => $jml_jp,
-            'jml_ad'                    => $jml_ad,
+            // 'jml_ad'                    => $jml_ad,
             'today'                     => $today,
             'alert_maintenance'         => $alert_maintenance,
             'total_jp_notif'            => $total_jp_notif,
