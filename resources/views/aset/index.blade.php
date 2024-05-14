@@ -200,12 +200,12 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-xl-6 mt-2">
-                                                            <label><b>Ruang
+                                                            <label><b>Lokasi
                                                                     Aset</b></label>
                                                             <select class="form-control" name="ruang_id" id="ruang_id"
                                                                 required>
                                                                 <option value="" hidden>Pilih
-                                                                    Ruang
+                                                                    Lokasi
                                                                     Aset</option>
                                                                 @foreach ($ruang as $data)
                                                                     <option value="{{ $data->id }}"
@@ -299,7 +299,7 @@
                                             <th>Nama</th>
                                             <th>Gambar</th>
                                             <th>Kondisi</th>
-                                            <th>Ruang</th>
+                                            <th>Lokasi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -514,7 +514,7 @@
 
                                                                     <div class="row">
                                                                         <div class="col-xl-6 mt-2">
-                                                                            <label><b>Ruang
+                                                                            <label><b>Lokasi
                                                                                     Aset</b></label>
                                                                             <select class="form-control" name="ruang_id"
                                                                                 id="ruang_id" required>

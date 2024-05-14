@@ -138,7 +138,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h5 class="mt-2">Ruang Aset :
+                                                <h5 class="mt-2">Lokasi Aset :
                                                     {{ $aset->ruang->nama }}
                                                 </h5>
                                             </div>
@@ -295,7 +295,7 @@
 
                                                     <div class="row">
                                                         <div class="col-xl-6 mt-2">
-                                                            <label><b>Ruang Aset</b></label>
+                                                            <label><b>Lokasi Aset</b></label>
                                                             <select class="form-control" name="ruang_id" id="ruang_id"
                                                                 required>
                                                                 <option value="{{ $aset->ruang_id }}" hidden>

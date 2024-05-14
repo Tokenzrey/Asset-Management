@@ -2,7 +2,7 @@
 
 @section('menunya')
 <h2>
-    Master <i class="fa fa-solid fa-arrow-right"></i> Data Divisi
+    Master <i class="fa fa-solid fa-arrow-right"></i> Data Lokasi
 </h2>
 @endsection
 
@@ -35,7 +35,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <img src="{{ asset('simas/images/smkn1kalianget.png') }}" alt="" width="70px">
-                                    <h3 class="modal-title"><b>Tambah Divisi</b></h3>
+                                    <h3 class="modal-title"><b>Tambah Lokasi</b></h3>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>
@@ -46,9 +46,9 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <label for="namaruang"><b>Nama Divisi</b></label>
+                                                    <label for="namaruang"><b>Nama Lokasi</b></label>
                                                     <input type="text" class="form-control" id="nama"
-                                                        placeholder="Masukkan Nama Ruang" name="nama" required>
+                                                        placeholder="Masukkan Nama Lokasi" name="nama" required>
                                                 </div>
                                             </div>
                                         </div>

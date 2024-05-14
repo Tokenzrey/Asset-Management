@@ -43,7 +43,7 @@
                                     <th>Nama</th>
                                     <th>Gambar</th>
                                     <th>Kondisi</th>
-                                    <th>Ruang</th>
+                                    <th>Lokasi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

@@ -25,7 +25,7 @@
                 <th>Nama</th>
                 <th>Kondisi</th>
                 <th>Gambar</th>
-                <th>Ruang</th>
+                <th>Lokasi</th>
                 <th>Tempat</th>
                 <th>Kategori</th>
                 <th>Vendor</th>
