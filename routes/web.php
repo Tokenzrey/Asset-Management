@@ -95,9 +95,9 @@ Route::get('/aset/qrcode/{id}', [AsetController::class, 'qrcode'])->middleware('
 Route::get('/aset/scan_qrcode', [AsetController::class, 'scan_qrcode'])->middleware('ceksesi', 'cekuserstatus')->name('aset.scan_qrcode');
 Route::get('/aset/cetakqrcode/{id}', [AsetController::class, 'cetakqrcode'])->middleware('ceksesi', 'cekuserstatus')->name('aset.cetakqrcode');
 
-Route::get('/aset/history', [AsetController::class, 'history'])->middleware('ceksesi', 'cekuserstatus')->name('aset.history');
-Route::get('/aset/history/restore/{id}', [AsetController::class, 'restore'])->middleware('ceksesi', 'cekuserstatus')->name('aset.restore');
-Route::get('/aset/history_delete/{id}', [AsetController::class, 'destroy_history'])->middleware('ceksesi', 'cekuserstatus')->name('aset.destroy_history');
+// Route::get('/aset/history', [AsetController::class, 'history'])->middleware('ceksesi', 'cekuserstatus')->name('aset.history');
+// Route::get('/aset/history/restore/{id}', [AsetController::class, 'restore'])->middleware('ceksesi', 'cekuserstatus')->name('aset.restore');
+// Route::get('/aset/history_delete/{id}', [AsetController::class, 'destroy_history'])->middleware('ceksesi', 'cekuserstatus')->name('aset.destroy_history');
 
 //mutasi aset
 // Route::get('/aset/mutasi', [MutasiController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('mutasi.index');
