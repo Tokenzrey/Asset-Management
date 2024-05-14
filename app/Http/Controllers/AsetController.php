@@ -50,11 +50,13 @@ class AsetController extends Controller
             return redirect()->route('aset.index');
         }
 
+        $jumlah = 1;
+
         $request->qrcode == $request->kode;
         Aset::create([
             'kode'                  => $request->kode,
             'nama'                  => $request->nama,
-            'jumlah'                => $request->jumlah,
+            'jumlah'                => $jumlah,
             'satuan'                => $request->satuan,
             'tanggal_pembelian'     => $request->tanggal_pembelian,
             // 'tanggal_akhir_garansi' => $request->tanggal_akhir_garansi,
@@ -114,12 +116,14 @@ class AsetController extends Controller
             $gambar = str_replace('public/', '', $gambar);
         }
 
+        $jumlah = 1;
+
         $request->qrcode == $request->kode;
         $aset = Aset::where(['kode' => $request->kode])->first();
         $data_aset = [
             'kode'                  => $request->kode,
             'nama'                  => $request->nama,
-            'jumlah'                => $request->jumlah,
+            'jumlah'                => $rjumlah,
             'satuan'                => $request->satuan,
             'tanggal_pembelian'     => $request->tanggal_pembelian,
             // 'tanggal_akhir_garansi' => $request->tanggal_akhir_garansi,
