@@ -20,21 +20,31 @@ class KategoriSeeder extends Seeder
         Kategori::create(
             [
                 'nama' => 'Belum Terisi',
+                'batas_masa_manfaat_tahun' => null
             ]
         );
         Kategori::create(
             [
-                'nama' => 'Elektronik',
+                'nama' => 'Bangunan dan prasarana',
+                'batas_masa_manfaat_tahun' => 20
             ]
         );
         Kategori::create(
             [
-                'nama' => 'Non Elektronik',
+                'nama' => 'Mesin dan peralatan',
+                'batas_masa_manfaat_tahun' => 10
             ]
         );
         Kategori::create(
             [
-                'nama' => 'Mebel',
+                'nama' => 'Kendaraan bermotor',
+                'batas_masa_manfaat_tahun' => 5
+            ]
+        );
+        Kategori::create(
+            [
+                'nama' => 'Peralatan kantor',
+                'batas_masa_manfaat_tahun' => 5
             ]
         );
     }

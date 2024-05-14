@@ -11,7 +11,7 @@ class Kategori extends Model
     protected $table = 'kategori';
 
     protected $primaryKey = 'id';
-    protected $fillable = ['nama', 'aktif'];
+    protected $fillable = ['nama', 'aktif', 'batas_masa_manfaat_tahun'];
 
     protected $hidden = [];
 

@@ -25,6 +25,7 @@ class KategoriController extends Controller
         Kategori::where(['id' => $request->id])->first();
         Kategori::create([
             'nama' => $request->nama,
+            'batas_masa_manfaat_tahun' => $request->batas_masa_manfaat_tahun
         ]);
         Alert::success('Success', 'Data kategori Berhasil Ditambahkan');
         return redirect()->route('kategori.index');
@@ -48,6 +49,7 @@ class KategoriController extends Controller
 
         $data_kategori = [
             'nama' => $request->nama,
+            'batas_masa_manfaat_tahun' => $request->batas_masa_manfaat_tahun
         ];
 
         $kategori->where(['id' => $id])->update($data_kategori);
