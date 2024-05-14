@@ -18,6 +18,7 @@ class CreateKategoriTable extends Migration
             $table->string('nama', 100);
             $table->enum('aktif', ['y', 't'])->default('y');
             $table->timestamps();
+            $table->integer('batas_masa_manfaat_tahun')->nullable();
         });
     }
 

@@ -17,7 +17,7 @@ class AsetSeeder extends Seeder
             [
                 'kode'                  =>'01010101',
                 'nama'                  => 'Komputer',
-                'jumlah'                => '13 ',
+                'jumlah'                => '1',
                 'satuan'                => 'unit',
                 'tanggal_pembelian'     => Carbon::parse('2023-06-01'),
                 // 'nilai_harga'           => 83850000,
