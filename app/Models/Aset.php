@@ -17,11 +17,10 @@ class Aset extends Model
     protected $fillable = [
         'kode', 'nama', 'jumlah', 'satuan', 'tanggal_pembelian', 'brand', 'aktif',
         'tempat', 'kondisi', 'gambar', 'nama_penerima', 'deskripsi',
-        'kategori_id', 'jenis_pemeliharaan_id', 'ruang_id', 'supplier_id'
+        'kategori_id', 'jenis_pemeliharaan_id', 'ruang_id', 'vendor_id'
     ];
 
     protected $rules = [
-            'kode'                  => 'required|unique:aset|min:7|max:7',
             'nama'                  => 'required|min:3',
             'jumlah'                => 'required',
             'satuan'                => 'required',
@@ -34,12 +33,12 @@ class Aset extends Model
             'kategori_id'           => 'required',
             'jenis_pemeliharaan_id' => 'required',
             'ruang_id'              => 'required',
-            'supplier_id'           => 'required'
+            'vendor_id'           => 'required'
     ];
 
     protected $hidden = [];
 
-    public function toSearchableArray()
+    public function toSearchableArray(): array
     {
         return [
             'kode' => $this->kode
@@ -58,7 +57,7 @@ class Aset extends Model
         return $this->belongsTo(Ruang::class, 'ruang_id', 'id');
     }
 
-    public function supplier(){
-        return $this->belongsTo(Supplier::class, 'supplier_id', 'id');
+    public function vendor(){
+        return $this->belongsTo(Vendor::class, 'vendor_id', 'id');
     }
 }

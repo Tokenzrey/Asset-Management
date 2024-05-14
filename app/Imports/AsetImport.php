@@ -6,7 +6,7 @@ use Illuminate\Support\Carbon;
 use App\Models\Aset;
 use App\Models\Ruang;
 use App\Models\Kategori;
-use App\Models\Supplier;
+use App\Models\Vendor;
 // use App\Models\AnggaranDana;
 use App\Models\JenisPemeliharaan;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -46,7 +46,7 @@ class AsetImport implements ToModel, WithHeadingRow
             // 'anggaran_dana_id'      => AnggaranDana::where('nama', $row['anggaran_dana'])->value('id'),
             'jenis_pemeliharaan_id' => JenisPemeliharaan::where('nama', $row['jenis_pemeliharaan'])->value('id'),
             'ruang_id'              => Ruang::where('nama', $row['ruang'])->value('id'),
-            'supplier_id'           => Supplier::where('nama', $row['supplier'])->value('id'),
+            'supplier_id'           => Vendor::where('nama', $row['supplier'])->value('id'),
         ]);
     }
 }

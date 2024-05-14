@@ -8,7 +8,7 @@ use App\Models\Ruang;
 use App\Models\Kategori;
 // use App\Models\AnggaranDana;
 use App\Models\JenisPemeliharaan;
-use App\Models\Supplier;
+use App\Models\Vendor;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -50,7 +50,7 @@ class AsetExport implements FromCollection, WithMapping, WithHeadings, WithStyle
             // 'anggaran_dana_id'      => $row->anggaran_dana_id ? AnggaranDana::find($row->anggaran_dana_id)->nama : '',
             'jenis_pemeliharaan_id' => $row->jenis_pemeliharaan_id ? JenisPemeliharaan::find($row->jenis_pemeliharaan_id)->nama : '',
             'ruang_id'              => $row->ruang_id ? Ruang::find($row->ruang_id)->nama : '',
-            'supplier_id'           => $row->supplier_id ? Supplier::find($row->supplier_id)->nama : '',
+            'supplier_id'           => $row->supplier_id ? Vendor::find($row->supplier_id)->nama : '',
         ];
     }
 
@@ -76,7 +76,7 @@ class AsetExport implements FromCollection, WithMapping, WithHeadings, WithStyle
             // 'Anggaran Dana',
             'Jenis Pemeliharaan',
             'Ruang',
-            'Supplier',
+            'Vendor',
         ];
     }
 

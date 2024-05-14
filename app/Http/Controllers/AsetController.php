@@ -8,7 +8,7 @@ use App\Imports\AsetImport;
 use App\Models\Aset;
 use App\Models\Ruang;
 use App\Models\Kategori;
-use App\Models\Supplier;
+use App\Models\Vendor;
 // use App\Models\AnggaranDana;
 use Illuminate\Http\Request;
 use App\Models\JenisPemeliharaan;
@@ -21,14 +21,12 @@ class AsetController extends Controller
     {
         $aset = Aset::where('aktif', '=', 'y')->get();
         $kategori = Kategori::where('aktif', '=', 'y')->get();
-        // $anggaran_dana = AnggaranDana::where('aktif', '=', 'y')->get();
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
         $ruang = Ruang::where('aktif', '=', 'y')->get();
-        $supplier = Supplier::where('aktif', '=', 'y')->get();
+        $supplier = Vendor::where('aktif', '=', 'y')->get();
         return view('aset.index', [
             'aset'                  => $aset,
             'kategori'              => $kategori,
-            // 'anggaran_dana'         => $anggaran_dana,
             'ruang'                 => $ruang,
             'jenis_pemeliharaan'    => $jenis_pemeliharaan,
             'supplier'              => $supplier,
@@ -43,25 +41,31 @@ class AsetController extends Controller
             $gambar = $request->file('gambar')->store('public/gambar_aset');
             $gambar = str_replace('public/', '', $gambar);
         }
+        $jumlah = 1;
+        $satuan = 'unit';
 
-        $aset = Aset::where(['kode' => $request->kode])->first();
+        try {
+            $vendor = Vendor::where('id',$request->vendor_id)->firstOrFail();
+            $kategori = Kategori::where('id',$request->kategori_id)->firstOrFail();
+            $ruang = Ruang::where('id',$request->ruang_id)->firstOrFail();
+        }catch (\Exception $e) {
+            Alert::error('Error', 'Data Vendor, Kategori, atau Ruang Tidak Ditemukan');
+            return redirect()->route('aset.index');
+        }
+
+        $kode = $this->generateCode($kategori->kode, $this->stringToInitial($vendor->nama), $this->stringToInitial($ruang->nama));
+        $aset = Aset::where('kode',$kode)->first();
         if ($aset) {
             Alert::error('Warning', 'Kode sudah terpakai oleh aset' . $aset->nama . '| Silahkan Ganti Kode Anda');
             return redirect()->route('aset.index');
         }
-
-        $jumlah = 1;
-        $satuan = 'unit';
-
-        $request->qrcode == $request->kode;
+        $request->qrcode == $kode;
         Aset::create([
-            'kode'                  => $request->kode,
+            'kode'                  => $kode,
             'nama'                  => $request->nama,
             'jumlah'                => $jumlah,
             'satuan'                => $satuan,
             'tanggal_pembelian'     => $request->tanggal_pembelian,
-            // 'tanggal_akhir_garansi' => $request->tanggal_akhir_garansi,
-            // 'nilai_harga'           => $request->nilai_harga,
             'brand'                 => $request->brand,
             'kondisi'               => $request->kondisi,
             'gambar'                => ($gambar) ? $gambar : null,
@@ -69,10 +73,9 @@ class AsetController extends Controller
             'tempat'                => $request->tempat,
             'deskripsi'             => $request->deskripsi,
             'kategori_id'           => $request->kategori_id,
-            // 'anggaran_dana_id'      => $request->anggaran_dana_id,
             'jenis_pemeliharaan_id' => $request->jenis_pemeliharaan_id,
             'ruang_id'              => $request->ruang_id,
-            'supplier_id'           => $request->supplier_id
+            'vendor_id'           => $request->vendor_id
         ]);
         Alert::success('Success', 'Aset Berhasil Ditambahkan');
         return redirect()->route('aset.index');
@@ -81,9 +84,8 @@ class AsetController extends Controller
     public function show($id)
     {
         $aset               = Aset::find($id);
-        $supplier           = Supplier::where('aktif', '=', 'y')->get();
+        $supplier           = Vendor::where('aktif', '=', 'y')->get();
         $kategori           = Kategori::where('aktif', '=', 'y')->get();
-        // $anggaran_dana      = AnggaranDana::where('aktif', '=', 'y')->get();
         $ruang              = Ruang::where('aktif', '=', 'y');
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y');
 
@@ -128,15 +130,12 @@ class AsetController extends Controller
             'jumlah'                => $jumlah,
             'satuan'                => $satuan,
             'tanggal_pembelian'     => $request->tanggal_pembelian,
-            // 'tanggal_akhir_garansi' => $request->tanggal_akhir_garansi,
-            // 'nilai_harga'           => $request->nilai_harga,
             'brand'                 => $request->brand,
             'kondisi'               => $request->kondisi,
             'nama_penerima'         => $request->nama_penerima,
             'tempat'                => $request->tempat,
             'deskripsi'             => $request->deskripsi,
             'kategori_id'           => $request->kategori_id,
-            // 'anggaran_dana_id'      => $request->anggaran_dana_id,
             'jenis_pemeliharaan_id' => $request->jenis_pemeliharaan_id,
             'ruang_id'              => $request->ruang_id,
             'supplier_id'           => $request->supplier_id
@@ -205,14 +204,12 @@ class AsetController extends Controller
     {
         $aset = Aset::where('aktif', '=', 't')->get();
         $kategori = Kategori::where('aktif', '=', 'y')->get();
-        // $anggaran_dana = AnggaranDana::where('aktif', '=', 'y')->get();
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
         $ruang = Ruang::where('aktif', '=', 'y')->get();
-        $supplier = Supplier::where('aktif', '=', 'y')->get();
+        $supplier = Vendor::where('aktif', '=', 'y')->get();
         return view('aset.history', [
             'aset'                  => $aset,
             'kategori'              => $kategori,
-            // 'anggaran_dana'         => $anggaran_dana,
             'ruang'                 => $ruang,
             'jenis_pemeliharaan'    => $jenis_pemeliharaan,
             'supplier'              => $supplier,
@@ -245,7 +242,6 @@ class AsetController extends Controller
         $allowedExtensions = ['xlsx'];
         $extension = $file->getClientOriginalExtension();
         if (!in_array($extension, $allowedExtensions)) {
-            // Jika ekstensi file tidak valid, tampilkan pesan error
             Alert::error('Error', 'File yang diunggah harus memiliki ekstensi XLSX.');
             return redirect()->route('aset.index');
         }
@@ -263,5 +259,22 @@ class AsetController extends Controller
             return redirect()->route('aset.index');
         }
         return redirect()->route('aset.index');
+    }
+    public function generateCode(String $kategori, String $vendor, String $lokasi){
+        $latestKode = Aset::where('kode', 'like', '____/'.$kategori.'/'.$vendor.'/'.$lokasi)->latest()->first();
+        if($latestKode){
+            $kode = explode('/', $latestKode->kode);
+            return sprintf('%04d',$kode[0] + 1 ). '/' . $kategori . '/' . $vendor . '/' . $lokasi;
+        }else{
+            return '0001/' . $kategori . '/' . $vendor . '/' . $lokasi;
+        }
+    }
+    public function stringToInitial(String $string){
+        $initial = '';
+        $words = explode(' ', $string);
+        foreach($words as $word){
+            $initial .= $word[0];
+        }
+        return $initial;
     }
 }

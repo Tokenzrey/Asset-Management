@@ -28,7 +28,7 @@
                                 $ad = old('anggaran_dana_id');
                                 $jp = old('jenis_pemeliharaan_id');
                                 $rua = old('ruang_id');
-                                $sup = old('supplier_id');
+                                $sup = old('vendor_id');
                             @endphp
                             <div>
                                 <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
@@ -82,13 +82,6 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-xl-6">
-                                                            <label><b>Kode</b></label>
-                                                            <input type="text" class="form-control" id="kode"
-                                                                placeholder="Masukkan Kode" name="kode"
-                                                                value="{{ old('kode') }}" required>
-                                                        </div>
-
-                                                        <div class="col-xl-6">
                                                             <label><b>Tanggal Pembelian</b></label>
                                                             <input type="date" class="form-control"
                                                                 id="tanggal_pembelian"
@@ -101,7 +94,7 @@
                                                     <div class="row">
                                                         <div class="col-xl-6 mt-2">
                                                             <label><b>Vendor</b></label>
-                                                            <select class="form-control" name="supplier_id" id="supplier_id"
+                                                            <select class="form-control" name="vendor_id" id="vendor_id"
                                                                 required>
                                                                 <option value="" hidden>Pilih
                                                                     Vendor</option>
@@ -390,11 +383,11 @@
                                                                         <div class="col-xl-6 mt-2">
                                                                             <label><b>Vendor</b></label>
                                                                             <select class="form-control"
-                                                                                name="supplier_id" id="supplier_id"
+                                                                                name="vendor_id" id="vendor_id"
                                                                                 required>
-                                                                                <option value="{{ $item->supplier_id }}"
+                                                                                <option value="{{ $item->vendor_id }}"
                                                                                     hidden>
-                                                                                    {{ $item->supplier->nama }}
+                                                                                    {{ $item->vendor->nama }}
                                                                                 </option>
                                                                                 @foreach ($supplier as $data)
                                                                                     <option value="{{ $data->id }}"

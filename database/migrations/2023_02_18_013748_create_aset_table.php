@@ -33,17 +33,14 @@ class CreateAsetTable extends Migration
             $table->unsignedBigInteger('kategori_id');
             $table->foreign('kategori_id')->references('id')->on('kategori');
 
-            // $table->unsignedBigInteger('anggaran_dana_id');
-            // $table->foreign('anggaran_dana_id')->references('id')->on('anggaran_dana');
-
             $table->unsignedBigInteger('jenis_pemeliharaan_id');
             $table->foreign('jenis_pemeliharaan_id')->references('id')->on('jenis_pemeliharaan');
 
             $table->unsignedBigInteger('ruang_id');
             $table->foreign('ruang_id')->references('id')->on('ruang');
 
-            $table->unsignedBigInteger('supplier_id');
-            $table->foreign('supplier_id')->references('id')->on('supplier');
+            $table->unsignedBigInteger('vendor_id');
+            $table->foreign('vendor_id')->references('id')->on('vendor');
 
             $table->timestamps();
         });

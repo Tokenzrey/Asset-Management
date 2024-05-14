@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Supplier;
+use App\Models\Vendor;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
-class SupplierSeeder extends Seeder
+class VendorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +16,8 @@ class SupplierSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        Supplier::truncate();
-        Supplier::create(
+        Vendor::truncate();
+        Vendor::create(
             [
                 'nama'      => '-',
                 'alamat'    => '-',

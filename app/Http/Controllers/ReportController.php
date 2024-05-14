@@ -6,7 +6,7 @@ use App\Models\Aset;
 use App\Models\User;
 use App\Models\Ruang;
 use App\Models\Kategori;
-use App\Models\Supplier;
+use App\Models\Vendor;
 // use App\Models\AnggaranDana;
 use App\Models\JenisPemeliharaan;
 use App\Models\Peminjaman;
@@ -36,7 +36,7 @@ class ReportController extends Controller
 
     // public  function report_supplier()
     // {
-    //     $supplier = Supplier::where('aktif', '=', 'y')->get();
+    //     $supplier = Vendor::where('aktif', '=', 'y')->get();
     //     return view('report.supplier',[
     //         'supplier' => $supplier
     //     ]);
@@ -49,7 +49,7 @@ class ReportController extends Controller
         // $anggaran_dana = AnggaranDana::where('aktif', '=', 'y')->get();
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
         $ruang = Ruang::where('aktif', '=', 'y')->get();
-        $supplier = Supplier::where('aktif', '=', 'y')->get();
+        $supplier = Vendor::where('aktif', '=', 'y')->get();
         return view('report.aset', [
             'aset'                  => $aset,
             'kategori'              => $kategori,
@@ -69,7 +69,7 @@ class ReportController extends Controller
         // $anggaran_dana = AnggaranDana::where('aktif', '=', 'y')->get();
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
         $ruang = Ruang::where('aktif', '=', 'y')->get();
-        $supplier = Supplier::where('aktif', '=', 'y')->get();
+        $supplier = Vendor::where('aktif', '=', 'y')->get();
         return view('report.peminjaman', [
             'peminjaman'            => $peminjaman,
             'aset'                  => $aset,

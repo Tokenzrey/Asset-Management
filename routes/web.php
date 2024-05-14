@@ -6,14 +6,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\DivisiController;
-use App\Http\Controllers\MutasiController;
 use App\Http\Controllers\ReportController;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PeminjamanController;
-// use App\Http\Controllers\AnggaranDanaController;
 use App\Http\Controllers\JenisPemeliharaanController;
 use App\Http\Controllers\JadwalPemeliharaanController;
 
@@ -78,11 +74,11 @@ Route::get('jenis_pemeliharaan/delete/{id}', [JenisPemeliharaanController::class
 // Route::get('/anggaran_dana/delete/{id}', [AnggaranDanaController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.destroy');
 
 //supplier
-Route::get('/supplier', [SupplierController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.index');
-Route::post('/supplier/create', [SupplierController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.store');
-Route::get('/supplier/show/{id}', [SupplierController::class, 'show'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.show');
-Route::put('/supplier/update/{id}', [SupplierController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.update');
-Route::get('/supplier/delete/{id}', [SupplierController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.destroy');
+Route::get('/vendors', [\App\Http\Controllers\VendorController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.index');
+Route::post('/vendors/create', [\App\Http\Controllers\VendorController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.store');
+Route::get('/vendors/show/{id}', [\App\Http\Controllers\VendorController::class, 'show'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.show');
+Route::put('/vendors/update/{id}', [\App\Http\Controllers\VendorController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.update');
+Route::get('/vendors/delete/{id}', [\App\Http\Controllers\VendorController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('supplier.destroy');
 
 //aset
 Route::get('/aset', [AsetController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('aset.index');
@@ -98,13 +94,6 @@ Route::get('/aset/cetakqrcode/{id}', [AsetController::class, 'cetakqrcode'])->mi
 // Route::get('/aset/history', [AsetController::class, 'history'])->middleware('ceksesi', 'cekuserstatus')->name('aset.history');
 // Route::get('/aset/history/restore/{id}', [AsetController::class, 'restore'])->middleware('ceksesi', 'cekuserstatus')->name('aset.restore');
 // Route::get('/aset/history_delete/{id}', [AsetController::class, 'destroy_history'])->middleware('ceksesi', 'cekuserstatus')->name('aset.destroy_history');
-
-//mutasi aset
-// Route::get('/aset/mutasi', [MutasiController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('mutasi.index');
-// Route::post('/aset/mutasi/create', [MutasiController::class, 'store_tambah'])->middleware('ceksesi')->name('mutasi.store_tambah');
-// Route::post('/aset/mutasi/reduce', [MutasiController::class, 'store_kurang'])->middleware('ceksesi')->name('mutasi.store_kurang');
-// Route::get('/aset/mutasi/data', [MutasiController::class, 'data'])->middleware('ceksesi', 'cekuserstatus')->name('mutasi.data');
-// Route::get('/aset/mutasi/{id}', [MutasiController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('mutasi.destroy');
 
 //export & import data aset
 Route::get('/export-data-aset', [AsetController::class, 'aset_export'])->middleware('ceksesi', 'cekuserstatus')->name('aset.export');

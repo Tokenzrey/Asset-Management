@@ -15,37 +15,30 @@ class KategoriSeeder extends Seeder
      */
     public function run()
     {
+        $kategoriData = [
+            [
+                'nama'=>'Bangunan dan Prasarana',
+                'masa_manfaat'=>20,
+                'kode'=>'BP'
+            ],
+            [
+                'nama'=>'Mesin dan Peralatan',
+                'masa_manfaat'=>10,
+                'kode'=>'MP'
+            ],
+            [
+                'nama'=>'Kendaraan Bermotor',
+                'masa_manfaat'=>5,
+                'kode'=>'KB'
+            ],
+            [
+                'nama'=>'Peralatan Kantor',
+                'masa_manfaat'=>5,
+                'kode'=>'PK'
+            ],
+        ];
         Schema::disableForeignKeyConstraints();
         Kategori::truncate();
-        Kategori::create(
-            [
-                'nama' => 'Belum Terisi',
-                'batas_masa_manfaat_tahun' => null
-            ]
-        );
-        Kategori::create(
-            [
-                'nama' => 'Bangunan dan prasarana',
-                'batas_masa_manfaat_tahun' => 20
-            ]
-        );
-        Kategori::create(
-            [
-                'nama' => 'Mesin dan peralatan',
-                'batas_masa_manfaat_tahun' => 10
-            ]
-        );
-        Kategori::create(
-            [
-                'nama' => 'Kendaraan bermotor',
-                'batas_masa_manfaat_tahun' => 5
-            ]
-        );
-        Kategori::create(
-            [
-                'nama' => 'Peralatan kantor',
-                'batas_masa_manfaat_tahun' => 5
-            ]
-        );
+        Kategori::insert($kategoriData);
     }
 }

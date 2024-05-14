@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Supplier;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class SupplierController extends Controller
+class VendorController extends Controller
 {
 
     public function index()
     {
-        $supplier = Supplier::where('aktif', '=', 'y')->get();
+        $supplier = Vendor::where('aktif', '=', 'y')->get();
         return view('supplier.index', [
             'supplier' => $supplier
         ]);
@@ -23,8 +23,8 @@ class SupplierController extends Controller
             'nama' => 'required|min:4'
          ]);
 
-         Supplier::where(['id' => $request->id])->first();
-         Supplier::create([
+         Vendor::where(['id' => $request->id])->first();
+         Vendor::create([
              'nama'         => $request->nama,
              'alamat'       => $request->alamat,
              'deskripsi'    => $request->deskripsi
@@ -35,7 +35,7 @@ class SupplierController extends Controller
 
     public function show($id)
     {
-        $supplier = Supplier::all()->find($id);
+        $supplier = Vendor::all()->find($id);
         return view('supplier.show', [
             'supplier' => $supplier
         ]);
@@ -43,9 +43,9 @@ class SupplierController extends Controller
 
     public function update(Request $request, $id)
     {
-        $supplier = Supplier::find($id);
+        $supplier = Vendor::find($id);
         if(!$supplier) {
-            Alert::error('Error', 'Data Supplier tidak ditemukan');
+            Alert::error('Error', 'Data Vendor tidak ditemukan');
             return redirect()->route('supplier.index');
         }
 
@@ -56,19 +56,19 @@ class SupplierController extends Controller
         ];
 
         $supplier->where(['id' => $id])->update($data_supplier);
-        Alert::success('Success', 'Data Supplier Berhasil Di Update');
+        Alert::success('Success', 'Data Vendor Berhasil Di Update');
         return redirect()->route('supplier.index');
     }
 
     public function destroy($id)
     {
-        $supplier = Supplier::find($id);
+        $supplier = Vendor::find($id);
         if(!$supplier) {
-            Alert::error('Error', 'Supplier Tidak Ditemukan');
+            Alert::error('Error', 'Vendor Tidak Ditemukan');
             return redirect()->route('supplier.index');
         }
         $supplier->where(['id' => $id])->update(['aktif' => 't']);
-        Alert::success('Success', 'Data Supplier Berhasil Dihapus');
+        Alert::success('Success', 'Data Vendor Berhasil Dihapus');
         return redirect()->route('supplier.index');
     }
 }

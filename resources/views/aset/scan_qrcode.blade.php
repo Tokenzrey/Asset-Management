@@ -54,7 +54,7 @@
                                                     <th>Gambar</th>
                                                     <th>Kondisi</th>
                                                     <th>Ruang</th>
-                                                    <th>Supplier</th>
+                                                    <th>Vendor</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>

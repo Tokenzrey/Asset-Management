@@ -23,7 +23,7 @@ class User extends Model
 
     protected $hidden = [];
 
-    public function divisi()
+    public function divisi(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Divisi::class, 'divisi_id', 'id');
     }

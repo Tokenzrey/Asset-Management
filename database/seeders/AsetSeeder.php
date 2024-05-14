@@ -20,19 +20,16 @@ class AsetSeeder extends Seeder
                 'jumlah'                => '1',
                 'satuan'                => 'unit',
                 'tanggal_pembelian'     => Carbon::parse('2023-06-01'),
-                // 'nilai_harga'           => 83850000,
                 'brand'                 => 'Testing',
                 'kondisi'               => 'Baik',
                 'gambar'                => 'gambar_aset/monitor.jpg',
-                // 'tanggal_akhir_garansi' => Carbon::parse('2023-12-01'),
                 'nama_penerima'         => 'testing',
                 'tempat'                => 'Testing',
                 'deskripsi'             => '',
                 'kategori_id'           =>  1,
-                // 'anggaran_dana_id'      =>  1,
                 'jenis_pemeliharaan_id' =>  1,
                 'ruang_id'              =>  1,
-                'supplier_id'           =>  1
+                'vendor_id'           =>  1
             ]
         );
 
