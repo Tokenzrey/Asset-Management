@@ -51,13 +51,14 @@ class AsetController extends Controller
         }
 
         $jumlah = 1;
+        $satuan = 'unit';
 
         $request->qrcode == $request->kode;
         Aset::create([
             'kode'                  => $request->kode,
             'nama'                  => $request->nama,
             'jumlah'                => $jumlah,
-            'satuan'                => $request->satuan,
+            'satuan'                => $satuan,
             'tanggal_pembelian'     => $request->tanggal_pembelian,
             // 'tanggal_akhir_garansi' => $request->tanggal_akhir_garansi,
             // 'nilai_harga'           => $request->nilai_harga,
@@ -117,14 +118,15 @@ class AsetController extends Controller
         }
 
         $jumlah = 1;
+        $satuan = 'unit';
 
         $request->qrcode == $request->kode;
         $aset = Aset::where(['kode' => $request->kode])->first();
         $data_aset = [
             'kode'                  => $request->kode,
             'nama'                  => $request->nama,
-            'jumlah'                => $rjumlah,
-            'satuan'                => $request->satuan,
+            'jumlah'                => $jumlah,
+            'satuan'                => $satuan,
             'tanggal_pembelian'     => $request->tanggal_pembelian,
             // 'tanggal_akhir_garansi' => $request->tanggal_akhir_garansi,
             // 'nilai_harga'           => $request->nilai_harga,
