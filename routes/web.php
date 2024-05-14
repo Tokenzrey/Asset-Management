@@ -56,12 +56,12 @@ Route::get('/kategori/show/{id}', [KategoriController::class, 'show'])->middlewa
 Route::put('/kategori/update/{id}', [KategoriController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('kategori.update');
 Route::get('/kategori/delete/{id}', [KategoriController::class, 'destroy'])->middleware(['ceksesi', 'cekuserstatus'])->name('kategori.destroy');
 
-//ruang
-Route::get('/ruang', [RuangController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('ruang.index');
-Route::post('/ruang/create', [RuangController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')->name('ruang.store');
-Route::get('/ruang/show/{id}', [RuangController::class, 'show'])->middleware('ceksesi', 'cekuserstatus')->name('ruang.show');
-Route::put('/ruang/update/{id}', [RuangController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('ruang.update');
-Route::get('/ruang/delete/{id}', [RuangController::class, 'destroy'])->middleware(['ceksesi', 'cekuserstatus'])->name('ruang.destroy');
+//lokasi
+Route::get('/lokasi', [RuangController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('ruang.index');
+Route::post('/lokasi/create', [RuangController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')->name('ruang.store');
+Route::get('/lokasi/show/{id}', [RuangController::class, 'show'])->middleware('ceksesi', 'cekuserstatus')->name('ruang.show');
+Route::put('/lokasi/update/{id}', [RuangController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('ruang.update');
+Route::get('/lokasi/delete/{id}', [RuangController::class, 'destroy'])->middleware(['ceksesi', 'cekuserstatus'])->name('ruang.destroy');
 
 //jenis_pemeliharaan
 Route::get('/jenis_pemeliharaan', [JenisPemeliharaanController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('jenis_pemeliharaan.index');
