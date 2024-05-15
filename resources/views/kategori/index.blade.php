@@ -79,6 +79,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama</th>
+                                    <th>Masa Manfaat</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -90,6 +91,7 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->masa_manfaat }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-edit text-white shadow btn-xs sharp me-1" title="Edit"
@@ -128,6 +130,13 @@
                                                                     <input type="text" class="form-control"
                                                                         id="nama" value="{{ $item->nama }}"
                                                                         placeholder="Masukkan Nama Kategori" name="nama"
+                                                                        required>
+                                                                </div>
+                                                                <div class="col-xl-12">
+                                                                    <label for="iduser"><b>Masa Manfaat</b></label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="masa_manfaat" value="{{ $item->masa_manfaat }}"
+                                                                        placeholder="Masukkan Masa Manfaat Aset" name="masa_manfaat"
                                                                         required>
                                                                 </div>
                                                             </div>
