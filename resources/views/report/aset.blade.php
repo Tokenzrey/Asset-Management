@@ -34,7 +34,7 @@
         </thead>
         <tbody>
             @php
-                $no = 1;
+            $no = 1;
             @endphp
             @foreach ($aset as $item)
                 <tr>

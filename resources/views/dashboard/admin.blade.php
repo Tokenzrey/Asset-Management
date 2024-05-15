@@ -41,7 +41,7 @@ SIMAS PT ABC
             <div class="modal-content">
                 <div class="modal-header">
                     <img src="{{ asset('simas/images/inventory.png') }}" alt="" width="70px">
-                    <h3 class="modal-title"><b>Notifikasi</b></h3>
+                    <h3 class="modal-title" ><b>Notifikasi</b></h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -207,8 +207,10 @@ SIMAS PT ABC
             </div>
             <div class="col-xl-6 ">
                 <div class="row h-100">
-                    <div class="card">
-                        <canvas id="myChart"></canvas>
+                    <div class="col-xl-12">
+                        <div class="card p-5">
+                            <canvas id="myChart" height="430px" aria-label="Hello ARIA World" role="img"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -234,7 +236,7 @@ SIMAS PT ABC
                         </div>
                         @endif
                     </div>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center pt-3">
                         <a class="btn btn-primary text-white shadow me-1" href="{{ route('peminjaman.data-history') }}">
                             Go to History Peminjaman
                         </a>
@@ -316,10 +318,10 @@ SIMAS PT ABC
             datasets: [{
                 data: Object.values({!! json_encode($kategoriAsset_count) !!}), // Mengambil jumlah aset sebagai data
                 backgroundColor: [
-                    'red',
-                    'blue',
-                    'yellow',
-                    'green',
+                    '#E01E37',
+                    '#00B4D8',
+                    '#FAD643',
+                    '#52B788',
                 ]
             }]
         };
@@ -329,7 +331,10 @@ SIMAS PT ABC
             responsive: true,
             title: {
                 display: true,
-                text: 'Jumlah aset per kategori'
+                text: 'Jumlah aset per kategori',
+                fontSize: 32,
+                fontColor: '#000',
+                padding: 44
             }
         };
 

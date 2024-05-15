@@ -16,7 +16,7 @@
 <body>
     @include('sweetalert::alert')
     <div class="limiter">
-        <div class="container-login100" style="background-image: url('{{ asset('simas/login/images/bg-invent.jpg') }}');">
+        <div class="container-login100">
             <div class="wrap-login100">
                 <form action="{{ route('login') }}" method="POST" class="login100-form validate-form">
                     @csrf
