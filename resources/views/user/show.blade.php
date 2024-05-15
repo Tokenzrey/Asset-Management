@@ -121,13 +121,6 @@
                                         <h4 class="text-primary mb-4">Informasi Pribadi</h4>
                                         <div class="row mb-2">
                                             <div class="col-sm-3 col-5">
-                                                <h5 class="f-w-500">NIP </h5>
-                                            </div>
-                                            <div class="col-sm-9 col-7">{{ $user->nip }}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-sm-3 col-5">
                                                 <h5 class="f-w-500">Username
                                                 </h5>
                                             </div>

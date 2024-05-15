@@ -51,16 +51,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-xl-5">
-                                                <label for="nip">
-                                                    <b>NIP</b>
-                                                </label>
-                                                <input type="number" class="form-control" id="nip"
-                                                    placeholder="Masukkan NIP" name="nip" value="{{ old('nip') }}"
-                                                    required>
-                                            </div>
-
-                                            <div class="col-xl-7 ">
+                                            <div class="col-xl-12 ">
                                                 <label for="iduser"><b>Nama Pengguna</b></label>
                                                 <input type="text" class="form-control" id="nama"
                                                     placeholder="Masukkan Nama Pengguna" name="nama"
@@ -194,7 +185,6 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>NIP</th>
                                 <th>Nama</th>
                                 <th>Gambar</th>
                                 <th>Role</th>
@@ -209,7 +199,6 @@
                             @foreach ($user as $item)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $item->nip }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>
                                     @if ($item['gambar'])
@@ -254,15 +243,7 @@
                                                 @method('PUT')
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-xl-5">
-                                                            <label for="nip">
-                                                                <b>NIP</b>
-                                                            </label>
-                                                            <input type="number" class="form-control" id="nip"
-                                                                placeholder="Masukkan NIP" name="nip"
-                                                                value="{{ $item->nip }}" required>
-                                                        </div>
-                                                        <div class="col-xl-7">
+                                                        <div class="col-xl-12">
                                                             <label for="iduser"><b>Nama Pengguna</b></label>
                                                             <input type="text" class="form-control" id="nama"
                                                                 placeholder="Masukkan Nama Pengguna" name="nama"
