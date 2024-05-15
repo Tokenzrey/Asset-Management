@@ -79,12 +79,13 @@
                                             @csrf
                                             <div class="form-group">
                                                 <div class="row">
-                                                    <div class="col-xl-6">
-                                                        <label><b>Tanggal Pembelian</b></label>
-                                                        <input type="date" class="form-control" id="tanggal_pembelian"
-                                                            placeholder="Masukkan Tanggal Pembelian"
-                                                            name="tanggal_pembelian"
-                                                            value="{{ old('tanggal_pembelian') }}" required>
+                                                    <div class="col-xl-12">
+                                                        <label><b>Nama
+                                                            Penerima</b></label>
+                                                    <input type="text" class="form-control" id="nama_penerima"
+                                                        placeholder="Masukkan Nama Penerima" name="nama_penerima"
+                                                        value="{{ old('nama_penerima') }}" required>
+
                                                     </div>
                                                 </div>
 
@@ -105,11 +106,11 @@
                                                     </div>
 
                                                     <div class="col-xl-6 mt-2 ">
-                                                        <label><b>Nama
-                                                                Penerima</b></label>
-                                                        <input type="text" class="form-control" id="nama_penerima"
-                                                            placeholder="Masukkan Nama Penerima" name="nama_penerima"
-                                                            value="{{ old('nama_penerima') }}" required>
+                                                        <label><b>Tanggal Pembelian</b></label>
+                                                        <input type="date" class="form-control" id="tanggal_pembelian"
+                                                            placeholder="Masukkan Tanggal Pembelian"
+                                                            name="tanggal_pembelian"
+                                                            value="{{ old('tanggal_pembelian') }}" required>
                                                     </div>
                                                 </div>
 
@@ -355,7 +356,7 @@
                                                                     <label><b>Kode</b></label>
                                                                     <input type="text" class="form-control" id="kode"
                                                                         placeholder="Masukkan Kode" name="kode"
-                                                                        value="{{ $item->kode }}" required>
+                                                                        value="{{ $item->kode }}" disabled>
                                                                 </div>
 
                                                                 <div class="col-xl-6 mt-2">
