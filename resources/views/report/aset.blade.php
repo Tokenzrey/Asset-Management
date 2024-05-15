@@ -51,7 +51,7 @@
                     <td>{{ $item->ruang->nama }}</td>
                     <td>{{ $item->tempat }}</td>
                     <td>{{ $item->kategori->nama }}</td>
-                    <td>{{ $item->supplier->nama }}</td>
+                    <td>{{ $item->vendor->nama }}</td>
                     <td>{{ $item->created_at }}</td>
                 </tr>
             @endforeach
