@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header mb-2">
                 <b>
                     <h3 class="">Data Pengguna</h3>
                 </b>
@@ -187,7 +187,7 @@
                 </div><!-- /.modal -->
 
             </div>
-            <div class="card-body">
+            <div class="card-body card-body-table">
                 <div class="table-responsive" id="cetak">
                     @csrf
                     <table class="table table-striped mb-2" id="example3" class="display">

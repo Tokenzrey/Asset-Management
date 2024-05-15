@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <div class=" mt-2 mt-sm-0">
                         <a href="{{ route('user.index') }}">
-                            <span class="badge badge-pill badge-primary"><i class="	fa fa-arrow-circle-left"></i></span>
+                            <i class="	fa fa-arrow-circle-left "></i>
                         </a>
                     </div>
                     <div class="text-center">

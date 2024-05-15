@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header mb-2">
                     <h4 class="card-title"><b>Jadwal Pemeliharaan</b></h4>
                     @if (session('error'))
                         <div class="alert alert-danger">
@@ -107,7 +107,7 @@
                     </div><!-- /.modal -->
                 </div>
 
-                <div class="card-body" id="cetak">
+                <div class="card-body card-body-table" id="cetak">
                     <div class="table-responsive">
                         @csrf
                         <table class="table table-striped mb-2" id="example3" class="display" style="min-width: 845px">

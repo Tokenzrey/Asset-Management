@@ -32,7 +32,7 @@
                             $sup = old('supplier_id');
                         @endphp
 
-                        <div class="card-body">
+                        <div class="card-body card-body-table">
                             <div class="container col-6 mb-3">
                                 <div class="row">
                                     <div id="reader" width="400px"></div>

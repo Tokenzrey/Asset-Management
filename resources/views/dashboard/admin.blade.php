@@ -41,7 +41,7 @@ SIMAS PT ABC
             <div class="modal-content">
                 <div class="modal-header">
                     <img src="{{ asset('simas/images/inventory.png') }}" alt="" width="70px">
-                    <h3 class="modal-title" ><b>Notifikasi</b></h3>
+                    <h3 class="modal-title"><b>Notifikasi</b></h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -223,7 +223,7 @@ SIMAS PT ABC
     <div class="col-12">
         <div class="card">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 pb-4">
                     <div class="card-header">
                         @if (session('error'))
                         <div class="alert alert-danger">
@@ -243,7 +243,7 @@ SIMAS PT ABC
                     </div>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body card-body-table">
                     <div class="table-responsive" id="cetak">
                         @csrf
                         <table class="table table-striped mb-2" id="example3" class="display">

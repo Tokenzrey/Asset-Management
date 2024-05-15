@@ -61,7 +61,7 @@
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
                 </div>
-                <div class="card-body" id="cetak">
+                <div class="card-body card-body-table" id="cetak">
                     <div class="table-responsive">
                         @csrf
                         <table class="table table-striped mb-2" id="example3" class="display" style="min-width: 845px">

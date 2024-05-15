@@ -41,7 +41,7 @@
                             </button>
                             </a>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body card-body-table">
                             <div class="table-responsive" id="cetak">
                                 @csrf
                                 <table class="table table-striped mb-2" id="example3" class="display">
