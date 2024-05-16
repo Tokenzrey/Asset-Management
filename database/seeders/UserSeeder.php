@@ -289,5 +289,20 @@ class UserSeeder extends Seeder
             'gambar'        => 'gambar_user/user2.png',
             'divisi_id'     => 9
         ]);
+
+        User::create([
+            'nip'           => '198307160110082088',
+            'nama'          => 'EA YULI, S.Pd',
+            'jenis_kelamin' => 'Laki-laki',
+            'no_telepon'    => '000400608000',
+            'alamat'        => 'Surabaya',
+            'status'        => 'MANAGER',
+            'aktif'         => 'y',
+            'username'      => 'erwdya',
+            'email'         => 'erwina@gmail.com',
+            'password'      => bcrypt('rahasia'),
+            'gambar'        => 'gambar_user/user2.png',
+            'divisi_id'     => 9
+        ]);
     }
 }

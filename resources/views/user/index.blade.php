@@ -29,6 +29,8 @@
                 $jk = old('jk');
                 $div = old('divisi');
                 @endphp
+
+                @if (session('userdata')['status'] == 'ADMIN')
                 <div>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".modal"
                         style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Data</button>
@@ -176,7 +178,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
-
+                @endif
             </div>
             <div class="card-body card-body-table">
                 <div class="table-responsive" id="cetak">
@@ -213,6 +215,7 @@
                                         <a class="btn btn-detail text-white shadow btn-xs sharp me-1"
                                             href="{{ route('user.show', ['id' => $item->id]) }}"><i
                                                 class="fas fa-eye"></i></a>
+                                        @if (session('userdata')['status'] == 'ADMIN')
                                         <a class="btn btn-edit text-white shadow btn-xs sharp me-1" title="Edit"
                                             data-bs-toggle="modal" data-bs-target=".edit{{ $item->id }}"><i
                                                 class="fas fa-edit"></i></a>
@@ -220,6 +223,7 @@
                                             href="{{ route('user.destroy', ['id' => $item->id]) }}"
                                             class="btn btn-delete text-white shadow btn-xs sharp me-1"><i
                                                 class="fa fa-trash"></i></a>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
