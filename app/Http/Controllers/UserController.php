@@ -22,10 +22,6 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nip' => 'required|min:4'
-        ]);
-
         $gambar = null;
         if ($request->file('gambar')) {
             $gambar_extension = $request->file('gambar')->extension();
@@ -36,14 +32,8 @@ class UserController extends Controller
             $gambar = str_replace('public/', '', $gambar);
         }
 
-        $user = User::where(['nip' => $request->nip])->first();
-        if ($user) {
-            Alert::error('Warning', 'NIP sudah terpakai oleh pegawai bernama ' . $user->nama . '!');
-            return redirect()->route('user.index');
-        }
 
         User::create([
-            'nip'               => $request->nip,
             'nama'              => $request->nama,
             'jenis_kelamin'     => $request->jk,
             'no_telepon'        => $request->no_telepon,
@@ -103,7 +93,6 @@ class UserController extends Controller
         if($request->password) {
             $data_user['password'] = Hash::make($request->password);
         }
-        $user->where(['nip' => $id])->update($data_user);
 
         if ($gambar){
             $data_user['gambar'] = $gambar;

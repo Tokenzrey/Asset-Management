@@ -66,13 +66,6 @@ Route::get('/jenis_pemeliharaan/show/{id}', [JenisPemeliharaanController::class,
 Route::put('/jenis_pemeliharaan/update/{id}', [JenisPemeliharaanController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jenis_pemeliharaan.update');
 Route::get('jenis_pemeliharaan/delete/{id}', [JenisPemeliharaanController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jenis_pemeliharaan.destroy');
 
-//anggaran dana
-// Route::get('/anggaran_dana', [AnggaranDanaController::class, 'index'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.index');
-// Route::post('/anggaran_dana/create', [AnggaranDanaController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.store');
-// Route::get('/anggaran_dana/show/{id}', [AnggaranDanaController::class, 'show'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.show');
-// Route::put('/anggaran_dana/update/{id}', [AnggaranDanaController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.update');
-// Route::get('/anggaran_dana/delete/{id}', [AnggaranDanaController::class, 'destroy'])->middleware('ceksesi', 'cekuserstatus')->name('anggaran_dana.destroy');
-
 //supplier
 Route::get('/vendors', [\App\Http\Controllers\VendorController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.index');
 Route::post('/vendors/create', [\App\Http\Controllers\VendorController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.store');
@@ -91,9 +84,6 @@ Route::get('/aset/qrcode/{id}', [AsetController::class, 'qrcode'])->middleware('
 Route::get('/aset/scan_qrcode', [AsetController::class, 'scan_qrcode'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.scan_qrcode');
 Route::get('/aset/cetakqrcode/{id}', [AsetController::class, 'cetakqrcode'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.cetakqrcode');
 
-// Route::get('/aset/history', [AsetController::class, 'history'])->middleware('ceksesi', 'cekuserstatus')->name('aset.history');
-// Route::get('/aset/history/restore/{id}', [AsetController::class, 'restore'])->middleware('ceksesi', 'cekuserstatus')->name('aset.restore');
-// Route::get('/aset/history_delete/{id}', [AsetController::class, 'destroy_history'])->middleware('ceksesi', 'cekuserstatus')->name('aset.destroy_history');
 
 //export & import data aset
 Route::get('/export-data-aset', [AsetController::class, 'aset_export'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.export');
@@ -108,9 +98,6 @@ Route::get('jadwal_pemeliharaan/delete/{id}', [JadwalPemeliharaanController::cla
 
 //report
 Route::get('/report', [ReportController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('report.index');
-// Route::get('/report/ruang', [ReportController::class, 'report_ruang'])->middleware('ceksesi', 'cekuserstatus')->name('report.ruang');
-// Route::get('/report/user', [ReportController::class, 'report_pengguna'])->middleware('ceksesi', 'cekuserstatus')->name('report.pengguna');
-// Route::get('/report/supplier', [ReportController::class, 'report_supplier'])->middleware('ceksesi', 'cekuserstatus')->name('report.supplier');
 Route::get('/report/aset', [ReportController::class, 'report_aset'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('report.aset');
 Route::get('/report/peminjaman', [ReportController::class, 'report_peminjaman'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('report.peminjaman');
 Route::get('/report/history_peminjaman', [ReportController::class, 'report_history_peminjaman'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('report.history_peminjaman');

@@ -15,7 +15,7 @@ class User extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'nip', 'nama', 'jenis_kelamin',
+        'nama', 'jenis_kelamin',
         'no_telepon', 'alamat', 'status',
         'aktif', 'username', 'email',
         'gambar','password', 'divisi_id',

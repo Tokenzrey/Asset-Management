@@ -52,7 +52,6 @@ class UserSeeder extends Seeder
 
         //1
         User::create([
-            'nip'           => '197911212008011010',
             'nama'          => ' MOH. AMIN, S.A.N.',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '081939111113',
@@ -68,7 +67,6 @@ class UserSeeder extends Seeder
 
         //2
         User::create([
-            'nip'           => '196410121989031011',
             'nama'          => 'ISHAK, S.Pd., M.M.',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '82332918672',
@@ -84,7 +82,6 @@ class UserSeeder extends Seeder
 
         //3
         User::create([
-            'nip'           => '196906241998021003',
             'nama'          => 'ANGGIT SUBIANTO, S.Pd',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '82332918672',
@@ -100,7 +97,6 @@ class UserSeeder extends Seeder
 
         //4
         User::create([
-            'nip'           => '197307271998021003',
             'nama'          => 'AGUNG SETIAWAN, S.Pd',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '000000000000',
@@ -116,7 +112,6 @@ class UserSeeder extends Seeder
 
         //5
         User::create([
-            'nip'           => '196707272006041015',
             'nama'          => 'Drs. MOCH. YASIN',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '000000000000',
@@ -132,7 +127,6 @@ class UserSeeder extends Seeder
 
         //6
         User::create([
-            'nip'           => '197705202005011014',
             'nama'          => 'TAUFIQUR RAHMAN, S.Pd',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '000000000000',
@@ -148,7 +142,6 @@ class UserSeeder extends Seeder
 
         //7
         User::create([
-            'nip'           => '197903062005011010',
             'nama'          => 'HAIRUL AMIN, S.Pd',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '000000000000',
@@ -164,7 +157,6 @@ class UserSeeder extends Seeder
 
         //8
         User::create([
-            'nip'           => '197512122007012025',
             'nama'          => 'LISWIYANI FARRAWATI, S.E.',
             'jenis_kelamin' => 'Peremupuan',
             'no_telepon'    => '000000000000',
@@ -180,7 +172,6 @@ class UserSeeder extends Seeder
 
         //9
         User::create([
-            'nip'           => '197201152007012014',
             'nama'          => 'SOFI INDRIANA, S.Pd., M.M.',
             'jenis_kelamin' => 'Perempuan',
             'no_telepon'    => '000000000000',
@@ -196,7 +187,6 @@ class UserSeeder extends Seeder
 
         //10
         User::create([
-            'nip'           => '196809092008011013',
             'nama'          => 'ACHMAD BASRI, S.Pd',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '000000000000',
@@ -212,7 +202,6 @@ class UserSeeder extends Seeder
 
         //11
         User::create([
-            'nip'           => '197311252008011008',
             'nama'          => 'ISWONDO, S.Pd',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '000000000000',
@@ -228,7 +217,6 @@ class UserSeeder extends Seeder
 
         //12
         User::create([
-            'nip'           => '197905202009032004',
             'nama'          => 'YUNI HARTATIK, S.T.',
             'jenis_kelamin' => 'Perempuan',
             'no_telepon'    => '000000000000',
@@ -244,7 +232,6 @@ class UserSeeder extends Seeder
 
         //13
         User::create([
-            'nip'           => '198011232009011006',
             'nama'          => 'AHMAD FARHAN WAHYUDI, S.Pd',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '000000000000',
@@ -260,7 +247,6 @@ class UserSeeder extends Seeder
 
         //14
         User::create([
-            'nip'           => '198307132009011005',
             'nama'          => 'NANANG EKA YULIANTO, S.Pd',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '000000000000',
@@ -276,7 +262,6 @@ class UserSeeder extends Seeder
 
         //15
         User::create([
-            'nip'           => '198307162009011008',
             'nama'          => 'ERWINDYA YULI, S.Pd',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '000000000000',
@@ -291,7 +276,6 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'nip'           => '198307160110082088',
             'nama'          => 'EA YULI, S.Pd',
             'jenis_kelamin' => 'Laki-laki',
             'no_telepon'    => '000400608000',
