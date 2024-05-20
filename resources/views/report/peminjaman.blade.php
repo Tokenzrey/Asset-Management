@@ -7,10 +7,10 @@
             <img class="img-fluid" src="{{ asset('simas/images/inventory.png') }}" />
         </div>
         <div class="col-sm-10 text-center">
-            <h3>PT ABC</h3>
-            <h5>Sidoarjo</h5>
+            <h3>Testing</h3>
+            <h5>Kota Surabaya</h5>
             <p>Jawa Timur
-                <br>email : testing@gmail.com website : https://yusuf-oksabri.my.id
+                <br>email : testing@gmail.com
             </p>
         </div>
     </div>

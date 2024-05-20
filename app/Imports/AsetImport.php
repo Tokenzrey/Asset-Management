@@ -21,11 +21,6 @@ class AsetImport implements ToModel, WithHeadingRow
             $tanggalPembelian = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_pembelian']))->toDateString();
         }
 
-        // $tanggalAkhirGaransi = null;
-        // if (is_numeric($row['tanggal_akhir_garansi'])) {
-        //     $tanggalAkhirGaransi = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_akhir_garansi']))->toDateString();
-        // }
-
         return new Aset([
             // dd($row)
             'kode'                  => $row['kode'],
