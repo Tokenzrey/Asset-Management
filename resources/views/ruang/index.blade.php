@@ -118,7 +118,7 @@
                                                 <div class="modal-header">
                                                     <img src="{{ asset('simas/images/inventory.png') }}"
                                                         alt="" width="70px">
-                                                    <h3 class="modal-title"><b>Edit Ruang</b></h3>
+                                                    <h3 class="modal-title"><b>Edit Lokasi</b></h3>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close">
                                                     </button>
@@ -131,10 +131,10 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-xl-12">
-                                                                    <label for="iduser"><b>Nama Ruang</b></label>
+                                                                    <label for="iduser"><b>Nama Lokasi</b></label>
                                                                     <input type="text" class="form-control"
                                                                         id="nama" value="{{ $item->nama }}"
-                                                                        placeholder="Enter Nama Ruang" name="nama"
+                                                                        placeholder="Enter Nama Lokasi" name="nama"
                                                                         required>
                                                                 </div>
                                                             </div>

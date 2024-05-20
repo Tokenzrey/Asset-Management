@@ -27,7 +27,7 @@ class RuangController extends Controller
             'nama'      => $request->nama,
             'deskripsi' => $request->deskripsi
         ]);
-        Alert::success('Success', 'Data Ruang berhasil ditambahkan');
+        Alert::success('Success', 'Data Lokasi berhasil ditambahkan');
         return redirect()->route('ruang.index');
     }
 
@@ -43,7 +43,7 @@ class RuangController extends Controller
     {
         $ruang = Ruang::find($id);
         if(!$ruang) {
-            Alert::error('Error', 'Data Ruang tidak ditemukan');
+            Alert::error('Error', 'Data Lokasi tidak ditemukan');
             return redirect()->route('ruang.index');
         }
 
@@ -53,7 +53,7 @@ class RuangController extends Controller
         ];
 
         $ruang->where(['id' => $id])->update($data_ruang);
-        Alert::success('Success', 'Data Ruang Berhasil Di Update');
+        Alert::success('Success', 'Data Lokasi Berhasil Di Update');
         return redirect()->route('ruang.index');
     }
 
@@ -61,11 +61,11 @@ class RuangController extends Controller
     {
         $ruang = Ruang::find($id);
         if(!$ruang) {
-            Alert::error('Error', 'Ruang Tidak Ditemukan');
+            Alert::error('Error', 'Lokasi Tidak Ditemukan');
             return redirect()->route('ruang.index');
         }
         $ruang->where(['id' => $id])->update(['aktif' => 't']);
-        Alert::success('Success', 'Data Ruang Berhasil dihapus');
+        Alert::success('Success', 'Data Lokasi Berhasil dihapus');
         return redirect()->route('ruang.index');
     }
 }

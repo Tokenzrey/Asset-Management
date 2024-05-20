@@ -120,7 +120,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h5 class="mt-2">Ruang Aset :
+                                                <h5 class="mt-2">Lokasi Aset :
                                                     {{ $peminjaman->aset->ruang->nama }}
                                                 </h5>
                                             </div>

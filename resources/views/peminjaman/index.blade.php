@@ -52,7 +52,7 @@
                             <h5 class="text-sm-center mt-2 mb-1"></h5>
                             <div class="location text-sm-left">
                                 <u>Kategori </u>{{ $aset->kategori->nama }} <br>
-                                <u>Ruang </u>{{ $aset->ruang->nama }} <br>
+                                <u>Lokasi </u>{{ $aset->ruang->nama }} <br>
                                 <u>Tempat </u>{{ $aset->tempat }}
                             </div>
                         </div>
