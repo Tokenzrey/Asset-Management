@@ -77,7 +77,7 @@ class PeminjamanController extends Controller
         $jumlah_request = 1;
 
         if ($jumlah_request > $aset->jumlah) {
-            Alert::error('Error', 'Jumlah permintaan melebihi stok aset yang tersedia');
+            Alert::error('Error', 'Aset telah dipinjam');
             return redirect()->route('peminjaman.index');
         }
 
