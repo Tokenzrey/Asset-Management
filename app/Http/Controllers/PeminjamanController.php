@@ -15,7 +15,7 @@ class PeminjamanController extends Controller
 {
     public function index(Request $request)
     {
-        $nip_user = session('userdata')['nip'];
+        $id_user = session('userdata')['id'];
         $keyword_search = $request->get('keyword_search');
 
         $aset = Aset::join('kategori', 'kategori.id', '=', 'aset.kategori_id')
@@ -25,7 +25,7 @@ class PeminjamanController extends Controller
                 'kategori.nama as nama_kategori',
                 'ruang.nama as nama_ruang',
                 DB::raw("(SELECT peminjaman.status FROM peminjaman WHERE peminjaman.aset_id = aset.id
-            AND peminjaman.user_id = {$nip_user}
+            AND peminjaman.user_id = {$id_user}
             AND peminjaman.status NOT IN ('DITOLAK', 'SELESAI')
             AND aset.aktif='y' LIMIT 1) as status_peminjaman"),
                 DB::raw("(SELECT peminjaman.status FROM peminjaman WHERE peminjaman.aset_id = aset.id
