@@ -21,8 +21,8 @@
                 <form action="{{ route('login') }}" method="POST" class="login100-form validate-form">
                     @csrf
                     <span class="login100-form-logo">
-                        <img src="{{ asset('simas/login/images/invent.svg') }}" width="120px" height="110px"
-                            alt="">
+                        <img src="{{ asset('simas/login/images/invent.png') }}" width="120px" height="110px"
+                            alt="Login">
                     </span>
 
                     <span class="login100-form-title p-b-34 p-t-27">
