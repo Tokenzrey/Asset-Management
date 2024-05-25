@@ -16,32 +16,32 @@ class AsetImport implements ToModel, WithHeadingRow
 {
     public function model(array $row)
     {
-        $tanggalPembelian = null;
         if (is_numeric($row['tanggal_pembelian'])) {
             $tanggalPembelian = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_pembelian']))->toDateString();
+        }else {
+            $tanggalPembelian = Carbon::createFromFormat('d/m/Y', $row['tanggal_pembelian'])->toDateString();
         }
-
+        $kategori = Kategori::where('nama', $row['kategori'])->first();
+        $vendor = Vendor::where('nama', $row['vendor'])->first();
+        $ruang = Ruang::where('nama', $row['ruang'])->first();
+        $kode = Aset::generateCode($kategori->kode, Aset::stringToInitial($vendor->nama), Aset::stringToInitial($ruang->nama));
         return new Aset([
-            // dd($row)
-            'kode'                  => $row['kode'],
+            'kode'                  => $kode,
             'nama'                  => $row['nama'],
             'jumlah'                => $row['jumlah'],
             'satuan'                => $row['satuan'],
             'tanggal_pembelian'     => $tanggalPembelian,
-            // 'nilai_harga'           => $row['nilai_harga'],
             'brand'                 => $row['brand'],
             'kondisi'               => $row['kondisi'],
             'gambar'                => $row['gambar'],
-            // 'tanggal_akhir_garansi' => $tanggalAkhirGaransi,
             'nama_penerima'         => $row['nama_penerima'],
             'tempat'                => $row['tempat'],
             'deskripsi'             => $row['deskripsi'],
             'aktif'                 => $row['aktif'],
-            'kategori_id'           => Kategori::where('nama', $row['kategori'])->value('id'),
-            // 'anggaran_dana_id'      => AnggaranDana::where('nama', $row['anggaran_dana'])->value('id'),
+            'kategori_id'           => $kategori->id,
             'jenis_pemeliharaan_id' => JenisPemeliharaan::where('nama', $row['jenis_pemeliharaan'])->value('id'),
-            'ruang_id'              => Ruang::where('nama', $row['ruang'])->value('id'),
-            'supplier_id'           => Vendor::where('nama', $row['supplier'])->value('id'),
+            'ruang_id'              => $ruang->id,
+            'vendor_id'             => $vendor->id,
         ]);
     }
 }

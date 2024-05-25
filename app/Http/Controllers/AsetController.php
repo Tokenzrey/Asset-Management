@@ -45,16 +45,16 @@ class AsetController extends Controller
         $satuan = 'unit';
 
         try {
-            $vendor = Vendor::where('id',$request->vendor_id)->firstOrFail();
-            $kategori = Kategori::where('id',$request->kategori_id)->firstOrFail();
-            $ruang = Ruang::where('id',$request->ruang_id)->firstOrFail();
-        }catch (\Exception $e) {
+            $vendor = Vendor::where('id', $request->vendor_id)->firstOrFail();
+            $kategori = Kategori::where('id', $request->kategori_id)->firstOrFail();
+            $ruang = Ruang::where('id', $request->ruang_id)->firstOrFail();
+        } catch (\Exception $e) {
             Alert::error('Error', 'Data Vendor, Kategori, atau Ruang Tidak Ditemukan');
             return redirect()->route('aset.index');
         }
 
-        $kode = $this->generateCode($kategori->kode, $this->stringToInitial($vendor->nama), $this->stringToInitial($ruang->nama));
-        $aset = Aset::where('kode',$kode)->first();
+        $kode = Aset::generateCode($kategori->kode, Aset::stringToInitial($vendor->nama), Aset::stringToInitial($ruang->nama));
+        $aset = Aset::where('kode', $kode)->first();
         if ($aset) {
             Alert::error('Warning', 'Kode sudah terpakai oleh aset' . $aset->nama . '| Silahkan Ganti Kode Anda');
             return redirect()->route('aset.index');
@@ -224,7 +224,7 @@ class AsetController extends Controller
             Alert::error('Error', 'Data Divisi Tidak Ditemukan');
             return redirect()->route('aset.index');
         }
-        $aset->where(['id' => $id])->delete();
+        $aset->where('id', $id)->delete();
         Alert::success('Success', 'Data dari history Aset Berhasil Dihapus | Data tidak bisa Dikembalikan');
         return redirect()->route('aset.index');
     }
@@ -259,22 +259,5 @@ class AsetController extends Controller
             return redirect()->route('aset.index');
         }
         return redirect()->route('aset.index');
-    }
-    public function generateCode(String $kategori, String $vendor, String $lokasi){
-        $latestKode = Aset::where('kode', 'like', '____/'.$kategori.'/'.$vendor.'/'.$lokasi)->latest()->first();
-        if($latestKode){
-            $kode = explode('/', $latestKode->kode);
-            return sprintf('%04d',$kode[0] + 1 ). '/' . $kategori . '/' . $vendor . '/' . $lokasi;
-        }else{
-            return '0001/' . $kategori . '/' . $vendor . '/' . $lokasi;
-        }
-    }
-    public function stringToInitial(String $string){
-        $initial = '';
-        $words = explode(' ', $string);
-        foreach($words as $word){
-            $initial .= $word[0];
-        }
-        return $initial;
     }
 }

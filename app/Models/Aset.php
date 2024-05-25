@@ -60,4 +60,21 @@ class Aset extends Model
     public function vendor(){
         return $this->belongsTo(Vendor::class, 'vendor_id', 'id');
     }
+    public static function generateCode(String $kategori, String $vendor, String $lokasi){
+        $latestKode = Aset::where('kode', 'like', '____/'.$kategori.'/'.$vendor.'/'.$lokasi)->latest()->first();
+        if($latestKode){
+            $kode = explode('/', $latestKode->kode);
+            return sprintf('%04d',$kode[0] + 1 ). '/' . $kategori . '/' . $vendor . '/' . $lokasi;
+        }else{
+            return '0001/' . $kategori . '/' . $vendor . '/' . $lokasi;
+        }
+    }
+    public static function stringToInitial(String $string){
+        $initial = '';
+        $words = explode(' ', $string);
+        foreach($words as $word){
+            $initial .= $word[0];
+        }
+        return $initial;
+    }
 }
