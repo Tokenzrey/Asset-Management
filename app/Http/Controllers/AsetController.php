@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\AsetExport;
-use App\Imports\AsetImport;
-
+use Carbon\Carbon;
 use App\Models\Aset;
+
 use App\Models\Ruang;
-use App\Models\Kategori;
 use App\Models\Vendor;
+use App\Models\Kategori;
+use App\Exports\AsetExport;
 // use App\Models\AnggaranDana;
+use App\Imports\AsetImport;
 use Illuminate\Http\Request;
 use App\Models\JenisPemeliharaan;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -24,13 +26,27 @@ class AsetController extends Controller
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
         $ruang = Ruang::where('aktif', '=', 'y')->get();
         $supplier = Vendor::where('aktif', '=', 'y')->get();
+
+        $masa_maintenance = Aset::whereHas('kategori', function ($query) {
+            $query->where(DB::raw("TIMESTAMPDIFF(YEAR, tanggal_pembelian, NOW())"), '>', DB::raw('masa_manfaat'));
+        })->get();
+
+        //add $masa_maintenance to aset using boolean of is_maintenace_time
+        foreach ($aset as $key => $value) {
+            $value->is_maintenance_time = false;
+            foreach ($masa_maintenance as $key_maintenance => $value_maintenance) {
+                if ($value->id == $value_maintenance->id) {
+                    $value->is_maintenance_time = true;
+                }
+            }
+        }
         return view('aset.index', [
             'aset'                  => $aset,
             'kategori'              => $kategori,
             'ruang'                 => $ruang,
             'jenis_pemeliharaan'    => $jenis_pemeliharaan,
             'supplier'              => $supplier,
-            'kondisi'               => ['Baik', 'Rusak Ringan', 'Rusak Berat']
+            'kondisi'               => ['Baik', 'Rusak Ringan', 'Rusak Berat'],
         ]);
     }
 
@@ -93,7 +109,6 @@ class AsetController extends Controller
             'aset'                  => $aset,
             'supplier'              => $supplier,
             'kategori'              => $kategori,
-            // 'anggaran_dana'         => $anggaran_dana,
             'ruang'                 => $ruang,
             'jenis_pemeliharaan'    => $jenis_pemeliharaan,
             'kondisi'               => ['Baik', 'Rusak Ringan', 'Rusak Berat']
@@ -155,7 +170,7 @@ class AsetController extends Controller
             Alert::error('Error', 'Data Aset Tidak Ditemukan');
             return redirect()->route('aset.index');
         }
-        $aset->where(['id' => $id])->update(['aktif' => 't']);
+        $aset->where('id', $id)->update(['aktif' => 't']);
         Alert::success('Success', 'Data Aset Berhasil Dihapus');
         return redirect()->route('aset.index');
     }
@@ -167,7 +182,7 @@ class AsetController extends Controller
             Alert::error('Error', 'Data Aset Tidak Ditemukan');
             return redirect()->route('aset.index');
         }
-        $aset->where(['id' => $id])->update(['aktif' => 'y']);
+        $aset->where('id', $id)->update(['aktif' => 'y']);
         Alert::success('Success', 'Data Aset Berhasil Dipulihkan');
         return redirect()->route('aset.index');
     }

@@ -7,7 +7,6 @@ use App\Models\Aset;
 use App\Models\Ruang;
 use App\Models\Kategori;
 use App\Models\Vendor;
-// use App\Models\AnggaranDana;
 use App\Models\JenisPemeliharaan;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -18,7 +17,7 @@ class AsetImport implements ToModel, WithHeadingRow
     {
         if (is_numeric($row['tanggal_pembelian'])) {
             $tanggalPembelian = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_pembelian']))->toDateString();
-        }else {
+        } else {
             $tanggalPembelian = Carbon::createFromFormat('d/m/Y', $row['tanggal_pembelian'])->toDateString();
         }
         $kategori = Kategori::where('nama', $row['kategori'])->first();

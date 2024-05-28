@@ -53,12 +53,6 @@
                         </div>
                         <div>
                         </div>
-                        {{-- <a href="{{ route('aset.history') }}">
-                            <button type="button" class="btn btn-primary-history mb-2 text-white"
-                                style="margin-bottom: 1rem;">
-                                <i class="fas fa-history"></i> History
-                            </button>
-                        </a> --}}
 
                         <!-- center modal tambah data -->
                         <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -289,6 +283,7 @@
                                         <th>Gambar</th>
                                         <th>Kondisi</th>
                                         <th>Lokasi</th>
+                                        <th>Waktu Pemeliharaan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -297,7 +292,7 @@
                                 @endphp
                                 <tbody>
                                     @foreach ($aset as $item)
-                                    <tr class="text-center">
+                                    <tr class="text-center @if ($item->is_maintenance_time) table-danger  @endif" >
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->kode }}</td>
                                         <td>{{ $item->nama }}</td>
@@ -309,6 +304,7 @@
                                         </td>
                                         <td>{{ $item->kondisi }}</td>
                                         <td>{{ $item->ruang->nama }}</td>
+                                        <td>{{ $item->is_maintenance_time ? 'Waktu Pemeliharaan' : 'Belum Waktu Pemeliharaan' }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-qrcode text-white shadow btn-xs sharp me-1"
