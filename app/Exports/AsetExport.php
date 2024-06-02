@@ -22,7 +22,7 @@ class AsetExport implements FromCollection, WithMapping, WithHeadings, WithStyle
     use Exportable;
     public function collection()
     {
-        return Aset::all();
+        return Aset::where('aktif', '=', 'y')->get();
     }
 
     public function map($row): array

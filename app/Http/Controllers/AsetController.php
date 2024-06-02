@@ -214,34 +214,34 @@ class AsetController extends Controller
         ]);
     }
 
-    public function history()
-    {
-        $aset = Aset::where('aktif', '=', 't')->get();
-        $kategori = Kategori::where('aktif', '=', 'y')->get();
-        $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
-        $ruang = Ruang::where('aktif', '=', 'y')->get();
-        $supplier = Vendor::where('aktif', '=', 'y')->get();
-        return view('aset.history', [
-            'aset'                  => $aset,
-            'kategori'              => $kategori,
-            'ruang'                 => $ruang,
-            'jenis_pemeliharaan'    => $jenis_pemeliharaan,
-            'supplier'              => $supplier,
-            'kondisi'               => ['Baik', 'Rusak Ringan', 'Rusak Berat']
-        ]);
-    }
+    // public function history()
+    // {
+    //     $aset = Aset::where('aktif', '=', 't')->get();
+    //     $kategori = Kategori::where('aktif', '=', 'y')->get();
+    //     $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
+    //     $ruang = Ruang::where('aktif', '=', 'y')->get();
+    //     $supplier = Vendor::where('aktif', '=', 'y')->get();
+    //     return view('aset.history', [
+    //         'aset'                  => $aset,
+    //         'kategori'              => $kategori,
+    //         'ruang'                 => $ruang,
+    //         'jenis_pemeliharaan'    => $jenis_pemeliharaan,
+    //         'supplier'              => $supplier,
+    //         'kondisi'               => ['Baik', 'Rusak Ringan', 'Rusak Berat']
+    //     ]);
+    // }
 
-    public function destroy_history($id)
-    {
-        $aset = Aset::find($id);
-        if (!$aset) {
-            Alert::error('Error', 'Data Divisi Tidak Ditemukan');
-            return redirect()->route('aset.index');
-        }
-        $aset->where('id', $id)->delete();
-        Alert::success('Success', 'Data dari history Aset Berhasil Dihapus | Data tidak bisa Dikembalikan');
-        return redirect()->route('aset.index');
-    }
+    // public function destroy_history($id)
+    // {
+    //     $aset = Aset::find($id);
+    //     if (!$aset) {
+    //         Alert::error('Error', 'Data Divisi Tidak Ditemukan');
+    //         return redirect()->route('aset.index');
+    //     }
+    //     $aset->where('id', $id)->delete();
+    //     Alert::success('Success', 'Data dari history Aset Berhasil Dihapus | Data tidak bisa Dikembalikan');
+    //     return redirect()->route('aset.index');
+    // }
 
     public function aset_export()
     {

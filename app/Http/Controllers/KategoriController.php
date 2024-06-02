@@ -60,7 +60,7 @@ class KategoriController extends Controller
 
         $data_kategori = [
             'nama' => $request->nama,
-            'batas_masa_manfaat_tahun' => $request->batas_masa_manfaat_tahun
+            'masa_manfaat' => $request->masa_manfaat
         ];
 
         $kategori->where(['id' => $id])->update($data_kategori);
