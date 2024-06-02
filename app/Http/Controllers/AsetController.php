@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JadwalPemeliharaan;
 use Carbon\Carbon;
 use App\Models\Aset;
 
@@ -27,16 +28,12 @@ class AsetController extends Controller
         $ruang = Ruang::where('aktif', '=', 'y')->get();
         $supplier = Vendor::where('aktif', '=', 'y')->get();
 
-        $masa_maintenance = Aset::whereHas('kategori', function ($query) {
-            $query->where(DB::raw("TIMESTAMPDIFF(YEAR, tanggal_pembelian, NOW())"), '>', DB::raw('masa_manfaat'));
-        })->get();
-
-        //add $masa_maintenance to aset using boolean of is_maintenace_time
+        $maintenance = Aset::getMaintenanceTime($aset);
         foreach ($aset as $key => $value) {
             $value->is_maintenance_time = false;
-            foreach ($masa_maintenance as $key_maintenance => $value_maintenance) {
+            foreach ($maintenance as $key_maintenance => $value_maintenance) {
                 if ($value->id == $value_maintenance->id) {
-                    $value->is_maintenance_time = true;
+                    $value->is_maintenance_time = $value_maintenance->is_maintenance_time;
                 }
             }
         }
@@ -187,9 +184,10 @@ class AsetController extends Controller
         return redirect()->route('aset.index');
     }
 
-    public function qrcode($id)
+    public function qrcode(Request $request)
     {
-        $qrcode = Aset::where('kode', $id)->first();
+        $id = $request->id;
+        $qrcode = Aset::where('kode', $id)->firstOrFail();
         return view('aset.qrcode', [
             'qrcode'  => $qrcode
         ]);
@@ -207,9 +205,10 @@ class AsetController extends Controller
         ]);
     }
 
-    public function cetakqrcode($id)
+    public function cetakqrcode(Request $request)
     {
-        $qrcode = Aset::where('kode', $id)->first();
+        $id = $request->id;
+        $qrcode = Aset::where('kode', $id)->firstOrFail();
         return view('aset.cetakqrcode', [
             'qrcode'  => $qrcode
         ]);

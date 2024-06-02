@@ -80,9 +80,9 @@ Route::get('/aset/show/{id}', [AsetController::class, 'show'])->middleware('ceks
 Route::put('/aset/update/{id}', [AsetController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.update');
 Route::get('/aset/delete/{id}', [AsetController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.destroy');
 
-Route::get('/aset/qrcode/{id}', [AsetController::class, 'qrcode'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.qrcode');
+Route::get('/aset/qrcode', [AsetController::class, 'qrcode'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.qrcode');
 Route::get('/aset/scan_qrcode', [AsetController::class, 'scan_qrcode'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.scan_qrcode');
-Route::get('/aset/cetakqrcode/{id}', [AsetController::class, 'cetakqrcode'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.cetakqrcode');
+Route::get('/aset/cetakqrcode', [AsetController::class, 'cetakqrcode'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.cetakqrcode');
 
 
 //export & import data aset

@@ -274,7 +274,7 @@
                     <div class="card-body card-body-table">
                         <div class="table-responsive" id="cetak">
                             @csrf
-                            <table class="table table-striped mb-2" id="example3" class="display">
+                            <table class="table mb-2 display" id="example3">
                                 <thead>
                                     <tr class="text-center">
                                         <th>#</th>
@@ -292,8 +292,8 @@
                                 @endphp
                                 <tbody>
                                     @foreach ($aset as $item)
-                                    <tr class="text-center @if ($item->is_maintenance_time) table-danger  @endif" >
-                                        <td>{{ $no++ }}</td>
+                                    <tr class="text-center @if ($item->is_maintenance_time) table-danger @endif" >
+                                        <td >{{ $no++ }}</td>
                                         <td>{{ $item->kode }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td>
@@ -304,7 +304,7 @@
                                         </td>
                                         <td>{{ $item->kondisi }}</td>
                                         <td>{{ $item->ruang->nama }}</td>
-                                        <td>{{ $item->is_maintenance_time ? 'Waktu Pemeliharaan' : 'Belum Waktu Pemeliharaan' }}</td>
+                                        <td>@if($item->is_maintenance_time) <span class="text-success"><i class="fas fa-check-circle"></i></span> @else <span class="text-danger"><i class="fas fa-times-circle"></i></span>@endif</td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-qrcode text-white shadow btn-xs sharp me-1"

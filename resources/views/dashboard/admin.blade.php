@@ -45,6 +45,17 @@ SIMAS PT ABC
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    @foreach($alert_maintenance_time as $amt)
+                        <tr>
+                            <div style='padding:5px' style='width:50px' >
+                                <i class='bi bi-info-circle icon-Glyphicon-info'></i> <br>
+                                Aset dengan nama <span class="fw-bold">{{$amt->nama}}</span> telah memasuki masa pemeliharaan dengan umur <span class="fw-bolder">{{$amt->umur}}</span> tahun, dengan masa manfaat {{$amt->kategori->masa_manfaat}} tahun. <br>
+                                <button class='badge badge-primary' onclick="window.location.href='{{route('aset.index')}}'">
+                                Check
+                                </button>
+                            </div>
+                        </tr>
+                    @endforeach
                     @foreach ($alert_maintenance as $alert)
                     <tr>
                         <?php

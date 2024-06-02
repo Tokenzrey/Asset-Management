@@ -44,6 +44,8 @@ class DashboardController extends Controller
 
         $kategoriAsset_count = Kategori::withCount('aset')->get()->pluck('aset_count', 'nama')->toArray();
 
+        $alert_maintenance_time = Aset::getMaintenanceTime($aset)->where('is_maintenance_time',true);
+        $total_jp_notif += $alert_maintenance_time->count();
         return view('dashboard.admin', [
             'viewTotalPeminjaman'       => $totalPeminjaman,
             'jml_peminjaman'            => $jml_peminjaman,
@@ -62,6 +64,7 @@ class DashboardController extends Controller
             'aset'                      => $aset,
             'ruang'                     => $ruang,
             'kategoriAsset_count'       => $kategoriAsset_count,
+            'alert_maintenance_time'    => $alert_maintenance_time
         ]);
     }
 

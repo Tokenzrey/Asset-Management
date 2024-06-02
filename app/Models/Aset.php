@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -76,5 +78,32 @@ class Aset extends Model
             $initial .= $word[0];
         }
         return $initial;
+    }
+
+    public static function getMaintenanceTime($aset){
+        $masa_maintenance = Aset::whereHas('kategori', function ($query) {
+            $query->where(DB::raw("TIMESTAMPDIFF(YEAR, tanggal_pembelian, NOW())"), '>=', DB::raw('masa_manfaat'));
+        })->get();
+
+        foreach ($masa_maintenance as $value) {
+            $value->umur = Carbon::parse($value->tanggal_pembelian)->diffInYears(Carbon::now());
+            $dataPemeliharaan = JadwalPemeliharaan::latest()
+                ->where('aset_id', $value->id)
+                ->where('status', 'selesai')
+                ->first();
+
+            if ($dataPemeliharaan) {
+                $yearDiff = Carbon::parse($dataPemeliharaan->tanggal_selesai)->diffInYears(Carbon::now());
+                if ($yearDiff >= $value->kategori->masa_manfaat) {
+                    $value->is_maintenance_time = true;
+                } else {
+                    $value->umur = $yearDiff;
+                    $value->is_maintenance_time = false;
+                }
+            } else {
+                $value->is_maintenance_time = true;
+            }
+        }
+        return $masa_maintenance;
     }
 }
