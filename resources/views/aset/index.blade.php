@@ -352,6 +352,7 @@
                                                                     <label><b>Kode</b></label>
                                                                     <input type="text" class="form-control" id="kode"
                                                                         placeholder="Masukkan Kode" name="kode"
+                                                                        disabled
                                                                         value="{{ $item->kode }}" disabled>
                                                                 </div>
 
@@ -390,6 +391,7 @@
                                                                         id="nama_penerima"
                                                                         placeholder="Masukkan Nama Penerima"
                                                                         name="nama_penerima"
+                                                                        disabled
                                                                         value="{{ $item->nama_penerima }}" required>
                                                                 </div>
                                                             </div>

@@ -175,6 +175,7 @@
                                                         <label><b>Kode</b></label>
                                                         <input type="text" class="form-control" id="kode"
                                                             placeholder="Masukkan Kode" name="kode"
+                                                            disabled
                                                             value="{{ $aset->kode }}" required>
                                                     </div>
 
@@ -207,6 +208,7 @@
                                                         <label><b>Nama Penerima</b></label>
                                                         <input type="text" class="form-control" id="nama_penerima"
                                                             placeholder="Masukkan Nama Penerima" name="nama_penerima"
+                                                            disabled
                                                             value="{{ $aset->nama_penerima }}" required>
                                                     </div>
                                                 </div>
