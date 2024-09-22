@@ -12,7 +12,7 @@ class JenisPemeliharaanController extends Controller
     public function index()
     {
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
-        $jenis_pemeliharaan = JenisPemeliharaan::all();
+        // $jenis_pemeliharaan = JenisPemeliharaan::all();
         return view('jenis_pemeliharaan.index', [
             'jenis_pemeliharaan' => $jenis_pemeliharaan
         ]);
@@ -65,7 +65,7 @@ class JenisPemeliharaanController extends Controller
             return redirect()->route('jenis_pemeliharaan.index');
         }
         $jenis_pemeliharaan->where(['id' => $id])->update(['aktif' => 't']);
-        Alert::succes('Success', 'Data Berhasil Dihapus');
+        Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('jenis_pemeliharaan.index');
     }
 }
