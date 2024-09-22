@@ -17,6 +17,7 @@ class PeminjamanController extends Controller
     {
         $id_user = session('userdata')['id'];
         $keyword_search = $request->get('keyword_search');
+        $jumlah_request = 1;
 
         $aset = Aset::join('kategori', 'kategori.id', '=', 'aset.kategori_id')
             ->join('ruang', 'ruang.id', '=', 'aset.ruang_id')
@@ -42,6 +43,7 @@ class PeminjamanController extends Controller
                 });
             })
             ->where('aset.aktif', '=', 'y')
+            ->where('aset.jumlah', '>=', $jumlah_request)
             ->paginate(6);
 
         $kategori = Kategori::where('aktif', '=', 'y')->get();
@@ -126,6 +128,7 @@ class PeminjamanController extends Controller
     {
         $id = $request->id;
         $peminjaman = Peminjaman::where(['id' => $id])->first();
+        $aset_id = $request->id_aset;
 
         if (!$peminjaman) {
             Alert::error('Error', 'Peminjaman tidak ditemukan');
@@ -145,6 +148,11 @@ class PeminjamanController extends Controller
             $aset->update([
                 'jumlah' => $aset->jumlah - $peminjaman->jumlah_request
             ]);
+
+            // Hapus semua peminjaman lain dengan aset_id yang sama
+            Peminjaman::where('aset_id', $aset_id)
+                ->whereNotIn('status', ['DITERIMA', 'SELESAI'])
+                ->update(['status' => 'DITOLAK']);
         }
 
         Alert::success('Success', 'Status peminjaman berhasil diperbarui!');
