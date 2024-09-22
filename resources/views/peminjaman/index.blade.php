@@ -45,7 +45,7 @@
                             <div class="img-blok" style="min-height: 150px">
                                 @if ($aset->gambar)
                                     <img class="mx-auto d-block" src="{{ asset('storage/' . $aset->gambar) }}"
-                                        alt="" width="150px">
+                                        alt="{{$aset->gambar}}" width="150px">
                                 @endif
                             </div>
                             <hr>
