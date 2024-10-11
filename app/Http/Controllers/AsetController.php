@@ -22,28 +22,36 @@ class AsetController extends Controller
 {
     public function index()
     {
-        $aset = Aset::where('aktif', '=', 'y')->get();
-        $kategori = Kategori::where('aktif', '=', 'y')->get();
-        $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
-        $ruang = Ruang::where('aktif', '=', 'y')->get();
-        $supplier = Vendor::where('aktif', '=', 'y')->get();
+        // Fetch related models with their active assets
+        $aset = Aset::where('aktif', 'y')
+            ->with('kategori', 'jenis_pemeliharaan', 'ruang', 'vendor')
+            ->get();
 
+        $kategori = Kategori::where('aktif', 'y')->get();
+        $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', 'y')->get();
+        $ruang = Ruang::where('aktif', 'y')->get();
+        $supplier = Vendor::where('aktif', 'y')->get();
+
+        // Fetch maintenance time information in a single query (optimize this logic if possible)
         $maintenance = Aset::getMaintenanceTime($aset);
-        foreach ($aset as $key => $value) {
+
+        // Assign maintenance time flag to each asset
+        foreach ($aset as $value) {
             $value->is_maintenance_time = false;
-            foreach ($maintenance as $key_maintenance => $value_maintenance) {
-                if ($value->id == $value_maintenance->id) {
-                    $value->is_maintenance_time = $value_maintenance->is_maintenance_time;
+            foreach ($maintenance as $maintenance_item) {
+                if ($value->id == $maintenance_item->id) {
+                    $value->is_maintenance_time = $maintenance_item->is_maintenance_time;
                 }
             }
         }
+
         return view('aset.index', [
-            'aset'                  => $aset,
-            'kategori'              => $kategori,
-            'ruang'                 => $ruang,
-            'jenis_pemeliharaan'    => $jenis_pemeliharaan,
-            'supplier'              => $supplier,
-            'kondisi'               => ['Baik', 'Rusak Ringan', 'Rusak Berat'],
+            'aset' => $aset,
+            'kategori' => $kategori,
+            'ruang' => $ruang,
+            'jenis_pemeliharaan' => $jenis_pemeliharaan,
+            'supplier' => $supplier,
+            'kondisi' => ['Baik', 'Rusak Ringan', 'Rusak Berat'],
         ]);
     }
 
@@ -74,21 +82,21 @@ class AsetController extends Controller
         }
         $request->qrcode == $kode;
         Aset::create([
-            'kode'                  => $kode,
-            'nama'                  => $request->nama,
-            'jumlah'                => $jumlah,
-            'satuan'                => $satuan,
-            'tanggal_pembelian'     => $request->tanggal_pembelian,
-            'brand'                 => $request->brand,
-            'kondisi'               => $request->kondisi,
-            'gambar'                => ($gambar) ? $gambar : null,
-            'nama_penerima'         => $request->nama_penerima,
-            'tempat'                => $request->tempat,
-            'deskripsi'             => $request->deskripsi,
-            'kategori_id'           => $request->kategori_id,
+            'kode' => $kode,
+            'nama' => $request->nama,
+            'jumlah' => $jumlah,
+            'satuan' => $satuan,
+            'tanggal_pembelian' => $request->tanggal_pembelian,
+            'brand' => $request->brand,
+            'kondisi' => $request->kondisi,
+            'gambar' => ($gambar) ? $gambar : null,
+            'nama_penerima' => $request->nama_penerima,
+            'tempat' => $request->tempat,
+            'deskripsi' => $request->deskripsi,
+            'kategori_id' => $request->kategori_id,
             'jenis_pemeliharaan_id' => $request->jenis_pemeliharaan_id,
-            'ruang_id'              => $request->ruang_id,
-            'vendor_id'           => $request->vendor_id
+            'ruang_id' => $request->ruang_id,
+            'vendor_id' => $request->vendor_id
         ]);
         Alert::success('Success', 'Aset Berhasil Ditambahkan');
         return redirect()->route('aset.index');
@@ -96,69 +104,88 @@ class AsetController extends Controller
 
     public function show($id)
     {
-        $aset               = Aset::find($id);
-        $supplier           = Vendor::where('aktif', '=', 'y')->get();
-        $kategori           = Kategori::where('aktif', '=', 'y')->get();
-        $ruang              = Ruang::where('aktif', '=', 'y');
+        $aset = Aset::find($id);
+        $supplier = Vendor::where('aktif', '=', 'y')->get();
+        $kategori = Kategori::where('aktif', '=', 'y')->get();
+        $ruang = Ruang::where('aktif', '=', 'y');
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y');
 
         return view('aset.show', [
-            'aset'                  => $aset,
-            'supplier'              => $supplier,
-            'kategori'              => $kategori,
-            'ruang'                 => $ruang,
-            'jenis_pemeliharaan'    => $jenis_pemeliharaan,
-            'kondisi'               => ['Baik', 'Rusak Ringan', 'Rusak Berat']
+            'aset' => $aset,
+            'supplier' => $supplier,
+            'kategori' => $kategori,
+            'ruang' => $ruang,
+            'jenis_pemeliharaan' => $jenis_pemeliharaan,
+            'kondisi' => ['Baik', 'Rusak Ringan', 'Rusak Berat']
         ]);
     }
 
     public function update(Request $request, $id)
     {
+        // Find the asset by ID or return error
         $aset = Aset::find($id);
         if (!$aset) {
             Alert::error('Error', 'Aset Tidak Ditemukan');
             return redirect()->route('aset.index');
         }
 
+        // Validate the request data before proceeding
+        $request->validate([
+            'kode' => 'required|string|max:50',
+            'nama' => 'required|string|max:255',
+            'tanggal_pembelian' => 'required|date',
+            'brand' => 'required|string|max:100',
+            'kondisi' => 'required|string',
+            'nama_penerima' => 'required|string|max:100',
+            'tempat' => 'required|string|max:100',
+            'deskripsi' => 'nullable|string',
+            'kategori_id' => 'required|integer',
+            'jenis_pemeliharaan_id' => 'required|integer',
+            'ruang_id' => 'required|integer',
+            'supplier_id' => 'required|integer',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048' // Image validation
+        ]);
+
+        // Handle image upload if present
         $gambar = null;
-        if ($request->file('gambar')) {
-            $gambar_extension = $request->file('gambar')->extension();
-            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png', 'gif')) == false) {
-                Alert::error('Error', 'Type gambar yang diijinkan jpg,jpeg,png,gif!');
-                return redirect()->route('aset.index');
-            }
+        if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar')->store('public/gambar_aset');
             $gambar = str_replace('public/', '', $gambar);
         }
 
-        $jumlah = 1;
-        $satuan = 'unit';
-
-        $request->qrcode == $request->kode;
-        $aset = Aset::where(['kode' => $request->kode])->first();
+        // Prepare the data to update
         $data_aset = [
-            'kode'                  => $request->kode,
-            'nama'                  => $request->nama,
-            'jumlah'                => $jumlah,
-            'satuan'                => $satuan,
-            'tanggal_pembelian'     => $request->tanggal_pembelian,
-            'brand'                 => $request->brand,
-            'kondisi'               => $request->kondisi,
-            'nama_penerima'         => $request->nama_penerima,
-            'tempat'                => $request->tempat,
-            'deskripsi'             => $request->deskripsi,
-            'kategori_id'           => $request->kategori_id,
+            'kode' => $request->kode,
+            'nama' => $request->nama,
+            'jumlah' => 1,  // Assuming static values, adjust if needed
+            'satuan' => 'unit',  // Static value, adjust if needed
+            'tanggal_pembelian' => $request->tanggal_pembelian,
+            'brand' => $request->brand,
+            'kondisi' => $request->kondisi,
+            'nama_penerima' => $request->nama_penerima,
+            'tempat' => $request->tempat,
+            'deskripsi' => $request->deskripsi,
+            'kategori_id' => $request->kategori_id,
             'jenis_pemeliharaan_id' => $request->jenis_pemeliharaan_id,
-            'ruang_id'              => $request->ruang_id,
-            'supplier_id'           => $request->supplier_id
+            'ruang_id' => $request->ruang_id,
+            'supplier_id' => $request->supplier_id,
         ];
-        if ($gambar)
-            $data_aset['gambar'] = $gambar;
 
-        $aset->where(['id' => $id])->update($data_aset);
+        // Only update the image if a new one was uploaded
+        if ($gambar) {
+            $data_aset['gambar'] = $gambar;
+        }
+
+        // Update the asset
+        $aset->update($data_aset);
+
+        // Flash success message
         Alert::success('Success', 'Aset Berhasil Di Update!');
+
+        // Redirect back to the asset index
         return redirect()->route('aset.index');
     }
+
 
     public function destroy($id)
     {
@@ -189,7 +216,7 @@ class AsetController extends Controller
         $id = $request->id;
         $qrcode = Aset::where('kode', $id)->firstOrFail();
         return view('aset.qrcode', [
-            'qrcode'  => $qrcode
+            'qrcode' => $qrcode
         ]);
     }
 
@@ -210,7 +237,7 @@ class AsetController extends Controller
         $id = $request->id;
         $qrcode = Aset::where('kode', $id)->firstOrFail();
         return view('aset.cetakqrcode', [
-            'qrcode'  => $qrcode
+            'qrcode' => $qrcode
         ]);
     }
 
