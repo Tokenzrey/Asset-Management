@@ -75,10 +75,10 @@
                                                 <div class="row">
                                                     <div class="col-xl-12">
                                                         <label><b>Nama
-                                                            Penerima</b></label>
-                                                    <input type="text" class="form-control" id="nama_penerima"
-                                                        placeholder="Masukkan Nama Penerima" name="nama_penerima"
-                                                        value="{{ old('nama_penerima') }}" required>
+                                                                Penerima</b></label>
+                                                        <input type="text" class="form-control" id="nama_penerima"
+                                                            placeholder="Masukkan Nama Penerima" name="nama_penerima"
+                                                            value="{{ old('nama_penerima') }}" required>
 
                                                     </div>
                                                 </div>
@@ -214,7 +214,8 @@
                                                     <div class="col-xl-12 mt-2">
                                                         <label><b>Deskripsi</b></label>
                                                         <textarea name="deskripsi" id="deskripsi" cols="30" rows="5"
-                                                            class="form-control" placeholder="Masukkan Serial Number Aset"
+                                                            class="form-control"
+                                                            placeholder="Masukkan Serial Number Aset"
                                                             value="{{ old('deskripsi') }}"></textarea>
                                                     </div>
                                                 </div>
@@ -283,6 +284,7 @@
                                         <th>Gambar</th>
                                         <th>Kondisi</th>
                                         <th>Lokasi</th>
+                                        <th>Status</th>
                                         <th>Waktu Pemeliharaan</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -292,8 +294,8 @@
                                 @endphp
                                 <tbody>
                                     @foreach ($aset as $item)
-                                    <tr class="text-center @if ($item->is_maintenance_time) table-danger @endif" >
-                                        <td >{{ $no++ }}</td>
+                                    <tr class="text-center @if ($item->is_maintenance_time) table-danger @endif">
+                                        <td>{{ $no++ }}</td>
                                         <td>{{ $item->kode }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td>
@@ -304,7 +306,15 @@
                                         </td>
                                         <td>{{ $item->kondisi }}</td>
                                         <td>{{ $item->ruang->nama }}</td>
-                                        <td>@if($item->is_maintenance_time) <span class="text-success"><i class="fas fa-check-circle"></i></span> @else <span class="text-danger"><i class="fas fa-times-circle"></i></span>@endif</td>
+                                        @if($item->DITERIMA)
+                                        <td style="color:red">Sedang Dipinjam</td>
+                                        @else
+                                        <td style="color:green">Tersedia</td>
+                                        @endif
+                                        <td>@if($item->is_maintenance_time) <span class="text-success"><i
+                                                    class="fas fa-check-circle"></i></span> @else <span
+                                                class="text-danger"><i class="fas fa-times-circle"></i></span>@endif
+                                        </td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-qrcode text-white shadow btn-xs sharp me-1"
@@ -351,8 +361,7 @@
                                                                 <div class="col-xl-6">
                                                                     <label><b>Kode</b></label>
                                                                     <input type="text" class="form-control" id="kode"
-                                                                        placeholder="Masukkan Kode" name="kode"
-                                                                        disabled
+                                                                        placeholder="Masukkan Kode" name="kode" disabled
                                                                         value="{{ $item->kode }}" disabled>
                                                                 </div>
 
@@ -390,8 +399,7 @@
                                                                     <input type="text" class="form-control"
                                                                         id="nama_penerima"
                                                                         placeholder="Masukkan Nama Penerima"
-                                                                        name="nama_penerima"
-                                                                        disabled
+                                                                        name="nama_penerima" disabled
                                                                         value="{{ $item->nama_penerima }}" required>
                                                                 </div>
                                                             </div>

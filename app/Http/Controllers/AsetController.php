@@ -9,6 +9,7 @@ use App\Models\Aset;
 use App\Models\Ruang;
 use App\Models\Vendor;
 use App\Models\Kategori;
+use App\Models\Peminjaman;
 use App\Exports\AsetExport;
 // use App\Models\AnggaranDana;
 use App\Imports\AsetImport;
@@ -18,11 +19,15 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
 class AsetController extends Controller
 {
     public function index()
     {
         // Fetch related models with their active assets
+        $aset_in_peminjaman = Peminjaman::where('status', 'DITERIMA')
+            ->pluck('aset_id');
+
         $aset = Aset::where('aktif', 'y')
             ->with('kategori', 'jenis_pemeliharaan', 'ruang', 'vendor')
             ->get();
@@ -31,9 +36,12 @@ class AsetController extends Controller
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', 'y')->get();
         $ruang = Ruang::where('aktif', 'y')->get();
         $supplier = Vendor::where('aktif', 'y')->get();
-
-        // Fetch maintenance time information in a single query (optimize this logic if possible)
+        
         $maintenance = Aset::getMaintenanceTime($aset);
+
+        foreach ($aset as $value) {
+            $value->DITERIMA = $aset_in_peminjaman->contains($value->id);
+        }
 
         // Assign maintenance time flag to each asset
         foreach ($aset as $value) {
