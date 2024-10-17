@@ -346,7 +346,7 @@
                                                         width="70px">
                                                     <h3 class="modal-title">
                                                         <b>Edit Aset</b>
-                                                    </h3>
+                                                    </h3>       
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close">
                                                     </button>
@@ -361,8 +361,11 @@
                                                                 <div class="col-xl-6">
                                                                     <label><b>Kode</b></label>
                                                                     <input type="text" class="form-control" id="kode"
-                                                                        placeholder="Masukkan Kode" name="kode" disabled
-                                                                        value="{{ $item->kode }}" disabled>
+                                                                        placeholder="Masukkan Kode"
+                                                                        value="{{ $item->kode }}"
+                                                                        disabled
+                                                                        >
+                                                                    <input type="hidden" name="kode" value="{{ $item->kode }}">
                                                                 </div>
 
                                                                 <div class="col-xl-6 mt-2">
@@ -399,8 +402,9 @@
                                                                     <input type="text" class="form-control"
                                                                         id="nama_penerima"
                                                                         placeholder="Masukkan Nama Penerima"
-                                                                        name="nama_penerima" disabled
+                                                                        disabled
                                                                         value="{{ $item->nama_penerima }}" required>
+                                                                    <input type="hidden" name="nama_penerima" value="{{ $item->nama_penerima }}">
                                                                 </div>
                                                             </div>
 

@@ -91,7 +91,7 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->masa_manfaat }}</td>
+                                        <td>{{ $item->masa_manfaat }} Tahun</td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-edit text-white shadow btn-xs sharp me-1" title="Edit"

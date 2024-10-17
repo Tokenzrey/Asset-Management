@@ -67,7 +67,12 @@ class AsetController extends Controller
     {
         $gambar = null;
         if ($request->file('gambar')) {
-            $gambar = $request->file('gambar')->store('public/gambar_aset');
+            $gambar_extension = $request->file('gambar')->extension();
+            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png', 'gif', 'jfif')) == false) {
+                Alert::error('Error', 'Type gambar yang diijinkan jpg,jpeg,png,gif!');
+                return redirect()->route('user.index');
+            }
+            $gambar = $request->file('gambar')->store('public/gambar_user');
             $gambar = str_replace('public/', '', $gambar);
         }
         $jumlah = 1;
@@ -150,13 +155,18 @@ class AsetController extends Controller
             'kategori_id' => 'required|integer',
             'jenis_pemeliharaan_id' => 'required|integer',
             'ruang_id' => 'required|integer',
-            'supplier_id' => 'required|integer',
+            'vendor_id' => 'required|integer',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048' // Image validation
         ]);
 
         // Handle image upload if present
         $gambar = null;
-        if ($request->hasFile('gambar')) {
+        if ($request->file('gambar')) {
+            $gambar_extension = $request->file('gambar')->extension();
+            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png', 'gif', 'jfif')) == false) {
+                Alert::error('Error', 'Type gambar yang diijinkan jpg,jpeg,png,gif!');
+                return redirect()->route('user.index');
+            }
             $gambar = $request->file('gambar')->store('public/gambar_aset');
             $gambar = str_replace('public/', '', $gambar);
         }
@@ -176,7 +186,7 @@ class AsetController extends Controller
             'kategori_id' => $request->kategori_id,
             'jenis_pemeliharaan_id' => $request->jenis_pemeliharaan_id,
             'ruang_id' => $request->ruang_id,
-            'supplier_id' => $request->supplier_id,
+            'vendor_id' => $request->vendor_id,
         ];
 
         // Only update the image if a new one was uploaded

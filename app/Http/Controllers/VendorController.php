@@ -29,7 +29,7 @@ class VendorController extends Controller
              'alamat'       => $request->alamat,
              'deskripsi'    => $request->deskripsi
          ]);
-         Alert::success('Success', 'Data Ruang berhasil ditambahkan');
+         Alert::success('Success', 'Data Vendor berhasil ditambahkan');
          return redirect()->route('supplier.index');
     }
 
