@@ -249,7 +249,7 @@ class PeminjamanController extends Controller
 
     public function history_peminjaman_user()
     {
-        if (session('userdata')['status'] != 'ADMIN') {
+        if (session('userdata')['status'] != 'ADMIN' || session('userdata')['status'] != 'DIREKSI') {
             $user_id = session('userdata')['id'];
             $history_peminjaman = Peminjaman::where('user_id', '=', $user_id)->get();
             $aset = Aset::where('aktif', '=', 'y')->get();

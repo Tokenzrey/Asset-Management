@@ -46,7 +46,7 @@
                                 </strong>
                             </li>
 
-                            @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'MANAGER')
+                            @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'MANAGER' || session('userdata')['status'] == 'DIREKSI')
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                                     <img src="{{ asset('/') }}simas/images/Admin-Profile-PNG.png" alt="" />

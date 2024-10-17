@@ -40,10 +40,10 @@ Route::get('/divisi/delete/{id}', [DivisiController::class, 'destroy'])->middlew
 
 //user pengguna
 Route::get('/user', [UserController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('user.index');
-Route::post('/user/create', [UserController::class, 'store'])->middleware('ceksesi', 'cekuserstatus')->name('user.store');
+Route::post('/user/create', [UserController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('user.store');
 Route::get('/user/show/{id}', [UserController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('user.show');
-Route::put('/user/update/{id}', [UserController::class, 'update'])->middleware('ceksesi', 'cekuserstatus')->name('user.update');
-Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->middleware(['ceksesi', 'cekuserstatus'])->name('user.destroy');
+Route::put('/user/update/{id}', [UserController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('user.update');
+Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('user.destroy');
 
 //kategori
 Route::get('/kategori', [KategoriController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('kategori.index');

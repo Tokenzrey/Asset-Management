@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('jenis_kelamin', 20);
             $table->bigInteger('no_telepon');
             $table->text('alamat');
-            $table->string('status')->comment('ADMIN;USER;');
+            $table->string('status')->comment('ADMIN;USER;DIREKSI');
             $table->enum('aktif', ['y', 't'])->default('y');
             $table->string('username', 100);
             $table->string('email')->unique();

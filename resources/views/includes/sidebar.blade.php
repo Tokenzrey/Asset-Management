@@ -3,7 +3,7 @@
         <img alt="image" width="100" src="{{ asset('simas/images/inventory.png') }}">
     </div>
     <span class="badge badge-primary">
-        @if (session('userdata')['status'] != 'ADMIN')
+        @if (session('userdata')['status'] != 'ADMIN' || session('userdata')['status'] != 'DIREKSI')
         {{ session('userdata')['username'] }}
         @else
         {{ session('userdata')['username'] }}
@@ -12,7 +12,7 @@
 </div>
 
 <ul class="metismenu" id="menu">
-    @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'MANAGER')
+    @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'MANAGER' || session('userdata')['status'] == 'DIREKSI')
     <li>
         <a href="{{ route('dashboard.admin') }}">
             <i class="fas fa-home"></i>
@@ -73,7 +73,8 @@
         </a>
     </li>
     @endif
-    @if (session('userdata')['status'] == 'ADMIN')
+    
+    @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'DIREKSI')
     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
             <i class="fa fa-handshake"></i>
             <span class="nav-text">Transaksi</span>
@@ -86,7 +87,7 @@
     </li>
     @endif
 
-    @if (session('userdata')['status'] == 'ADMIN')
+    @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'DIREKSI')
     <li><a href="{{ route('report.index') }}">
             <i class="fa fa-file"></i>
             <span class="nav-text">Report</span>

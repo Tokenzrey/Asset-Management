@@ -30,7 +30,7 @@
                 $div = old('divisi');
                 @endphp
 
-                @if (session('userdata')['status'] == 'ADMIN')
+                @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'DIREKSI' )
                 <div>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".modal"
                         style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Data</button>
@@ -128,8 +128,14 @@
                                                 <div class="radio">
                                                     <label for="status_a" class="form-check-label ">
                                                         <input type="radio" {{ $status=='ADMIN' ? 'checked' : '' }}
-                                                            checked required id="status_a" name="status" value="ADMIN"
+                                                            checked required id="status_a" name="status" value=""
                                                             class="form-check-input"> ADMIN
+                                                    </label>
+
+                                                    <label for="status_a" class="form-check-label ">
+                                                        <input type="radio" {{ $status=='DIREKSI' ? 'checked' : '' }}
+                                                            checked required id="status_a" name="status" value="DIREKSI"
+                                                            class="form-check-input"> DIREKSI
                                                     </label>
 
                                                     <label for="status_u" class="form-check-label">
@@ -215,7 +221,7 @@
                                         <a class="btn btn-detail text-white shadow btn-xs sharp me-1"
                                             href="{{ route('user.show', ['id' => $item->id]) }}"><i
                                                 class="fas fa-eye"></i></a>
-                                        @if (session('userdata')['status'] == 'ADMIN')
+                                        @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'DIREKSI')
                                         <a class="btn btn-edit text-white shadow btn-xs sharp me-1" title="Edit"
                                             data-bs-toggle="modal" data-bs-target=".edit{{ $item->id }}"><i
                                                 class="fas fa-edit"></i></a>
@@ -348,6 +354,13 @@
                                                                         : '' }} checked required id="status_a"
                                                                         name="status" value="ADMIN"
                                                                         class="form-check-input"> ADMIN
+                                                                </label>
+
+                                                                <label for="status_a" class="form-check-label ">
+                                                                    <input type="radio" {{ $status=='DIREKSI' ? 'checked'
+                                                                        : '' }} checked required id="status_a"
+                                                                        name="status" value="DIREKSI"
+                                                                        class="form-check-input"> DIREKSI
                                                                 </label>
 
                                                                 <label for="status_u" class="form-check-label">
