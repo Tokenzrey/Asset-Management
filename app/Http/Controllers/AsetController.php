@@ -36,7 +36,7 @@ class AsetController extends Controller
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', 'y')->get();
         $ruang = Ruang::where('aktif', 'y')->get();
         $supplier = Vendor::where('aktif', 'y')->get();
-        
+
         $maintenance = Aset::getMaintenanceTime($aset);
 
         foreach ($aset as $value) {
@@ -144,12 +144,10 @@ class AsetController extends Controller
 
         // Validate the request data before proceeding
         $request->validate([
-            'kode' => 'required|string|max:50',
             'nama' => 'required|string|max:255',
             'tanggal_pembelian' => 'required|date',
             'brand' => 'required|string|max:100',
             'kondisi' => 'required|string',
-            'nama_penerima' => 'required|string|max:100',
             'tempat' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
             'kategori_id' => 'required|integer',
@@ -173,14 +171,12 @@ class AsetController extends Controller
 
         // Prepare the data to update
         $data_aset = [
-            'kode' => $request->kode,
             'nama' => $request->nama,
             'jumlah' => 1,  // Assuming static values, adjust if needed
             'satuan' => 'unit',  // Static value, adjust if needed
             'tanggal_pembelian' => $request->tanggal_pembelian,
             'brand' => $request->brand,
             'kondisi' => $request->kondisi,
-            'nama_penerima' => $request->nama_penerima,
             'tempat' => $request->tempat,
             'deskripsi' => $request->deskripsi,
             'kategori_id' => $request->kategori_id,
