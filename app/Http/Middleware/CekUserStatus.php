@@ -16,7 +16,7 @@ class CekUserStatus
      */
     public function handle(Request $request, Closure $next)
     {
-        if(session('userdata')['status'] != 'ADMIN') {
+        if(session('userdata')['status'] != 'ADMIN'  || session('userdata')['status'] != 'DIREKSI') {
             return redirect()->route('dashboard.user');
         }
         return $next($request);

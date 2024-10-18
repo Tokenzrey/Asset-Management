@@ -16,7 +16,7 @@ class CekDoubleUserStatus
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'MANAGER') {
+        if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'DIREKSI') {
             return $next($request);
         }
         return redirect()->route('dashboard.user');

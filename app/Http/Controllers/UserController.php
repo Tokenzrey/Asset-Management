@@ -84,7 +84,7 @@ class UserController extends Controller
             'jenis_kelamin'     => $request->jk,
             'no_telepon'        => $request->no_telepon,
             'alamat'            => $request->alamat,
-            'status'            => (session('userdata')['status'] == 'ADMIN') ? $request->status : 'USER',
+            'status'            => $request->status,
             'divisi_id'         => $request->divisi_id,
             'email'             => $request->email,
             'username'          => $request->username,
@@ -106,6 +106,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
+            console.log("tidak ada apa apa");
             return back()->withInput()->with('error', 'User tidak ditemukan!');
         }
         $user->where(['id' => $id])->update(['aktif' => 't']);

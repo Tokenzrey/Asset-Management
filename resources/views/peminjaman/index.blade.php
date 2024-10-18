@@ -1,7 +1,7 @@
 @extends('includes.template')
 
 @section('menunya')
-@if (session('userdata')['status'] == 'ADMIN')
+@if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'DIREKSI')
     <h2>
         Transaksi <i class="fa fa-solid fa-arrow-right"></i> Peminjaman
     </h2>

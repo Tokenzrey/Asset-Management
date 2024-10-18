@@ -126,6 +126,12 @@
                                                 required id="status_a" name="status" value="ADMIN"
                                                 class="form-check-input"> ADMIN
                                         </label>
+                                        
+                                        <label for="status_a" class="form-check-label ">
+                                            <input type="radio" {{ $status == 'DIREKSI' ? 'checked' : '' }} checked
+                                                required id="status_a" name="status" value="DIREKSI"
+                                                class="form-check-input"> DIREKSI
+                                        </label>
 
                                         <label for="status_u" class="form-check-label">
                                             <input type="radio" {{ $status == 'USER' ? 'checked' : '' }} checked required
