@@ -31,12 +31,13 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('ceksesi')-
 Route::get('/', [DashboardController::class, 'admin'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('dashboard.admin');
 Route::get('/dashboard', [DashboardController::class, 'user'])->middleware('ceksesi')->name('dashboard.user');
 
-//divisi
-Route::get('/divisi', [DivisiController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('divisi.index');
-Route::post('/divisi/create', [DivisiController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('divisi.store');
-Route::get('/divisi/show/{id}', [DivisiController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('divisi.show');
-Route::put('/divisi/update/{id}', [DivisiController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('divisi.update');
-Route::get('/divisi/delete/{id}', [DivisiController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('divisi.destroy');
+//divisi (turned off as not used)
+
+// Route::get('/divisi', [DivisiController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('divisi.index');
+// Route::post('/divisi/create', [DivisiController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('divisi.store');
+// Route::get('/divisi/show/{id}', [DivisiController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('divisi.show');
+// Route::put('/divisi/update/{id}', [DivisiController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('divisi.update');
+// Route::get('/divisi/delete/{id}', [DivisiController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('divisi.destroy');
 
 //user pengguna
 Route::get('/user', [UserController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('user.index');
