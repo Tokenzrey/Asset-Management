@@ -81,12 +81,23 @@ class BrandController extends Controller
      * @param  int  $id
      * @return RedirectResponse
      */
-    public function destroy(int $id): RedirectResponse
+    public function destroy($id)
     {
-        $brand = Brand::findOrFail($id);
-        $brand->delete();
+        try {
+            $brand = Brand::findOrFail($id);
+            $brand->delete();
 
-        Alert::success('Success', 'Brand successfully deleted');
+            Alert::success('Success', 'Data Brand Berhasil Dihapus');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Memeriksa kode error 1451, yaitu constraint violation karena relasi foreign key
+            if ($e->getCode() == 23000) {
+                Alert::error('Error', 'Data Brand Tidak Bisa Dihapus Karena Masih Berelasi dengan Data Lain');
+            } else {
+                Alert::error('Error', 'Terjadi Kesalahan saat Menghapus Data Brand');
+            }
+        }
+
         return redirect()->route('brand.index');
     }
+
 }

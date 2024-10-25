@@ -60,14 +60,19 @@ class JenisPemeliharaanController extends Controller
     public function destroy($id)
     {
         $jenis_pemeliharaan = JenisPemeliharaan::find($id);
+
         if (!$jenis_pemeliharaan) {
             Alert::error('Error', 'Jenis Pemeliharaan Tidak Ditemukan');
             return redirect()->route('jenis_pemeliharaan.index');
         }
 
-        // Update kolom aktif ke 't' untuk soft delete
-        $jenis_pemeliharaan->update(['aktif' => 't']);
-        Alert::success('Success', 'Data Berhasil Dihapus');
+        // Update kolom 'aktif' menjadi 't' untuk soft delete
+        if ($jenis_pemeliharaan->update(['aktif' => 't'])) {
+            Alert::success('Success', 'Data Berhasil Dihapus');
+        } else {
+            Alert::error('Error', 'Gagal Menghapus Data');
+        }
+
         return redirect()->route('jenis_pemeliharaan.index');
     }
 }

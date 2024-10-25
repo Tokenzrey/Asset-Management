@@ -39,7 +39,7 @@ class PeminjamanController extends Controller
                         ->orWhere('aset.tempat', 'like', '%' . strtolower($keyword_search) . '%')
                         ->orWhere('kategori.nama', 'like', '%' . strtolower($keyword_search) . '%')
                         ->orWhere('ruang.nama', 'like', '%' . strtolower($keyword_search) . '%');
-                        // ->orWhere('aset.nilai_harga', 'like', '%' . strtolower($keyword_search) . '%');
+                    // ->orWhere('aset.nilai_harga', 'like', '%' . strtolower($keyword_search) . '%');
                 });
             })
             ->where('aset.aktif', '=', 'y')
@@ -61,7 +61,7 @@ class PeminjamanController extends Controller
             $aset = Aset::where('aktif', '=', 'y')->get();
         }
         return view('peminjaman.qrcode', [
-            'aset'  => $aset
+            'aset' => $aset
         ]);
     }
 
@@ -224,26 +224,34 @@ class PeminjamanController extends Controller
         }
 
         return view('peminjaman_data.history', [
-            'history_peminjaman'    => $history_peminjaman,
-            'user'                  => $user,
-            'kategori'              => $kategori,
-            'aset'                  => $aset,
-            'ruang'                 => $ruang,
-            'filter'                => $filter,
-            'userSeringPinjam'      => $userSeringPinjam,
-            'asetSeringDipinjam'    => $asetSeringDipinjam
+            'history_peminjaman' => $history_peminjaman,
+            'user' => $user,
+            'kategori' => $kategori,
+            'aset' => $aset,
+            'ruang' => $ruang,
+            'filter' => $filter,
+            'userSeringPinjam' => $userSeringPinjam,
+            'asetSeringDipinjam' => $asetSeringDipinjam
         ]);
     }
 
     public function destroy_history($id)
     {
         $peminjaman = Peminjaman::find($id);
+
         if (!$peminjaman) {
             Alert::error('Error', 'Data History Peminjaman Tidak Ditemukan');
             return redirect()->route('peminjaman.data');
         }
-        $peminjaman->where('id', $id)->delete();
-        Alert::success('Success', 'Data dari history peminjaman Berhasil Dihapus | Data tidak bisa Dikembalikan');
+
+        $isDeleted = $peminjaman->delete();
+
+        if ($isDeleted) {
+            Alert::success('Success', 'Data dari history peminjaman berhasil dihapus | Data tidak bisa dikembalikan');
+        } else {
+            Alert::error('Error', 'Gagal menghapus data dari history peminjaman');
+        }
+
         return redirect()->route('peminjaman.data');
     }
 

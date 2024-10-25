@@ -221,7 +221,8 @@
                                         <a class="btn btn-detail text-white shadow btn-xs sharp me-1"
                                             href="{{ route('user.show', ['id' => $item->id]) }}"><i
                                                 class="fas fa-eye"></i></a>
-                                        @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'DIREKSI')
+                                        @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status']
+                                        == 'DIREKSI')
                                         <a class="btn btn-edit text-white shadow btn-xs sharp me-1" title="Edit"
                                             data-bs-toggle="modal" data-bs-target=".edit{{ $item->id }}"><i
                                                 class="fas fa-edit"></i></a>
@@ -340,8 +341,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-xl-4 mt-2">
@@ -349,27 +348,23 @@
                                                                 <b>Role</b>
                                                             </label>
                                                             <div class="radio">
-                                                                <label for="status_a" class="form-check-label ">
-                                                                    <input type="radio" {{ $status=='ADMIN' ? 'checked'
-                                                                        : '' }} checked required id="status_a"
-                                                                        name="status" value="ADMIN"
-                                                                        class="form-check-input"> ADMIN
+                                                                <label for="status_a" class="form-check-label">
+                                                                    <input type="radio" {{ $item->status=='ADMIN' ? 'checked'
+                                                                        : '' }} required id="status_a" name="status"
+                                                                        value="ADMIN" class="form-check-input"> ADMIN
                                                                 </label>
 
-                                                                <label for="status_a" class="form-check-label ">
-                                                                    <input type="radio" {{ $status=='DIREKSI' ? 'checked'
-                                                                        : '' }} checked required id="status_a"
+                                                                <label for="status_d" class="form-check-label">
+                                                                    <input type="radio" {{ $item->status=='DIREKSI'
+                                                                        ? 'checked' : '' }} required id="status_d"
                                                                         name="status" value="DIREKSI"
                                                                         class="form-check-input"> DIREKSI
                                                                 </label>
 
-
                                                                 <label for="status_u" class="form-check-label">
-                                                                    <input type="radio" {{ $status=='USER' ? 'checked'
-                                                                        : '' }} checked required id="status_u"
-                                                                        name="status" value="USER"
-                                                                        class="form-check-input">
-                                                                    USER
+                                                                    <input type="radio" {{ $item->status=='USER' ? 'checked'
+                                                                        : '' }} required id="status_u" name="status"
+                                                                        value="USER" class="form-check-input"> USER
                                                                 </label>
                                                             </div>
                                                         </div>

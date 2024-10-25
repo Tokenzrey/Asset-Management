@@ -73,14 +73,19 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         $kategori = Kategori::find($id);
+
         if (!$kategori) {
             Alert::error('Error', 'Kategori Tidak Ditemukan');
             return redirect()->route('kategori.index');
         }
 
-        $kategori->update(['aktif' => 't']);
+        // Cek apakah update berhasil
+        if ($kategori->update(['aktif' => 't'])) {
+            Alert::success('Success', 'Data Berhasil Dihapus');
+        } else {
+            Alert::error('Error', 'Gagal Menghapus Data');
+        }
 
-        Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('kategori.index');
     }
 }
