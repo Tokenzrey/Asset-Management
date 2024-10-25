@@ -166,7 +166,7 @@ SIMAS PT ABC
                                         {{ session('userdata')['nama'] }}
                                     </h2>
                                     <span>Terus pantau dan kelola aset agar dapat terkelola dengan baik</span>
-                                    <a href="{{ route('aset.index') }}" class="btn btn-rounded  fs-18 font-w500">Lihat
+                                    <a href="{{ route('aset.index') }}" class="btn btn-rounded fs-18 font-w500">Lihat
                                         Daftar Aset</a>
                                 </div>
                                 <div class="col-xl-5 col-sm-6">
@@ -184,6 +184,7 @@ SIMAS PT ABC
                                         $aa = 0;
                                         $bb = 0;
                                         @endphp
+
                                         @foreach ($viewTotalPeminjaman as $x)
                                         @if ($x->status == 'PROSES')
                                         @php
@@ -195,9 +196,10 @@ SIMAS PT ABC
                                         @endphp
                                         @endif
                                         @endforeach
+
                                         @php
                                         $hsl = $aa + $bb;
-                                        $hslpersenanbaru = ($hsl * 100) / $jml_aset;
+                                        $hslpersenanbaru = $jml_aset > 0 ? ($hsl * 100) / $jml_aset : 0;
                                         @endphp
 
                                         <span class="text-center d-block fs-18 font-w600 mb-2">

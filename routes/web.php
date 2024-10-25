@@ -5,7 +5,8 @@ use App\Http\Controllers\AsetController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RuangController;
-use App\Http\Controllers\DivisiController;
+// use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
@@ -49,30 +50,37 @@ Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->middleware(
 //kategori
 Route::get('/kategori', [KategoriController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('kategori.index');
 Route::post('/kategori/create', [KategoriController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('kategori.store');
-Route::get('/kategori/show/{id}', [KategoriController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('kategori.show');
+// Route::get('/kategori/show/{id}', [KategoriController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('kategori.show');
 Route::put('/kategori/update/{id}', [KategoriController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('kategori.update');
 Route::get('/kategori/delete/{id}', [KategoriController::class, 'destroy'])->middleware(['ceksesi', 'cekdoubleuserstatus'])->name('kategori.destroy');
+
+//brand
+Route::get('/brand', [BrandController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('brand.index');
+Route::post('/brand/create', [BrandController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('brand.store');
+// Route::get('/brand/show/{id}', [BrandController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('brand.show');
+Route::put('/brand/update/{id}', [BrandController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('brand.update');
+Route::get('/brand/delete/{id}', [BrandController::class, 'destroy'])->middleware(['ceksesi', 'cekdoubleuserstatus'])->name('brand.destroy');
 
 //lokasi
 Route::get('/lokasi', [RuangController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('ruang.index');
 Route::post('/lokasi/create', [RuangController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('ruang.store');
-Route::get('/lokasi/show/{id}', [RuangController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('ruang.show');
+// Route::get('/lokasi/show/{id}', [RuangController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('ruang.show');
 Route::put('/lokasi/update/{id}', [RuangController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('ruang.update');
 Route::get('/lokasi/delete/{id}', [RuangController::class, 'destroy'])->middleware(['ceksesi', 'cekdoubleuserstatus'])->name('ruang.destroy');
 
 //jenis_pemeliharaan
 Route::get('/jenis_pemeliharaan', [JenisPemeliharaanController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jenis_pemeliharaan.index');
 Route::post('/jenis_pemeliharaan/create', [JenisPemeliharaanController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jenis_pemeliharaan.store');
-Route::get('/jenis_pemeliharaan/show/{id}', [JenisPemeliharaanController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jenis_pemeliharaan.show');
+// Route::get('/jenis_pemeliharaan/show/{id}', [JenisPemeliharaanController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jenis_pemeliharaan.show');
 Route::put('/jenis_pemeliharaan/update/{id}', [JenisPemeliharaanController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jenis_pemeliharaan.update');
 Route::get('jenis_pemeliharaan/delete/{id}', [JenisPemeliharaanController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jenis_pemeliharaan.destroy');
 
-//supplier
-Route::get('/vendors', [\App\Http\Controllers\VendorController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.index');
-Route::post('/vendors/create', [\App\Http\Controllers\VendorController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.store');
-Route::get('/vendors/show/{id}', [\App\Http\Controllers\VendorController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.show');
-Route::put('/vendors/update/{id}', [\App\Http\Controllers\VendorController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.update');
-Route::get('/vendors/delete/{id}', [\App\Http\Controllers\VendorController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.destroy');
+//vendor
+Route::get('/vendors', [\App\Http\Controllers\VendorController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('vendor.index');
+Route::post('/vendors/create', [\App\Http\Controllers\VendorController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('vendor.store');
+// Route::get('/vendors/show/{id}', [\App\Http\Controllers\VendorController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('vendor.show');
+Route::put('/vendors/update/{id}', [\App\Http\Controllers\VendorController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('vendor.update');
+Route::get('/vendors/delete/{id}', [\App\Http\Controllers\VendorController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('vendor.destroy');
 
 //aset
 Route::get('/aset', [AsetController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.index');
@@ -93,7 +101,7 @@ Route::post('/import-data-aset', [AsetController::class, 'aset_import'])->middle
 //jadwal pemeliharaan (maintenance)
 Route::get('/jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jadwal_pemeliharaan.index');
 Route::post('/jadwal_pemeliharaan/create', [JadwalPemeliharaanController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jadwal_pemeliharaan.store');
-Route::get('/jadwal_pemeliharaan/show/{id}', [JadwalPemeliharaanController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jadwal_pemeliharaan.show');
+// Route::get('/jadwal_pemeliharaan/show/{id}', [JadwalPemeliharaanController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jadwal_pemeliharaan.show');
 Route::put('/jadwal_pemeliharaan/update/{id}', [JadwalPemeliharaanController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jadwal_pemeliharaan.update');
 Route::get('jadwal_pemeliharaan/delete/{id}', [JadwalPemeliharaanController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jadwal_pemeliharaan.destroy');
 

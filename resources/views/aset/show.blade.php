@@ -62,7 +62,7 @@
                                     $ad = old('anggaran_dana_id');
                                     $jp = old('jenis_pemeliharaan_id');
                                     $rua = old('ruang_id');
-                                    $sup = old('supplier_id');
+                                    $sup = old('vendor_id');
                                 @endphp
                                 <li class="nav-item"><a href="#detail-aset" data-bs-toggle="tab"
                                         class="nav-link active show">Detail</a>
@@ -91,7 +91,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h5 class="mt-2">Brand Aset :
-                                                    {{ $aset->brand }}
+                                                    {{ $aset->brand->name }}
                                                 </h5>
                                             </div>
                                             <div class="col-md-6">
@@ -184,7 +184,6 @@
                                                                 placeholder="Masukkan Kode" name="kode" disabled
                                                                 value="{{ $aset->kode }}" required>
                                                         </div>
-
                                                         <div class="col-xl-6 mt-2">
                                                             <label><b>Tanggal Pembelian</b></label>
                                                             <input type="date" class="form-control"
@@ -198,11 +197,11 @@
                                                     <div class="row">
                                                         <div class="col-xl-6 mt-2">
                                                             <label><b>Vendor</b></label>
-                                                            <select class="form-control" name="supplier_id"
-                                                                id="supplier_id" required>
-                                                                <option value="{{ $aset->supplier_id }}" hidden>
+                                                            <select class="form-control" name="vendor_id"
+                                                                id="vendor_id" required>
+                                                                <option value="{{ $aset->vendor_id }}" hidden>
                                                                     {{ $aset->vendor->nama }}</option>
-                                                                @foreach ($supplier as $data)
+                                                                @foreach ($vendor as $data)
                                                                     <option value="{{ $data->id }}"
                                                                         {{ $sup == $data->id ? 'selected' : '' }}>
                                                                         {{ $data->nama }}
@@ -248,9 +247,19 @@
                                                     <div class="row">
                                                         <div class="col-xl-6 mt-2">
                                                             <label><b>Brand</b></label>
-                                                            <input type="text" class="form-control" id="brand"
+                                                            {{-- <input type="text" class="form-control" id="brand"
                                                                 placeholder="Masukkan Brand Aset" name="brand"
-                                                                value="{{ $aset->brand }}" required>
+                                                                value="{{ $aset->brand }}" required> --}}
+                                                            <select class="form-control" name="brand_id" id="brand_id" required>
+                                                                <option value="{{ $aset->brand->id }}" hidden>
+                                                                    {{ $aset->brand->name }}
+                                                                </option>
+                                                                @foreach ($brands as $data)
+                                                                <option value="{{ $data->id }}" {{ $jp==$data->id ? 'selected' : '' }}>
+                                                                    {{ $data->name }}
+                                                                </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                         <div class="col-xl-6 mt-2">
                                                             <label><b>Jenis Pemeliharaan</b></label>

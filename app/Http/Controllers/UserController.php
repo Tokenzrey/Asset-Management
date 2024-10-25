@@ -97,7 +97,7 @@ class UserController extends Controller
         if ($gambar){
             $data_user['gambar'] = $gambar;
         }
-        $user->where(['id' => $id])->update($data_user);
+        $user->update($data_user);
         Alert::success('Success', 'User Berhasil Di Update!');
         return redirect()->route('user.index');
     }
@@ -106,10 +106,9 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
-            console.log("tidak ada apa apa");
             return back()->withInput()->with('error', 'User tidak ditemukan!');
         }
-        $user->where(['id' => $id])->update(['aktif' => 't']);
+        $user->update(['aktif' => 't']);
         Alert::success('Success', 'User Berhasil Dihapus');
         return redirect()->route('user.index');
     }
