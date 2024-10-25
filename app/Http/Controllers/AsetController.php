@@ -209,12 +209,20 @@ class AsetController extends Controller
     public function destroy($id)
     {
         $aset = Aset::find($id);
+
         if (!$aset) {
             Alert::error('Error', 'Data Aset Tidak Ditemukan');
             return redirect()->route('aset.index');
         }
-        $aset->where('id', $id)->update(['aktif' => 't']);
-        Alert::success('Success', 'Data Aset Berhasil Dihapus');
+
+        $isUpdated = $aset->where('id', $id)->update(['aktif' => 't']);
+
+        if ($isUpdated) {
+            Alert::success('Success', 'Data Aset Berhasil Dihapus');
+        } else {
+            Alert::error('Error', 'Gagal Menghapus Data Aset');
+        }
+
         return redirect()->route('aset.index');
     }
 

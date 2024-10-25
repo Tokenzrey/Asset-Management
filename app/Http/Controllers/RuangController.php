@@ -62,15 +62,19 @@ class RuangController extends Controller
     public function destroy($id)
     {
         $ruang = Ruang::find($id);
+
         if (!$ruang) {
             Alert::error('Error', 'Lokasi Tidak Ditemukan');
             return redirect()->route('ruang.index');
         }
 
-        // Update langsung tanpa where karena $ruang sudah berupa instance dari Ruang
-        $ruang->update(['aktif' => 't']);
+        // Coba lakukan update, dan cek apakah update berhasil
+        if ($ruang->update(['aktif' => 't'])) {
+            Alert::success('Success', 'Data Lokasi Berhasil dihapus');
+        } else {
+            Alert::error('Error', 'Gagal Menghapus Data Lokasi');
+        }
 
-        Alert::success('Success', 'Data Lokasi Berhasil dihapus');
         return redirect()->route('ruang.index');
     }
 }

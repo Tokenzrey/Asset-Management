@@ -70,13 +70,18 @@ class JadwalPemeliharaanController extends Controller
     public function destroy($id)
     {
         $jadwal_pemeliharaan = JadwalPemeliharaan::find($id);
+
         if (!$jadwal_pemeliharaan) {
             return back()->withInput()->with('error', 'Jadwal Pemeliharaan tidak ditemukan!');
         }
 
-        // Perbaiki penggunaan where() untuk update
-        $jadwal_pemeliharaan->where('id', $id)->update(['aktif' => 't']);
-        Alert::success('Success', 'Data Berhasil Dihapus');
+        // Langsung update kolom 'aktif' pada instance yang ditemukan
+        if ($jadwal_pemeliharaan->update(['aktif' => 't'])) {
+            Alert::success('Success', 'Data Berhasil Dihapus');
+        } else {
+            return back()->with('error', 'Gagal menghapus Jadwal Pemeliharaan.');
+        }
+
         return redirect()->route('jadwal_pemeliharaan.index');
     }
 }

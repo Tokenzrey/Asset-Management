@@ -90,7 +90,7 @@ class UserController extends Controller
             'username'          => $request->username,
             'updated_at'        => date('Y-m-d H:m:s')
         ];
-        if($request->password) {
+        if($request->password != $user->password) {
             $data_user['password'] = Hash::make($request->password);
         }
 
@@ -105,11 +105,17 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+
         if (!$user) {
             return back()->withInput()->with('error', 'User tidak ditemukan!');
         }
-        $user->update(['aktif' => 't']);
-        Alert::success('Success', 'User Berhasil Dihapus');
-        return redirect()->route('user.index');
+
+        // Coba lakukan update dan cek hasilnya
+        if ($user->update(['aktif' => 't'])) {
+            Alert::success('Success', 'User Berhasil Dihapus');
+            return redirect()->route('user.index');
+        } else {
+            return back()->withInput()->with('error', 'Gagal menghapus user!');
+        }
     }
 }

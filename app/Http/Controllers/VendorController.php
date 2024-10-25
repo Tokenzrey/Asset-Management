@@ -63,12 +63,20 @@ class VendorController extends Controller
     public function destroy($id)
     {
         $vendor = Vendor::find($id);
-        if(!$vendor) {
+
+        if (!$vendor) {
             Alert::error('Error', 'Vendor Tidak Ditemukan');
             return redirect()->route('vendor.index');
         }
-        $vendor->update(['aktif' => 't']);
-        Alert::success('Success', 'Data Vendor Berhasil Dihapus');
+
+        $isUpdated = $vendor->update(['aktif' => 't']);
+
+        if ($isUpdated) {
+            Alert::success('Success', 'Data Vendor Berhasil Dihapus');
+        } else {
+            Alert::error('Error', 'Gagal Menghapus Data Vendor');
+        }
+
         return redirect()->route('vendor.index');
     }
 }
