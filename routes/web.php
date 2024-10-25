@@ -75,12 +75,12 @@ Route::post('/jenis_pemeliharaan/create', [JenisPemeliharaanController::class, '
 Route::put('/jenis_pemeliharaan/update/{id}', [JenisPemeliharaanController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jenis_pemeliharaan.update');
 Route::get('jenis_pemeliharaan/delete/{id}', [JenisPemeliharaanController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('jenis_pemeliharaan.destroy');
 
-//supplier
-Route::get('/vendors', [\App\Http\Controllers\VendorController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.index');
-Route::post('/vendors/create', [\App\Http\Controllers\VendorController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.store');
-// Route::get('/vendors/show/{id}', [\App\Http\Controllers\VendorController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.show');
-Route::put('/vendors/update/{id}', [\App\Http\Controllers\VendorController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.update');
-Route::get('/vendors/delete/{id}', [\App\Http\Controllers\VendorController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('supplier.destroy');
+//vendor
+Route::get('/vendors', [\App\Http\Controllers\VendorController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('vendor.index');
+Route::post('/vendors/create', [\App\Http\Controllers\VendorController::class, 'store'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('vendor.store');
+// Route::get('/vendors/show/{id}', [\App\Http\Controllers\VendorController::class, 'show'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('vendor.show');
+Route::put('/vendors/update/{id}', [\App\Http\Controllers\VendorController::class, 'update'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('vendor.update');
+Route::get('/vendors/delete/{id}', [\App\Http\Controllers\VendorController::class, 'destroy'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('vendor.destroy');
 
 //aset
 Route::get('/aset', [AsetController::class, 'index'])->middleware('ceksesi', 'cekdoubleuserstatus')->name('aset.index');

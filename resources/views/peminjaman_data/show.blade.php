@@ -59,7 +59,7 @@
                             $ad = old('anggaran_dana_id');
                             $jp = old('jenis_pemeliharaan_id');
                             $rua = old('ruang_id');
-                            $sup = old('supplier_id');
+                            $sup = old('vendor_id');
                             @endphp
                             <li class="nav-item"><a href="#detail-aset" data-bs-toggle="tab"
                                     class="nav-link active show">Detail Peminjaman Aset</a>

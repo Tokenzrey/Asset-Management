@@ -31,7 +31,7 @@
                             $ad = old('anggaran_dana_id');
                             $jp = old('jenis_pemeliharaan_id');
                             $rua = old('ruang_id');
-                            $sup = old('supplier_id');
+                            $sup = old('vendor_id');
                         @endphp
 
                         <div class="card-body">
@@ -115,7 +115,7 @@
                                                 <th>Gambar</th>
                                                 <th>Kondisi</th>
                                                 <th>Lokasi</th>
-                                                <th>Supplier</th>
+                                                <th>Vendor</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -135,7 +135,7 @@
                                                     </td>
                                                     <td>{{ $item->kondisi }}</td>
                                                     <td>{{ $item->ruang->nama }}</td>
-                                                    <td>{{ $item->supplier->nama }}</td>
+                                                    <td>{{ $item->vendor->nama }}</td>
                                                     <td>
                                                         <div class="d-flex">
                                                             <a class="btn btn-qrcode text-white shadow btn-xs sharp me-1"

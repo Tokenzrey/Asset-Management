@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <form action="{{ route('supplier.store') }}" method="POST"
+                                    <form action="{{ route('vendor.store') }}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
@@ -99,7 +99,7 @@
                                 $no = 1;
                             @endphp
                             <tbody>
-                                @foreach ($supplier as $item)
+                                @foreach ($vendor as $item)
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->nama }}</td>
@@ -111,7 +111,7 @@
                                                     data-bs-toggle="modal" data-bs-target=".edit{{ $item->id }}"><i
                                                         class="fas fa-edit"></i></a>
                                                 <a onclick="confirmation(event)"
-                                                    href="{{ route('supplier.destroy', ['id' => $item->id]) }}"
+                                                    href="{{ route('vendor.destroy', ['id' => $item->id]) }}"
                                                     class="btn btn-delete text-white shadow btn-xs sharp me-1"><i
                                                         class="fa fa-trash"></i></a>
                                             </div>
@@ -132,7 +132,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ route('supplier.update', $item->id) }}" method="POST"
+                                                    <form action="{{ route('vendor.update', $item->id) }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
