@@ -15,6 +15,7 @@ use App\Exports\AsetExport;
 use App\Imports\AsetImport;
 use Illuminate\Http\Request;
 use App\Models\JenisPemeliharaan;
+use App\Models\Brand;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -35,7 +36,8 @@ class AsetController extends Controller
         $kategori = Kategori::where('aktif', 'y')->get();
         $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', 'y')->get();
         $ruang = Ruang::where('aktif', 'y')->get();
-        $supplier = Vendor::where('aktif', 'y')->get();
+        $vendor = Vendor::where('aktif', 'y')->get();
+        $brands = Brand::all();
 
         $maintenance = Aset::getMaintenanceTime($aset);
 
@@ -58,7 +60,8 @@ class AsetController extends Controller
             'kategori' => $kategori,
             'ruang' => $ruang,
             'jenis_pemeliharaan' => $jenis_pemeliharaan,
-            'supplier' => $supplier,
+            'vendor' => $vendor,
+            'brands' => $brands,
             'kondisi' => ['Baik', 'Rusak Ringan', 'Rusak Berat'],
         ]);
     }
@@ -100,7 +103,7 @@ class AsetController extends Controller
             'jumlah' => $jumlah,
             'satuan' => $satuan,
             'tanggal_pembelian' => $request->tanggal_pembelian,
-            'brand' => $request->brand,
+            'brand_id' => $request->brand_id,
             'kondisi' => $request->kondisi,
             'gambar' => ($gambar) ? $gambar : null,
             'nama_penerima' => $request->nama_penerima,
@@ -118,17 +121,19 @@ class AsetController extends Controller
     public function show($id)
     {
         $aset = Aset::find($id);
-        $supplier = Vendor::where('aktif', '=', 'y')->get();
+        $vendor = Vendor::where('aktif', '=', 'y')->get();
         $kategori = Kategori::where('aktif', '=', 'y')->get();
-        $ruang = Ruang::where('aktif', '=', 'y');
-        $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y');
+        $ruang = Ruang::where('aktif', '=', 'y')->get();
+        $jenis_pemeliharaan = JenisPemeliharaan::where('aktif', '=', 'y')->get();
+        $brands = Brand::all();
 
         return view('aset.show', [
             'aset' => $aset,
-            'supplier' => $supplier,
+            'vendor' => $vendor,
             'kategori' => $kategori,
             'ruang' => $ruang,
             'jenis_pemeliharaan' => $jenis_pemeliharaan,
+            'brands' => $brands,
             'kondisi' => ['Baik', 'Rusak Ringan', 'Rusak Berat']
         ]);
     }
@@ -146,7 +151,7 @@ class AsetController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'tanggal_pembelian' => 'required|date',
-            'brand' => 'required|string|max:100',
+            'brand_id' => 'required',
             'kondisi' => 'required|string',
             'tempat' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
@@ -175,7 +180,7 @@ class AsetController extends Controller
             'jumlah' => 1,  // Assuming static values, adjust if needed
             'satuan' => 'unit',  // Static value, adjust if needed
             'tanggal_pembelian' => $request->tanggal_pembelian,
-            'brand' => $request->brand,
+            'brand_id' => $request->brand_id,
             'kondisi' => $request->kondisi,
             'tempat' => $request->tempat,
             'deskripsi' => $request->deskripsi,
@@ -197,7 +202,7 @@ class AsetController extends Controller
         Alert::success('Success', 'Aset Berhasil Di Update!');
 
         // Redirect back to the asset index
-        return redirect()->route('aset.index');
+        return redirect()->route('aset.show', $id);
     }
 
 

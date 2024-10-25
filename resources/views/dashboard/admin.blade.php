@@ -166,7 +166,7 @@ SIMAS PT ABC
                                         {{ session('userdata')['nama'] }}
                                     </h2>
                                     <span>Terus pantau dan kelola aset agar dapat terkelola dengan baik</span>
-                                    <a href="{{ route('aset.index') }}" class="btn btn-rounded  fs-18 font-w500">Lihat
+                                    <a href="{{ route('aset.index') }}" class="btn btn-rounded fs-18 font-w500">Lihat
                                         Daftar Aset</a>
                                 </div>
                                 <div class="col-xl-5 col-sm-6">

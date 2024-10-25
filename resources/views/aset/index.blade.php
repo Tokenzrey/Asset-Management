@@ -90,7 +90,7 @@
                                                             required>
                                                             <option value="" hidden>Pilih
                                                                 Vendor</option>
-                                                            @foreach ($supplier as $data)
+                                                            @foreach ($vendor as $data)
                                                             <option value="{{ $data->id }}" {{ $sup==$data->id ?
                                                                 'selected' : '' }}>
                                                                 {{ $data->nama }}
@@ -130,9 +130,19 @@
                                                 <div class="row">
                                                     <div class="col-xl-6 mt-2">
                                                         <label><b>Brand</b></label>
-                                                        <input type="text" class="form-control" id="brand"
+                                                        {{-- <input type="text" class="form-control" id="brand"
                                                             placeholder="Masukkan Brand Aset" name="brand"
-                                                            value="{{ old('brand') }}" required>
+                                                            value="{{ old('brand') }}" required> --}}
+                                                        <select class="form-control" name="brand_id" id="brand_id" required>
+                                                            <option value="" hidden>
+                                                                Data Brand
+                                                            </option>
+                                                            @foreach ($brands as $data)
+                                                            <option value="{{ $data->id }}" {{ $jp==$data->id ? 'selected' : '' }}>
+                                                                {{ $data->name }}
+                                                            </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="col-xl-6 mt-2">
                                                         <label><b>Jenis
@@ -346,7 +356,7 @@
                                                         width="70px">
                                                     <h3 class="modal-title">
                                                         <b>Edit Aset</b>
-                                                    </h3>       
+                                                    </h3>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close">
                                                     </button>
@@ -387,7 +397,7 @@
                                                                         <option value="{{ $item->vendor_id }}" hidden>
                                                                             {{ $item->vendor->nama }}
                                                                         </option>
-                                                                        @foreach ($supplier as $data)
+                                                                        @foreach ($vendor as $data)
                                                                         <option value="{{ $data->id }}" {{ $sup==$data->
                                                                             id ? 'selected' : '' }}>
                                                                             {{ $data->nama }}
@@ -438,9 +448,19 @@
                                                             <div class="row">
                                                                 <div class="col-xl-6 mt-2">
                                                                     <label><b>Brand</b></label>
-                                                                    <input type="text" class="form-control" id="brand"
+                                                                    {{-- <input type="text" class="form-control" id="brand"
                                                                         placeholder="Masukkan Brand Aset" name="brand"
-                                                                        value="{{ $item->brand }}" required>
+                                                                        value="{{ $item->brand }}" required> --}}
+                                                                    <select class="form-control" name="brand_id" id="brand_id" required>
+                                                                        <option value="{{ $item->brand->id }}" hidden>
+                                                                            {{ $item->brand->name }}
+                                                                        </option>
+                                                                        @foreach ($brands as $data)
+                                                                        <option value="{{ $data->id }}" {{ $jp==$data->id ? 'selected' : '' }}>
+                                                                            {{ $data->name }}
+                                                                        </option>
+                                                                        @endforeach
+                                                                    </select>
                                                                 </div>
                                                                 <div class="col-xl-6 mt-2">
                                                                     <label><b>Jenis

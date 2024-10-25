@@ -17,7 +17,7 @@ class Aset extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'kode', 'nama', 'jumlah', 'satuan', 'tanggal_pembelian', 'brand', 'aktif',
+        'kode', 'nama', 'jumlah', 'satuan', 'tanggal_pembelian', 'brand_id', 'aktif',
         'tempat', 'kondisi', 'gambar', 'nama_penerima', 'deskripsi',
         'kategori_id', 'jenis_pemeliharaan_id', 'ruang_id', 'vendor_id'
     ];
@@ -27,7 +27,7 @@ class Aset extends Model
             'jumlah'                => 'required',
             'satuan'                => 'required',
             'gambar'                => 'required|mimes:png,jpg,jpeg,jfif',
-            'brand'                 => 'required|min:3',
+            'brand_id'              => 'required',
             'nama_penerima'         => 'required|min:3',
             'tempat'                => 'required|min:3',
             'kondisi'               => 'required',
@@ -105,5 +105,10 @@ class Aset extends Model
             }
         }
         return $masa_maintenance;
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 }
