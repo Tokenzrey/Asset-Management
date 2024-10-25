@@ -184,6 +184,7 @@ SIMAS PT ABC
                                         $aa = 0;
                                         $bb = 0;
                                         @endphp
+
                                         @foreach ($viewTotalPeminjaman as $x)
                                         @if ($x->status == 'PROSES')
                                         @php
@@ -195,9 +196,10 @@ SIMAS PT ABC
                                         @endphp
                                         @endif
                                         @endforeach
+
                                         @php
                                         $hsl = $aa + $bb;
-                                        $hslpersenanbaru = ($hsl * 100) / $jml_aset;
+                                        $hslpersenanbaru = $jml_aset > 0 ? ($hsl * 100) / $jml_aset : 0;
                                         @endphp
 
                                         <span class="text-center d-block fs-18 font-w600 mb-2">
