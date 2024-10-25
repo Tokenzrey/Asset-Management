@@ -66,6 +66,6 @@ class Kernel extends HttpKernel
         'ceksesi' => \App\Http\Middleware\CekSesi::class,
         'cekuserstatus' => \App\Http\Middleware\CekUserStatus::class,
         'cekdoubleuserstatus' => \App\Http\Middleware\CekDoubleUserStatus::class,
-
+        'cekstatus' => \App\Http\Middleware\CekStatus::class,
     ];
 }
