@@ -20,11 +20,11 @@ class JadwalPemeliharaanController extends Controller
         $total_jp = JadwalPemeliharaan::where('status', '=', 'belum')->count();
 
         return view('jadwal_pemeliharaan.index', [
-            'jp'                        => $jadwal_pemeliharaan,
-            'aset'                      => $aset,
-            'status'                    => ['Belum', 'Proses', 'Selesai'],
-            'today'                     => $today,
-            'total_jp'                  => $total_jp
+            'jp' => $jadwal_pemeliharaan,
+            'aset' => $aset,
+            'status' => ['Belum', 'Proses', 'Selesai'],
+            'today' => $today,
+            'total_jp' => $total_jp
         ]);
     }
 
@@ -37,10 +37,10 @@ class JadwalPemeliharaanController extends Controller
         }
 
         JadwalPemeliharaan::create([
-            'aset_id'           => $request->aset_id,
-            'tanggal_mulai'     => $request->tanggal_mulai,
-            'tanggal_selesai'   => $request->tanggal_selesai,
-            'status'            => $request->status
+            'aset_id' => $request->aset_id,
+            'tanggal_mulai' => $request->tanggal_mulai,
+            'tanggal_selesai' => $request->tanggal_selesai,
+            'status' => $request->status
         ]);
         Alert::success('Success', 'Jadwal Pemeliharaan Berhasil Ditambahkan');
         return redirect()->route('jadwal_pemeliharaan.index');
@@ -55,17 +55,17 @@ class JadwalPemeliharaanController extends Controller
         }
 
         $data_jadwal_pemeliharaan = [
-            'aset_id'           => $request->aset_id,
-            'tanggal_mulai'     => $request->tanggal_mulai,
-            'tanggal_selesai'   => $request->tanggal_selesai,
-            'status'            => $request->status
+            'aset_id' => $request->aset_id,
+            'tanggal_mulai' => $request->tanggal_mulai,
+            'tanggal_selesai' => $request->tanggal_selesai,
+            'status' => $request->status
         ];
 
-        $jadwal_pemeliharaan->where(['id' => $id])->update($data_jadwal_pemeliharaan);
+        // Perbaiki penggunaan where() untuk update
+        $jadwal_pemeliharaan->where('id', $id)->update($data_jadwal_pemeliharaan);
         Alert::success('Success', 'Jadwal Pemeliharaan Berhasil Di Update!');
         return redirect()->route('jadwal_pemeliharaan.index');
     }
-
 
     public function destroy($id)
     {
@@ -73,7 +73,9 @@ class JadwalPemeliharaanController extends Controller
         if (!$jadwal_pemeliharaan) {
             return back()->withInput()->with('error', 'Jadwal Pemeliharaan tidak ditemukan!');
         }
-        $jadwal_pemeliharaan->where(['id' => $id])->update(['aktif' => 't']);
+
+        // Perbaiki penggunaan where() untuk update
+        $jadwal_pemeliharaan->where('id', $id)->update(['aktif' => 't']);
         Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('jadwal_pemeliharaan.index');
     }

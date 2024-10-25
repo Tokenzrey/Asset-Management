@@ -242,7 +242,7 @@ class PeminjamanController extends Controller
             Alert::error('Error', 'Data History Peminjaman Tidak Ditemukan');
             return redirect()->route('peminjaman.data');
         }
-        $peminjaman->where(['id' => $id])->delete();
+        $peminjaman->where('id', $id)->delete();
         Alert::success('Success', 'Data dari history peminjaman Berhasil Dihapus | Data tidak bisa Dikembalikan');
         return redirect()->route('peminjaman.data');
     }

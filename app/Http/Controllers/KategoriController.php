@@ -19,25 +19,26 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|min:4'
+            'nama' => 'required'
         ]);
-        // from name make 2 character uppercase code from word if word more than 2 word make 2 character uppercase code from first word
+
+        // Generate 2-character uppercase code from the name
         $words = explode(' ', $request->nama);
-        $code = '';
-        if (count($words) > 1) {
-            $code = strtoupper(substr($words[0], 0, 1) . substr($words[1], 0, 1));
-        } else {
-            $code = strtoupper(substr($request->nama, 0, 2));
-        }
+        $code = count($words) > 1 ? strtoupper(substr($words[0], 0, 1) . substr($words[1], 0, 1)) : strtoupper(substr($request->nama, 0, 2));
+
+        // Ensure code is unique
         $codeUnique = Kategori::where('kode', '=', $code)->first();
         if ($codeUnique) {
-              $code = strtoupper(substr($request->nama, 0, 1) . substr($request->nama, 2, 1));
+            $code = strtoupper(substr($request->nama, 0, 1) . substr($request->nama, 2, 1));
         }
+
+        // Create new Kategori record
         Kategori::create([
             'nama' => $request->nama,
             'kode' => $code,
             'masa_manfaat' => $request->masa_manfaat,
         ]);
+
         Alert::success('Success', 'Data kategori Berhasil Ditambahkan');
         return redirect()->route('kategori.index');
     }
@@ -63,7 +64,8 @@ class KategoriController extends Controller
             'masa_manfaat' => $request->masa_manfaat
         ];
 
-        $kategori->where(['id' => $id])->update($data_kategori);
+        $kategori->update($data_kategori);
+
         Alert::success('Success', 'Kategori Berhasil Di Update!');
         return redirect()->route('kategori.index');
     }
@@ -71,11 +73,13 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         $kategori = Kategori::find($id);
-        if(!$kategori) {
+        if (!$kategori) {
             Alert::error('Error', 'Kategori Tidak Ditemukan');
             return redirect()->route('kategori.index');
         }
-        $kategori->where(['id' => $id])->update(['aktif' => 't']);
+
+        $kategori->update(['aktif' => 't']);
+
         Alert::success('Success', 'Data Berhasil Dihapus');
         return redirect()->route('kategori.index');
     }

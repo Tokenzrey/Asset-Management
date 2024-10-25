@@ -55,7 +55,7 @@ class VendorController extends Controller
             'deskripsi' => $request->deskripsi
         ];
 
-        $supplier->where(['id' => $id])->update($data_supplier);
+        $supplier->update($data_supplier);
         Alert::success('Success', 'Data Vendor Berhasil Di Update');
         return redirect()->route('supplier.index');
     }
@@ -67,7 +67,7 @@ class VendorController extends Controller
             Alert::error('Error', 'Vendor Tidak Ditemukan');
             return redirect()->route('supplier.index');
         }
-        $supplier->where(['id' => $id])->update(['aktif' => 't']);
+        $supplier->update(['aktif' => 't']);
         Alert::success('Success', 'Data Vendor Berhasil Dihapus');
         return redirect()->route('supplier.index');
     }
