@@ -98,7 +98,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h5 class="mt-2">Brand Aset :
-                                                {{ $peminjaman->aset->brand }}
+                                                {{ $peminjaman->aset->brand->name }}
                                             </h5>
                                         </div>
                                         <div class="col-md-6">

@@ -74,7 +74,7 @@
                                                     @endif
                                                 </td>
                                                 <td>{{ $item->tanggal_pinjam }}</td>
-                                                <td>{{ $item->tanggal_pengembalian }}</td>
+                                                <td>{{ $item->tanggal_kembali }}</td>
                                                 <td>{{ $item->keperluan }}</td>
                                             </tr>
                                         @endforeach

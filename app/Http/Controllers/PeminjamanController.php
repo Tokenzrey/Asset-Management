@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class   PeminjamanController extends Controller
+class PeminjamanController extends Controller
 {
     public function index(Request $request)
     {
@@ -22,8 +22,8 @@ class   PeminjamanController extends Controller
 
         $aset = Aset::join('kategori', 'kategori.id', '=', 'aset.kategori_id')
             ->join('ruang', 'ruang.id', '=', 'aset.ruang_id')
-            ->leftJoin('jadwal_pemeliharaan', function($join){
-                $join->on('aset.id','=','jadwal_pemeliharaan.aset_id')->whereNotIn('jadwal_pemeliharaan.status', ['SELESAI']);
+            ->leftJoin('jadwal_pemeliharaan', function ($join) {
+                $join->on('aset.id', '=', 'jadwal_pemeliharaan.aset_id')->whereNotIn('jadwal_pemeliharaan.status', ['SELESAI']);
             })
             ->select(
                 'aset.*',
@@ -72,8 +72,8 @@ class   PeminjamanController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->tanggal_pengembalian < $request->tanggal_pinjam){
-            Alert::error('Data Pengembalian tidak sesuai','Pengembalian harus setelah tanggal pinjam!');
+        if ($request->tanggal_pengembalian < $request->tanggal_pinjam) {
+            Alert::error('Data Pengembalian tidak sesuai', 'Pengembalian harus setelah tanggal pinjam!');
             return back();
         }
 
@@ -100,10 +100,10 @@ class   PeminjamanController extends Controller
             })
             ->first();
 
-        $scheduled_maintenance = JadwalPemeliharaan::where('aset_id',$aset_id)->whereNotIn('status',['SELESAI'])->first();
+        $scheduled_maintenance = JadwalPemeliharaan::where('aset_id', $aset_id)->whereNotIn('status', ['SELESAI'])->first();
 
-        if ($scheduled_maintenance){
-            Alert::error('Invalid Aset','Aset dalam masa maintenance');
+        if ($scheduled_maintenance) {
+            Alert::error('Invalid Aset', 'Aset dalam masa maintenance');
             return redirect()->route('peminjaman.index');
         }
 
@@ -111,7 +111,7 @@ class   PeminjamanController extends Controller
             'aset_id' => $aset_id,
             'user_id' => $user,
             'tanggal_pinjam' => $request->tanggal_pinjam,
-             'tanggal_pengembalian' => $request->tanggal_pengembalian,
+            'tanggal_kembali' => $request->tanggal_pengembalian,
             // 'jumlah_request' => $request->jumlah_request,
             'jumlah_request' => $jumlah_request,
             'keperluan' => $request->keperluan
