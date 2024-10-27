@@ -25,8 +25,8 @@ class UserController extends Controller
         $gambar = null;
         if ($request->file('gambar')) {
             $gambar_extension = $request->file('gambar')->extension();
-            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png', 'gif', 'jfif')) == false) {
-                return back()->withInput()->with('error', 'Type gambar yang diijinkan jpg,jpeg,png,gif,jfif!');
+            if (in_array($gambar_extension, array('jpg', 'jpeg', ,'png')) == false) {
+                return back()->withInput()->with('error', 'Type gambar yang diijinkan jpg,jpeg,png!');
             }
             $gambar = $request->file('gambar')->store('public/gambar_user');
             $gambar = str_replace('public/', '', $gambar);
@@ -39,7 +39,7 @@ class UserController extends Controller
             'no_telepon'        => $request->no_telepon,
             'alamat'            => $request->alamat,
             'status'            => $request->status,
-            'divisi_id'         => 1,
+            'divisi_id'         => $request->divisi,
             'gambar'            => ($gambar) ? $gambar : null,
             'email'             => $request->email,
             'username'          => strtolower($request->username),
@@ -71,8 +71,8 @@ class UserController extends Controller
         $gambar = null;
         if ($request->file('gambar')) {
             $gambar_extension = $request->file('gambar')->extension();
-            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png', 'gif', 'jfif')) == false) {
-                Alert::error('Error', 'Type gambar yang diijinkan jpg,jpeg,png,gif!');
+            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png')) == false) {
+                Alert::error('Error', 'Type gambar yang diijinkan jpg,jpeg,png!');
                 return redirect()->route('user.index');
             }
             $gambar = $request->file('gambar')->store('public/gambar_user');

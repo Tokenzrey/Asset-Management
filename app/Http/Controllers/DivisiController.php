@@ -19,7 +19,7 @@ class DivisiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|min:4'
+            'nama' => 'required'
         ]);
 
         // Pastikan data tidak duplikat berdasarkan nama divisi

@@ -196,18 +196,18 @@
                                                     <input type="text" value="{{ $user->status }}" class="form-control"
                                                         name="status" readonly>
                                                 </div>
-{{--                                                <div class="mb-3 col-md-6">--}}
-{{--                                                    <label class="form-label">Divisi</label>--}}
-{{--                                                    <select class="form-control" name="divisi_id" id="divisi_id"--}}
-{{--                                                        required>--}}
-{{--                                                        <option value="">Please select</option>--}}
-{{--                                                        @foreach ($divisi as $divisi)--}}
-{{--                                                        <option value="{{ $divisi->id }}" {{ $div==$divisi->id ?--}}
-{{--                                                            'selected' : '' }}>--}}
-{{--                                                            {{ $divisi->nama }}</option>--}}
-{{--                                                        @endforeach--}}
-{{--                                                    </select>--}}
-{{--                                                </div>--}}
+                                                <div class="mb-3 col-md-6">
+                                                    <label class="form-label">Divisi</label>
+                                                    <select class="form-control" name="divisi_id" id="divisi_id"
+                                                        required>
+                                                        <option value="">Please select</option>
+                                                        @foreach ($divisi as $divisi)
+                                                        <option value="{{ $divisi->id }}" {{ $div==$divisi->id ?
+                                                            'selected' : '' }}>
+                                                            {{ $divisi->nama }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                                 <div class="mb-3 col-md-6">
                                                     <label class="form-label">No Hp</label>
                                                     <input type="number" value="0{{ $user->no_telepon }}"

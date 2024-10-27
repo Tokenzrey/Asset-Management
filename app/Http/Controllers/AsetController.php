@@ -71,8 +71,8 @@ class AsetController extends Controller
         $gambar = null;
         if ($request->file('gambar')) {
             $gambar_extension = $request->file('gambar')->extension();
-            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png', 'gif', 'jfif')) == false) {
-                Alert::error('Error', 'Type gambar yang diijinkan jpg,jpeg,png,gif!');
+            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png')) == false) {
+                Alert::error('Error', 'Type gambar yang diijinkan jpg,jpeg,png!');
                 return redirect()->route('user.index');
             }
             $gambar = $request->file('gambar')->store('public/gambar_user');
@@ -159,15 +159,15 @@ class AsetController extends Controller
             'jenis_pemeliharaan_id' => 'required|integer',
             'ruang_id' => 'required|integer',
             'vendor_id' => 'required|integer',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048' // Image validation
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048' // Image validation
         ]);
 
         // Handle image upload if present
         $gambar = null;
         if ($request->file('gambar')) {
             $gambar_extension = $request->file('gambar')->extension();
-            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png', 'gif', 'jfif')) == false) {
-                Alert::error('Error', 'Type gambar yang diijinkan jpg,jpeg,png,gif!');
+            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png')) == false) {
+                Alert::error('Error', 'Type gambar yang diijinkan jpg,jpeg,png');
                 return redirect()->route('user.index');
             }
             $gambar = $request->file('gambar')->store('public/gambar_aset');

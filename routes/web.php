@@ -5,7 +5,7 @@ use App\Http\Controllers\AsetController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RuangController;
-// use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\KategoriController;
@@ -32,13 +32,13 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('ceksesi')-
 Route::get('/', [DashboardController::class, 'admin'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('dashboard.admin');
 Route::get('/dashboard', [DashboardController::class, 'user'])->middleware('ceksesi')->name('dashboard.user');
 
-//divisi (turned off as not used)
+//divisi
 
-// Route::get('/divisi', [DivisiController::class, 'index'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('divisi.index');
-// Route::post('/divisi/create', [DivisiController::class, 'store'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('divisi.store');
-// Route::get('/divisi/show/{id}', [DivisiController::class, 'show'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('divisi.show');
-// Route::put('/divisi/update/{id}', [DivisiController::class, 'update'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('divisi.update');
-// Route::get('/divisi/delete/{id}', [DivisiController::class, 'destroy'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('divisi.destroy');
+Route::get('/divisi', [DivisiController::class, 'index'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('divisi.index');
+Route::post('/divisi/create', [DivisiController::class, 'store'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('divisi.store');
+Route::get('/divisi/show/{id}', [DivisiController::class, 'show'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('divisi.show');
+Route::put('/divisi/update/{id}', [DivisiController::class, 'update'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('divisi.update');
+Route::get('/divisi/delete/{id}', [DivisiController::class, 'destroy'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('divisi.destroy');
 
 //user pengguna
 Route::get('/user', [UserController::class, 'index'])->middleware('ceksesi', 'cekstatus:ADMIN')->name('user.index');

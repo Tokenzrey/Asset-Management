@@ -26,7 +26,7 @@ class Aset extends Model
             'nama'                  => 'required|min:3',
             'jumlah'                => 'required',
             'satuan'                => 'required',
-            'gambar'                => 'required|mimes:png,jpg,jpeg,jfif',
+            'gambar'                => 'required|mimes:jpg,jpeg,png',
             'brand_id'              => 'required',
             'nama_penerima'         => 'required|min:3',
             'tempat'                => 'required|min:3',
