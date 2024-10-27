@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aset;
+use App\Models\JadwalPemeliharaan;
 use App\Models\User;
 use App\Models\Ruang;
 use App\Models\Kategori;
@@ -11,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class PeminjamanController extends Controller
+class   PeminjamanController extends Controller
 {
     public function index(Request $request)
     {
@@ -21,6 +22,9 @@ class PeminjamanController extends Controller
 
         $aset = Aset::join('kategori', 'kategori.id', '=', 'aset.kategori_id')
             ->join('ruang', 'ruang.id', '=', 'aset.ruang_id')
+            ->leftJoin('jadwal_pemeliharaan', function($join){
+                $join->on('aset.id','=','jadwal_pemeliharaan.aset_id')->whereNotIn('jadwal_pemeliharaan.status', ['SELESAI']);
+            })
             ->select(
                 'aset.*',
                 'kategori.nama as nama_kategori',
@@ -42,6 +46,7 @@ class PeminjamanController extends Controller
                     // ->orWhere('aset.nilai_harga', 'like', '%' . strtolower($keyword_search) . '%');
                 });
             })
+            ->whereNull('jadwal_pemeliharaan.aset_id')
             ->where('aset.aktif', '=', 'y')
             ->where('aset.jumlah', '>=', $jumlah_request)
             ->paginate(6);
@@ -67,6 +72,11 @@ class PeminjamanController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->tanggal_pengembalian < $request->tanggal_pinjam){
+            Alert::error('Data Pengembalian tidak sesuai','Pengembalian harus setelah tanggal pinjam!');
+            return back();
+        }
+
         $aset_id = $request->aset_id;
         $user = session('userdata')['id'];
 
@@ -90,11 +100,18 @@ class PeminjamanController extends Controller
             })
             ->first();
 
+        $scheduled_maintenance = JadwalPemeliharaan::where('aset_id',$aset_id)->whereNotIn('status',['SELESAI'])->first();
+
+        if ($scheduled_maintenance){
+            Alert::error('Invalid Aset','Aset dalam masa maintenance');
+            return redirect()->route('peminjaman.index');
+        }
+
         Peminjaman::create([
             'aset_id' => $aset_id,
             'user_id' => $user,
             'tanggal_pinjam' => $request->tanggal_pinjam,
-            // 'tanggal_kembali' => $request->tanggal_kembali,
+             'tanggal_pengembalian' => $request->tanggal_pengembalian,
             // 'jumlah_request' => $request->jumlah_request,
             'jumlah_request' => $jumlah_request,
             'keperluan' => $request->keperluan

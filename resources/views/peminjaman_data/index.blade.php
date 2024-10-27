@@ -53,6 +53,7 @@
                                         <th>Nama Aset</th>
                                         <th>Gambar</th>
                                         <th>Tanggal Pinjam</th>
+                                        <th>Tanggal Pengembalian</th>
                                         <th>Approval Peminjaman</th>
                                     </tr>
                                 </thead>
@@ -93,6 +94,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $item->tanggal_pinjam }}</td>
+                                        <td>{{ $item->tanggal_pengembalian }}</td>
                                         <td>
                                             {!! $btn !!}
                                         </td>

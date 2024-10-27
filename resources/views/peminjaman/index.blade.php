@@ -103,6 +103,13 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-xl-12 mt-2">
+                                    <label for="tanggal_pengembalian"><b>Tanggal Pengembalian</b></label>
+                                    <input type="date" class="form-control" id="tanggal_pengembalian"
+                                        placeholder="Tanggal Pengembalian" name="tanggal_pengembalian" required>
+                                </div>
+                            </div>
+                            <div class="row">
                             </div>
                             <div class="row">
                                 <div class="col-xl-12 mt-2">

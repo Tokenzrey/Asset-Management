@@ -136,6 +136,7 @@
                                         <th>Nama Aset</th>
                                         <th>Gambar</th>
                                         <th>Tanggal Pinjam</th>
+                                        <th>Tanggal Pengembalian</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -182,6 +183,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $item->tanggal_pinjam }}</td>
+                                        <td>{{ $item->tanggal_pengembalian }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <a onclick="confirmation(event)"
