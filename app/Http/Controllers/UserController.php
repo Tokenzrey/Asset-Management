@@ -39,7 +39,7 @@ class UserController extends Controller
             'no_telepon'        => $request->no_telepon,
             'alamat'            => $request->alamat,
             'status'            => $request->status,
-            'divisi_id'         => $request->divisi,
+            'divisi_id'         => 1,
             'gambar'            => ($gambar) ? $gambar : null,
             'email'             => $request->email,
             'username'          => strtolower($request->username),

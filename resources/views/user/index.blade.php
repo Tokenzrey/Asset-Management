@@ -87,19 +87,19 @@
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col-xl-12 mt-2">
-                                                <label for="divisi"><b>Divisi</b></label>
-                                                <select class="form-control" name="divisi" id="divisi" required>
-                                                    <option value="">Please select</option>
-                                                    @foreach ($divisi as $data)
-                                                    <option value="{{ $data->id }}" {{ $div==$data->id ? 'selected' : ''
-                                                        }}>
-                                                        {{ $data->nama }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
+{{--                                        <div class="row">--}}
+{{--                                            <div class="col-xl-12 mt-2">--}}
+{{--                                                <label for="divisi"><b>Divisi</b></label>--}}
+{{--                                                <select class="form-control" name="divisi" id="divisi" required>--}}
+{{--                                                    <option value="">Please select</option>--}}
+{{--                                                    @foreach ($divisi as $data)--}}
+{{--                                                    <option value="{{ $data->id }}" {{ $div==$data->id ? 'selected' : ''--}}
+{{--                                                        }}>--}}
+{{--                                                        {{ $data->nama }}</option>--}}
+{{--                                                    @endforeach--}}
+{{--                                                </select>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
 
                                         <div class="row">
                                             <div class="col-xl-12 mt-2">
