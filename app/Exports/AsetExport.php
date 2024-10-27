@@ -37,7 +37,7 @@ class AsetExport implements FromCollection, WithMapping, WithHeadings, WithStyle
             'jumlah'                => $row->jumlah,
             'satuan'                => $row->satuan,
             'tanggal_pembelian'     => Carbon::parse($row->tanggal_pembelian)->format('d/m/Y'),
-            'brand'                 => $row->brand,
+            'brand_id'              => $row->brand->name,
             'kondisi'               => $row->kondisi,
             'gambar'                => $row->gambar,
             'nama_penerima'         => $row->nama_penerima,

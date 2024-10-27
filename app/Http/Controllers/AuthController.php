@@ -31,16 +31,37 @@ class AuthController extends Controller
 
     public function check(Request $request)
     {
+        // Validasi input username dan password
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ], [
+            'username.required' => 'Username wajib diisi!',
+            'password.required' => 'Password wajib diisi!',
+        ]);
+
         $username = $request->username;
         $password = $request->password;
+        if (!$username || !$password) {
+            Alert::error('Error', 'Silahkan cek username/password anda!');
+            return redirect('/');
+        }
+        // Cari user berdasarkan username dan status aktif
         $user = User::where(['username' => $username, 'aktif' => 'y'])->first();
+
         if (!$user) {
-            return back()->withInput()->with('error', 'Silahkan cek username/password anda!');
+            Alert::error('Error', 'Silahkan cek username/password anda!');
+            return back()->withInput();
         }
+
         if (!Hash::check($password, $user->password)) {
-            return back()->withInput()->with('error', 'Password kurang tepat!');
+            Alert::error('Error', 'Password kurang tepat!');
+            return back()->withInput();
         }
+
+        // Set session jika login berhasil
         session(['userdata' => $user, 'logged_in' => true]);
+        Alert::success('Success', 'Login berhasil!');
         return redirect('/');
     }
 

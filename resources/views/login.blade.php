@@ -30,13 +30,13 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter username">
-                        <input class="input100" type="text" name="username" placeholder="Username"
+                        <input class="input100" type="text" name="username" placeholder="Username" required
                             value="{{ old('username') }}">
                         <span class="focus-input100" data-placeholder="&#xf207;"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
-                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <input class="input100" type="password" name="password" placeholder="Password" required>
                         <span class="focus-input100" data-placeholder="&#xf191;"></span>
                     </div>
 
@@ -49,6 +49,7 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('simas/login/js/main.js') }}"></script>
 </body>
 </html>
