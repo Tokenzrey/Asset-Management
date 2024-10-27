@@ -25,7 +25,7 @@ class UserController extends Controller
         $gambar = null;
         if ($request->file('gambar')) {
             $gambar_extension = $request->file('gambar')->extension();
-            if (in_array($gambar_extension, array('jpg', 'jpeg', ,'png')) == false) {
+            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png')) == false) {
                 return back()->withInput()->with('error', 'Type gambar yang diijinkan jpg,jpeg,png!');
             }
             $gambar = $request->file('gambar')->store('public/gambar_user');
