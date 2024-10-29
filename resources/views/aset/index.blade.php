@@ -31,10 +31,12 @@
                         $sup = old('vendor_id');
                         @endphp
                         <div>
+                            @if (session('userdata')['status'] == 'ADMIN')
                             <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
                                 data-bs-target=".modal" style="margin-bottom: 1rem;"><i
                                     class="mdi mdi-plus me-1"></i>Tambah Data
                             </button>
+                            @endif
                             <a href="{{ route('aset.scan_qrcode') }}">
                                 <button type="button" class="btn btn-qrcode mb-2 text-white"
                                     style="margin-bottom: 1rem;">
@@ -54,6 +56,7 @@
                         <div>
                         </div>
 
+                        @if (session('userdata')['status'] == 'ADMIN')
                         <!-- center modal tambah data -->
                         <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
                             aria-hidden="true">
@@ -243,7 +246,7 @@
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
-
+                        @endif
 
                         <!-- center modal import excel data aset  -->
                         <div class="modal fade" id="modalImportExcel" tabindex="-1" role="dialog"
@@ -334,6 +337,7 @@
                                                 <a class="btn btn-detail text-white shadow btn-xs sharp me-1"
                                                     title="Detail" href="{{ route('aset.show', ['id' => $item->id]) }}">
                                                     <i class="fas fa-eye"></i></a>
+                                                @if (session('userdata')['status'] == 'ADMIN')
                                                 <a class="btn btn-edit text-white shadow btn-xs sharp me-1" title="Edit"
                                                     data-bs-toggle="modal" data-bs-target=".edit{{ $item->id }}">
                                                     <i class="fas fa-edit"></i></a>
@@ -342,10 +346,12 @@
                                                     class="btn btn-delete text-white shadow btn-xs sharp me-1"
                                                     title="Hapus">
                                                     <i class="fa fa-trash"></i></a>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
 
+                                    @if (session('userdata')['status'] == 'ADMIN')
                                     <!-- center modal edit data -->
                                     <div class="modal fade edit{{ $item->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -566,6 +572,7 @@
                                             </div>
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal-dialog -->
+                                    @endif
                                     @endforeach
                         </div><!-- /.modal -->
                         </tbody>

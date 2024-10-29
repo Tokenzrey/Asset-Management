@@ -87,7 +87,7 @@
                             <li class="nav-item"><a href="#about-me" data-bs-toggle="tab"
                                     class="nav-link active show">Profil</a>
                             </li>
-                            @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'DIREKSI')
+                            @if (session('userdata')['status'] == 'ADMIN')
                             <li class="nav-item"><a href="#profile-settings" data-bs-toggle="tab"
                                     class="nav-link">Pengaturan</a>
                             </li>
@@ -174,7 +174,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'DIREKSI')
+                            @if (session('userdata')['status'] == 'ADMIN')
                             <div id="profile-settings" class="tab-pane fade">
                                 <div class="pt-3">
                                     <div class="settings-form">
