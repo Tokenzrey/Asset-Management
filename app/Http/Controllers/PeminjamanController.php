@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Ruang;
 use App\Models\Kategori;
 use App\Models\Peminjaman;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -72,11 +73,6 @@ class PeminjamanController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->tanggal_pengembalian < $request->tanggal_pinjam) {
-            Alert::error('Data Pengembalian tidak sesuai', 'Pengembalian harus setelah tanggal pinjam!');
-            return back();
-        }
-
         $aset_id = $request->aset_id;
         $user = session('userdata')['id'];
 
@@ -111,7 +107,6 @@ class PeminjamanController extends Controller
             'aset_id' => $aset_id,
             'user_id' => $user,
             'tanggal_pinjam' => $request->tanggal_pinjam,
-            'tanggal_kembali' => $request->tanggal_pengembalian,
             // 'jumlah_request' => $request->jumlah_request,
             'jumlah_request' => $jumlah_request,
             'keperluan' => $request->keperluan
@@ -156,6 +151,8 @@ class PeminjamanController extends Controller
         $peminjaman->save();
 
         if ($peminjaman->status === 'selesai') {
+            $peminjaman->tanggal_kembali = Carbon::now();
+            $peminjaman->save();
             $aset = $peminjaman->aset;
             $aset->update([
                 'jumlah' => $aset->jumlah + $peminjaman->jumlah_request
