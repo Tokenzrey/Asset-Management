@@ -13,6 +13,24 @@
             <div class="card-header mb-2">
                 <b>
                     <h3 class="">Data Pengguna</h3>
+                    @if ($errors->has('email') && $errors->has('username'))
+                        <div class="alert alert-danger">
+                            Email dan Username sudah ada, ganti yang lain.
+                        </div>
+                    @endif
+
+                    @if ($errors->has('email') && !$errors->has('username'))
+                        <div class="alert alert-danger">
+                            Email sudah ada, ganti yang lain.
+                        </div>
+                    @endif
+
+                    @if ($errors->has('username') && !$errors->has('email'))
+                        <div class="alert alert-danger">
+                            Username sudah ada, ganti yang lain.
+                        </div>
+                    @endif
+
                 </b>
                 @if (session('error'))
                 <div class="alert alert-danger">
@@ -116,7 +134,7 @@
                                                     <b>Gambar</b>
                                                 </label>
                                                 <input class="form-control" type="file" id="gambar" name="gambar"
-                                                    placeholder="Pilih Gambar">
+                                                    placeholder="Pilih Gambar" required>
                                             </div>
                                         </div>
 

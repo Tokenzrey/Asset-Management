@@ -33,14 +33,22 @@ class BrandController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:100|unique:brand,name',
+       // Check if the name already exists in the divisis table
+    $exists = Brand::where('name', $request->name)->exists();
+
+    if ($exists) {
+        // Trigger error alert if duplicate is found
+        Alert::error('Error', 'Data ini sudah ada');
+        return redirect()->back()->withInput();
+    } else {
+        // Proceed to store the data if no duplicate is found
+        Brand::create([
+            'name' => $request->name,
         ]);
 
-        Brand::create(['name' => $request->name]);
-
-        Alert::success('Success', 'Brand successfully created');
+        Alert::success('Success', 'Data has been added successfully');
         return redirect()->route('brand.index');
+    }
     }
 
     /**
@@ -64,15 +72,25 @@ class BrandController extends Controller
      */
     public function update(Request $request, int $id): RedirectResponse
     {
+        $exists = Brand::where('name', $request->name)->where('id', '!=', $id)->exists();
+
+        if ($exists) {
+            // Trigger error alert if duplicate name is found
+            Alert::error('Error', 'Data ini sudah ada, ganti yang lain.');
+            return redirect()->back()->withInput();
+        }   
         $this->validate($request, [
             'name' => 'required|string|max:100|unique:brand,name,' . $id,
+        ], [
+            'name.unique' => 'Data ini sudah ada, ganti yang lain.',
         ]);
 
         $brand = Brand::findOrFail($id);
         $brand->update(['name' => $request->name]);
-
+        
         Alert::success('Success', 'Brand successfully updated');
         return redirect()->route('brand.index');
+        
     }
 
     /**

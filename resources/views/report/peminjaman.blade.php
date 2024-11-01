@@ -23,7 +23,7 @@
                 <th>No</th>
                 <th>Aset</th>
                 <th>Peminjam</th>
-                <th>Gambar</th>
+               {{-- <th>Gambar</th>--}}
                 <th>Tanggal Pinjam</th>
                 <th>Tanggal Kembali</th>
                 <th>Keperluan</th>
@@ -36,14 +36,14 @@
             @foreach ($peminjaman as $item)
                 <tr>
                     <td>{{ $no++ }}</td>
-                    <td>{{ $item->user->nama }}</td>
                     <td>{{ $item->aset->nama }}</td>
-                    <td>
+                    <td>{{ $item->user->nama }}</td>
+                    {{--<td>
                         @if ($item->aset['gambar'])
                             <img class="img-thumbnail" src="{{ asset('storage/' . $item->aset['gambar']) }}" alt=""
                                 width="60px">
                         @endif
-                    </td>
+                    </td>--}}
                     <td>{{ $item->tanggal_pinjam }}</td>
                     <td>{{ $item->tanggal_kembali }}</td>
                     <td>{{ $item->keperluan }}</td>

@@ -19,8 +19,15 @@ class RuangController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|min:4'
+            'nama' => 'required'
         ]);
+        
+        $exists = Ruang::where('nama', $request->nama)->exists();
+
+        if ($exists) {
+            Alert::error('Error', 'Nama Lokasi sudah ada, silakan gunakan nama lain');
+            return redirect()->back()->withInput();
+        }
 
         // Tidak perlu mencari dengan where terlebih dahulu karena hanya akan create data baru
         Ruang::create([
@@ -48,6 +55,14 @@ class RuangController extends Controller
             return redirect()->route('ruang.index');
         }
 
+        $exists = Ruang::where('nama', $request->nama)->where('id', '!=', $id)->exists();
+
+        if ($exists) {
+            // Trigger error alert if duplicate name is found
+            Alert::error('Error', 'Nama Lokasi sudah ada, silakan gunakan nama lain');
+            return redirect()->back()->withInput();
+        }
+        
         $data_ruang = [
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi

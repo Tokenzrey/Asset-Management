@@ -34,7 +34,32 @@ class UserController extends Controller
             Alert::error('Error', 'Gambar wajib diunggah!');
             return redirect()->route('user.index');
         }
+        // Check for duplicate email
+        $emailExists = User::where('email', $request->email)->exists();
+        $usernameExists = User::where('username', strtolower($request->username))->exists();
 
+        // Alert if both email and username exist
+        if ($emailExists && $usernameExists) {
+            Alert::error('Error', 'Email dan Username sudah ada, silakan gunakan yang lain.');
+            return redirect()->back()->withInput();
+        }
+
+        // Alert if email exists
+        if ($emailExists) {
+            Alert::error('Error', 'Email sudah ada, silakan gunakan yang lain.');
+            return redirect()->back()->withInput();
+        }
+
+        // Alert if username exists
+        if ($usernameExists) {
+            Alert::error('Error', 'Username sudah ada, silakan gunakan yang lain.');
+            return redirect()->back()->withInput();
+        }
+
+        $this->validate($request, [
+            'email' => 'required|email|unique:users,email',
+            'username' => 'required|string|unique:users,username',
+        ]);
 
         User::create([
             'nama'              => $request->nama,
@@ -84,6 +109,28 @@ class UserController extends Controller
             Alert::error('Error', 'Gambar wajib diunggah!');
             return redirect()->route('user.index');
         }
+        // Check for duplicate email, excluding the current user
+        $emailExists = User::where('email', $request->email)->where('id', '!=', $id)->exists();
+        $usernameExists = User::where('username', strtolower($request->username))->where('id', '!=', $id)->exists();
+
+        // Alert if both email and username exist
+        if ($emailExists && $usernameExists) {
+            Alert::error('Error', 'Email dan Username sudah ada, silakan gunakan yang lain.');
+            return redirect()->back()->withInput();
+        }
+
+        // Alert if email exists
+        if ($emailExists) {
+            Alert::error('Error', 'Email sudah ada, silakan gunakan yang lain.');
+            return redirect()->back()->withInput();
+        }
+
+        // Alert if username exists
+        if ($usernameExists) {
+            Alert::error('Error', 'Username sudah ada, silakan gunakan yang lain.');
+            return redirect()->back()->withInput();
+        }
+
 
         $data_user = [
             'nama'              => $request->nama,

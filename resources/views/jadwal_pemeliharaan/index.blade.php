@@ -139,9 +139,9 @@
                                     endif;
                                     ?>
                                     <tr>
+                                        <td>{{ $no++ }}</td>
                                         <td><span class="badge {{ $badge }} text-center">{{ $item->status }}</span>
                                         </td>
-                                        <td>{{ $no++ }}</td>
                                         <td>{{ $item->aset->nama }}</td>
                                         <td>
                                             @if ($item->aset->gambar)

@@ -24,7 +24,6 @@
                 <th>Kode</th>
                 <th>Nama</th>
                 <th>Kondisi</th>
-                <th>Gambar</th>
                 <th>Lokasi</th>
                 <th>Tempat</th>
                 <th>Kategori</th>
@@ -42,12 +41,12 @@
                     <td>{{ $item->kode }}</td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->kondisi }}</td>
-                    <td>
+                    {{--<td>
                         @if ($item['gambar'])
                             <img class="img-thumbnail" src="{{ asset('storage/' . $item['gambar']) }}" alt=""
                                 width="60px">
                         @endif
-                    </td>
+                    </td>--}}
                     <td>{{ $item->ruang->nama }}</td>
                     <td>{{ $item->tempat }}</td>
                     <td>{{ $item->kategori->nama }}</td>

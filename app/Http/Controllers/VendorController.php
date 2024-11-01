@@ -20,9 +20,14 @@ class VendorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|min:4'
+            'nama' => 'required'
          ]);
-
+         $exists = Vendor::where('nama', $request->nama)->exists();
+         if ($exists) {
+            // Trigger error alert if duplicate name is found
+            Alert::error('Error', 'Nama Vendor sudah ada, silakan gunakan nama lain');
+            return redirect()->back()->withInput();
+        }    
          Vendor::where(['id' => $request->id])->first();
          Vendor::create([
              'nama'         => $request->nama,

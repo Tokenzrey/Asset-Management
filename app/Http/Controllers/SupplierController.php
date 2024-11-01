@@ -20,7 +20,7 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|min:4'
+            'nama' => 'required'
          ]);
 
          Supplier::where(['id' => $request->id])->first();

@@ -22,6 +22,13 @@ class KategoriController extends Controller
             'nama' => 'required'
         ]);
 
+        $exists = Kategori::where('nama', $request->nama)->exists();
+
+        if ($exists) {
+            // Trigger error alert if duplicate name is found
+            Alert::error('Error', 'Nama Kategori sudah ada, silakan gunakan nama lain');
+            return redirect()->back()->withInput();
+        }
         // Generate 2-character uppercase code from the name
         $words = explode(' ', $request->nama);
         $code = count($words) > 1 ? strtoupper(substr($words[0], 0, 1) . substr($words[1], 0, 1)) : strtoupper(substr($request->nama, 0, 2));
@@ -58,7 +65,13 @@ class KategoriController extends Controller
             Alert::error('Error', 'Kategori Tidak Ditemukan');
             return redirect()->route('kategori.index');
         }
+        $exists = Kategori::where('nama', $request->nama)->where('id', '!=', $id)->exists();
 
+        if ($exists) {
+            // Trigger error alert if duplicate name is found
+            Alert::error('Error', 'Nama Kategori sudah ada, silakan gunakan nama lain');
+            return redirect()->back()->withInput();
+            }
         $data_kategori = [
             'nama' => $request->nama,
             'masa_manfaat' => $request->masa_manfaat
