@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row container text-center">
-                        <a href="{{ route('peminjaman.data') }}" class="btn btn-primary col-15"> Kembali</a>
+                        {{-- <a href="{{ route('peminjaman.data') }}" class="btn btn-primary col-15"> Kembali</a> --}}
                         <b>
                             <h3>History Peminjaman</h3>
                         </b>

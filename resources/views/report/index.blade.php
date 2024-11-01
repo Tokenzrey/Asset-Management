@@ -26,7 +26,8 @@
             <div class="row">
                 <div class="col-lg-4 col-xs-6">
                     <!-- small box -->
-                    <div class="small-box bg-white rounded">
+                    <div>
+                        <a href="{{ route('report.aset') }}" class="small-box bg-white rounded">
                         <div class="inner">
                             <h3 class="text-white"></h3>
                             <p class="text-primary"><b>Report <br> Aset</b></p>
@@ -34,14 +35,16 @@
                         <div class="icon">
                             <i class="fa fa-briefcase" aria-hidden="true"></i>
                         </div>
-                        <a href="{{ route('report.aset') }}" class="small-box bg-primary text-white text-center">Print <i
-                                class="fa fa-arrow-circle-right"></i></a>
+                        <div class="small-box bg-primary text-white text-center">Print <i
+                                class="fa fa-arrow-circle-right"></i></div>
+                        </a>    
                     </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-4 col-xs-6">
                     <!-- small box -->
-                    <div class="small-box bg-white rounded">
+                    <div>
+                        <a href="{{ route('report.peminjaman') }}" class="small-box bg-white rounded">
                         <div class="inner">
                             <h3 class="text-white"></h3>
                             <p class="text-primary"><b>Report <br> Peminjaman Aset</b></p>
@@ -49,13 +52,15 @@
                         <div class="icon">
                             <i class="fas fa-th-list"></i>
                         </div>
-                        <a href="{{ route('report.peminjaman') }}" class="small-box bg-primary text-white text-center">Print <i
-                                class="fa fa-arrow-circle-right"></i></a>
+                        <div class="small-box bg-primary text-white text-center">Print <i
+                                class="fa fa-arrow-circle-right"></i></div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-6">
                     <!-- small box -->
-                    <div class="small-box bg-white rounded">
+                    <div>
+                        <a href="{{ route('report.history_pemeliharaan') }}" class="small-box bg-white rounded">
                         <div class="inner">
                             <h3 class="text-white"></h3>
                             <p class="text-primary"><b>Report <br> Pemeliharan Aset</b></p>
@@ -63,8 +68,9 @@
                         <div class="icon">
                             <i class="fa fa-wrench" aria-hidden="true"></i>
                         </div>
-                        <a href="{{ route('report.history_pemeliharaan') }}" class="small-box bg-primary text-white text-center">Print <i
-                                class="fa fa-arrow-circle-right"></i></a>
+                        <div class="small-box bg-primary text-white text-center">Print <i
+                                class="fa fa-arrow-circle-right"></i></div>
+                        </a>
                     </div>
                 </div>
             </div>
