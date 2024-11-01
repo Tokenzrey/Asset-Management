@@ -54,7 +54,9 @@
                                         <th>Gambar</th>
                                         <th>Tanggal Pinjam</th>
                                         <th>Tanggal Pengembalian</th>
+                                        @if (session('userdata')['status'] == 'ADMIN')
                                         <th>Approval Peminjaman</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 @php
@@ -95,18 +97,18 @@
                                         </td>
                                         <td>{{ $item->tanggal_pinjam }}</td>
                                         <td>{{ $item->tanggal_kembali }}</td>
+                                        @if (session('userdata')['status'] == 'ADMIN')
                                         <td>
                                             {!! $btn !!}
                                         </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                         </div><!-- /.modal -->
                         </tbody>
                         </table>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>

@@ -191,12 +191,14 @@
                                         <td>{{ $item->tanggal_kembali }}</td>
                                         <td>
                                             <div class="d-flex">
+                                                @if (session('userdata')['status'] == 'ADMIN')
                                                 <a onclick="confirmation(event)"
                                                     href="{{ route('peminjaman.destroy_history', ['id' => $item->id]) }}"
                                                     class="btn btn-delete text-white shadow btn-xs sharp  me-1"
                                                     title="Hapus">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
+                                                @endif
                                                 <a class="btn btn-detail text-white shadow btn-xs sharp me-1"
                                                     href="{{ route('peminjaman.show', ['id' => $item->id]) }}">
                                                     <i class="fas fa-eye"></i>
