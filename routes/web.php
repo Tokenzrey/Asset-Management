@@ -126,3 +126,4 @@ Route::get('/peminjaman/data_history_peminjaman/{id}', [PeminjamanController::cl
 //user peminjaman
 Route::get('/peminjaman/scan_qrcode', [PeminjamanController::class, 'qrcode'])->middleware('ceksesi')->name('peminjaman.qrcode');
 Route::get('/peminjaman/history', [PeminjamanController::class, 'history_peminjaman_user'])->middleware('ceksesi')->name('peminjaman.user-history');
+Route::get('/export-data-history-peminjaman', [PeminjamanController::class, 'history_peminjaman_export'])->middleware('ceksesi', 'cekstatus:ADMIN,DIREKSI')->name('peminjaman.export_history');

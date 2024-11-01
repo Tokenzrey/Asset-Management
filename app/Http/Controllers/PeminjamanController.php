@@ -12,6 +12,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\HistoryPeminjamanExport;
 
 class PeminjamanController extends Controller
 {
@@ -288,5 +290,10 @@ class PeminjamanController extends Controller
         } else {
             return redirect()->route('peminjaman.data');
         }
+    }
+
+    public function history_peminjaman_export()
+    {
+        return Excel::download(new HistoryPeminjamanExport, 'history_peminjaman.xlsx');
     }
 }

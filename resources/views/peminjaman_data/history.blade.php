@@ -36,6 +36,11 @@
                                 <button class="btn btn-danger" onclick="printDiv('cetak')"><i class="fa fa-print"> Cetak
                                         PDF </i></button>
                             </div>
+                            <a href="{{ route('peminjaman.export_history') }}">
+                                <button type="button" class="btn btn-export-excel mb-2 text-white">
+                                    <i class="fa fa-file-excel"></i> Export Excel
+                                </button>
+                            </a>
                             <div>
                                 <form action="{{ route('peminjaman.data-history') }}" method="get">
                                     <div class="input-group mb-3">
