@@ -12,9 +12,13 @@
 </div>
 
 <ul class="metismenu" id="menu">
-    @if (session('userdata')['status'] == 'ADMIN')
+    @if (session('userdata')['status'] == 'ADMIN' || session('userdata')['status'] == 'DIREKSI')
     <li>
-        <a href="{{ route('dashboard.admin') }}">
+        @php
+        $dashboardRoute = session('userdata')['status'] == 'ADMIN' ? 'dashboard.admin' : 'dashboard.user';
+        @endphp
+
+        <a href="{{ route($dashboardRoute) }}">
             <i class="fas fa-home"></i>
             <span class="nav-text">Dashboard</span>
         </a>
@@ -44,7 +48,9 @@
             <li><a href="{{ route('aset.index') }}">Data Aset</a></li>
             {{-- <li><a href="{{ route('aset.history') }}">History Aset</a></li> --}}
             <li><a href="{{ route('aset.scan_qrcode') }}">Scann QrCode</a></li>
+            @if (session('userdata')['status'] == 'ADMIN')
             <li><a href="{{ route('jadwal_pemeliharaan.index') }}">Penjadwalan Pemeliharaan</a></li>
+            @endif
         </ul>
     </li>
     @else
@@ -76,6 +82,9 @@
         </a>
         <ul aria-expanded="false">
             <li><a href="{{ route('peminjaman.index') }}">Peminjaman</a></li>
+            @if (session('userdata')['status'] == 'DIREKSI')
+            <li><a href="{{ route('peminjaman.qrcode') }}">Peminjaman Qr-Code</a></li>
+            @endif
             <li><a href="{{ route('peminjaman.data') }}">Data Peminjaman</a></li>
             <li><a href="{{ route('peminjaman.data-history') }}">History Peminjaman</a></li>
         </ul>

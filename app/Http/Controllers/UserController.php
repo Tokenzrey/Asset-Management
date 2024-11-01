@@ -30,6 +30,9 @@ class UserController extends Controller
             }
             $gambar = $request->file('gambar')->store('public/gambar_user');
             $gambar = str_replace('public/', '', $gambar);
+        }else{
+            Alert::error('Error', 'Gambar wajib diunggah!');
+            return redirect()->route('user.index');
         }
 
 
@@ -77,6 +80,9 @@ class UserController extends Controller
             }
             $gambar = $request->file('gambar')->store('public/gambar_user');
             $gambar = str_replace('public/', '', $gambar);
+        }else{
+            Alert::error('Error', 'Gambar wajib diunggah!');
+            return redirect()->route('user.index');
         }
 
         $data_user = [

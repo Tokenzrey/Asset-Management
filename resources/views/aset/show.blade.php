@@ -67,9 +67,11 @@
                                 <li class="nav-item"><a href="#detail-aset" data-bs-toggle="tab"
                                         class="nav-link active show">Detail</a>
                                 </li>
+                                @if (session('userdata')['status'] == 'ADMIN')
                                 <li class="nav-item"><a href="#pengaturan-asets" data-bs-toggle="tab"
                                         class="nav-link">Pengaturan</a>
                                 </li>
+                                @endif
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -167,6 +169,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if (session('userdata')['status'] == 'ADMIN')
                                 <div id="pengaturan-asets" class="tab-pane fade">
                                     <div class="pt-3">
                                         <div class="settings-form">
@@ -350,6 +353,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>

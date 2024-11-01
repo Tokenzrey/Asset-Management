@@ -77,6 +77,9 @@ class AsetController extends Controller
             }
             $gambar = $request->file('gambar')->store('public/gambar_user');
             $gambar = str_replace('public/', '', $gambar);
+        }else{
+            Alert::error('Error', 'Gambar wajib diunggah!');
+            return redirect()->route('aset.index');
         }
         $jumlah = 1;
         $satuan = 'unit';
@@ -159,7 +162,7 @@ class AsetController extends Controller
             'jenis_pemeliharaan_id' => 'required|integer',
             'ruang_id' => 'required|integer',
             'vendor_id' => 'required|integer',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048' // Image validation
+            'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048' // Image validation
         ]);
 
         // Handle image upload if present
@@ -172,6 +175,9 @@ class AsetController extends Controller
             }
             $gambar = $request->file('gambar')->store('public/gambar_aset');
             $gambar = str_replace('public/', '', $gambar);
+        } else {
+            Alert::error('Error', 'Gambar wajib diunggah!');
+            return redirect()->route('aset.show', $id);
         }
 
         // Prepare the data to update

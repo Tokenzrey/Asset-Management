@@ -34,6 +34,9 @@ class JadwalPemeliharaanController extends Controller
         if ($request->file('gambar')) {
             $gambar = $request->file('gambar')->store('public/gambar_aset');
             $gambar = str_replace('public/', '', $gambar);
+        }else{
+            Alert::error('Error', 'Gambar wajib diunggah!');
+            return redirect()->route('jadwal_pemeliharan.index');
         }
 
         JadwalPemeliharaan::create([

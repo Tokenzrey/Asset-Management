@@ -22,7 +22,7 @@
                             {{ session('success') }}
                         </div>
                     @endif
-
+                    @if (session('userdata')['status'] == 'ADMIN')
                     <div>
                         <button type="button" class="btn btn-primary mb-4 " data-bs-toggle="modal" data-bs-target=".modal"
                             style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Data</button>
@@ -65,6 +65,7 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
+                    @endif
                 </div>
                 <div class="card-body card-body-table">
                     <div class="table-responsive" id="cetak">
@@ -74,7 +75,9 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama</th>
+                                @if (session('userdata')['status'] == 'ADMIN')
                                     <th>Aksi</th>
+                                    @endif
                                 </tr>
                             </thead>
                             @php
@@ -85,6 +88,7 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->nama }}</td>
+                                        @if (session('userdata')['status'] == 'ADMIN')
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-edit text-white shadow btn-xs sharp me-1" title="Edit"
@@ -96,8 +100,10 @@
                                                         class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
+                                        @endif
                                     </tr>
 
+                                    @if (session('userdata')['status'] == 'ADMIN')
                                     <!-- center modal edit data -->
                                     <div class="modal fade edit{{ $item->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -138,6 +144,7 @@
                                             </div><!-- /.modal-content -->
                                         </div><!-- /.modal-dialog -->
                                     </div><!-- /.modal -->
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>
