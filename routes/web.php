@@ -110,6 +110,7 @@ Route::get('/report', [ReportController::class, 'index'])->middleware('ceksesi',
 Route::get('/report/aset', [ReportController::class, 'report_aset'])->middleware('ceksesi', 'cekstatus:ADMIN,DIREKSI')->name('report.aset');
 Route::get('/report/peminjaman', [ReportController::class, 'report_peminjaman'])->middleware('ceksesi', 'cekstatus:ADMIN,DIREKSI')->name('report.peminjaman');
 Route::get('/report/history_peminjaman', [ReportController::class, 'report_history_peminjaman'])->middleware('ceksesi', 'cekstatus:ADMIN,DIREKSI')->name('report.history_peminjaman');
+Route::get('/report/history_pemeliharaan', [ReportController::class, 'report_history_pemeliharaan'])->middleware('ceksesi', 'cekstatus:ADMIN,DIREKSI')->name('report.history_pemeliharaan');
 
 //admin & user
 Route::get('/peminjaman', [PeminjamanController::class, 'index'])->middleware('ceksesi')->name('peminjaman.index');

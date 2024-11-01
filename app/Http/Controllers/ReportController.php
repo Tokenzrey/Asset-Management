@@ -10,6 +10,7 @@ use App\Models\Vendor;
 // use App\Models\AnggaranDana;
 use App\Models\JenisPemeliharaan;
 use App\Models\Peminjaman;
+use App\Models\JadwalPemeliharaan;
 
 class ReportController extends Controller
 {
@@ -70,5 +71,20 @@ class ReportController extends Controller
             ]);
         }
 
+    public function report_history_pemeliharaan()
+        {
+            $aset = Aset::where('aktif', '=', 'y')->get();
+            $jadwal_pemeliharaan = JadwalPemeliharaan::where('aktif', '=', 'y')->get();
+            $today = date('Y-m-d');
+            $total_jp = JadwalPemeliharaan::where('status', '=', 'belum')->count();
+
+            return view('report.history_pemeliharaan', [
+                'jp' => $jadwal_pemeliharaan,
+                'aset' => $aset,
+                'status' => ['Belum', 'Proses', 'Selesai'],
+                'today' => $today,
+                'total_jp' => $total_jp
+            ]);
+        }
 }
 
