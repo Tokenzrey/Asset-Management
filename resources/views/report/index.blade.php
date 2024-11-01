@@ -61,7 +61,7 @@
                             <p class="text-primary"><b>Report <br> Pemeliharan Aset</b></p>
                         </div>
                         <div class="icon">
-                            <i class="fa-solid fa-hammer"></i>
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
                         </div>
                         <a href="{{ route('report.history_pemeliharaan') }}" class="small-box bg-primary text-white text-center">Print <i
                                 class="fa fa-arrow-circle-right"></i></a>
