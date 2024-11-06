@@ -56,7 +56,7 @@
                                 class="fa fa-arrow-circle-right"></i></div>
                         </a>
                     </div>
-                </div>
+                {{--</div>
                 <div class="col-lg-4 col-xs-6">
                     <!-- small box -->
                     <div>
@@ -71,7 +71,7 @@
                         <div class="small-box bg-primary text-white text-center">Print <i
                                 class="fa fa-arrow-circle-right"></i></div>
                         </a>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </section>
