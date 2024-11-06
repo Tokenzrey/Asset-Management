@@ -53,7 +53,7 @@
                                         <th>Nama Aset</th>
                                         <th>Gambar</th>
                                         <th>Tanggal Pinjam</th>
-                                        <th>Tanggal Pengembalian</th>
+                                        {{--<th>Tanggal Pengembalian</th>--}}
                                         @if (session('userdata')['status'] == 'ADMIN')
                                         <th>Approval Peminjaman</th>
                                         @endif
@@ -96,7 +96,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $item->tanggal_pinjam }}</td>
-                                        <td>{{ $item->tanggal_kembali }}</td>
+                                        {{--<td>{{ $item->tanggal_kembali }}</td>--}}
                                         @if (session('userdata')['status'] == 'ADMIN')
                                         <td>
                                             {!! $btn !!}

@@ -17,9 +17,16 @@ class JenisPemeliharaanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|min:4'
+            'nama' => 'required'
         ]);
+        // Check if 'nama' already exists
+        $exists = JenisPemeliharaan::where('nama', $request->nama)->exists();
 
+        if ($exists) {
+            // Trigger error alert if duplicate name is found
+            Alert::error('Error', 'Nama Jenis Pemeliharaan sudah ada, silakan gunakan nama lain.');
+            return redirect()->back()->withInput();
+        }
         // Hapus penggunaan where di sini, cukup langsung create data baru
         JenisPemeliharaan::create([
             'nama' => $request->nama,
@@ -45,9 +52,18 @@ class JenisPemeliharaanController extends Controller
         }
 
         $this->validate($request, [
-            'nama' => 'required|min:4'
+            'nama' => 'required'
         ]);
+        // Check if another record with the same 'nama' already exists
+        $exists = JenisPemeliharaan::where('nama', $request->nama)
+        ->where('id', '!=', $id) // Exclude the current record
+        ->exists();
 
+        if ($exists) {
+        // Trigger error alert if duplicate name is found
+        Alert::error('Error', 'Nama Jenis Pemeliharaan sudah ada, silakan gunakan nama lain.');
+        return redirect()->back()->withInput();
+        }
         // Update data langsung tanpa where array
         $jenis_pemeliharaan->update([
             'nama' => $request->nama,
