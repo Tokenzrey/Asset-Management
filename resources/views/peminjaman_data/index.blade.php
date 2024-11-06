@@ -51,6 +51,7 @@
                                         <th>Status</th>
                                         <th>Nama Peminjam</th>
                                         <th>Nama Aset</th>
+                                        <th>Keperluan</th>
                                         <th>Gambar</th>
                                         <th>Tanggal Pinjam</th>
                                         {{--<th>Tanggal Pengembalian</th>--}}
@@ -88,6 +89,7 @@
                                                 {{ $item->status }}</span></td>
                                         <td>{{ $item->user->nama }}</td>
                                         <td>{{ $item->aset->nama }}</td>
+                                        <td>{{ $item->keperluan }}</td>
                                         <td>
                                             @if ($item->aset['gambar'])
                                             <img class="img-thumbnail"
