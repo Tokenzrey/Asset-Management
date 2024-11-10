@@ -17,7 +17,7 @@
                     <p><span style="font-weight: bold;">Nama Aset :</span> {{ $qrcode->nama }}</p>
                     <p><span style="font-weight: bold;">Tanggal Pembelian :</span> {{ $qrcode->tanggal_pembelian }}</p>
                     <p><span style="font-weight: bold;">Kondisi :</span> {{ $qrcode->kondisi }}</p>
-                    <p><span style="font-weight: bold;">Brand :</span> {{ $qrcode->brand }}</p>
+                    <p><span style="font-weight: bold;">Brand :</span> {{ $qrcode->brand->name }}</p>
                 </div>
             </div>
         </div>
