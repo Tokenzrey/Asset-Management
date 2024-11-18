@@ -257,10 +257,10 @@
                                         <img src="{{ asset('simas/images/inventory.png') }}" alt="" width="70px">
                                         <h3 class="modal-title"><b>Import Data Aset</b>
                                         </h3>
-                                
+
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
-                                            
+
                                     </div>
                                     <form action="{{ route('aset.import') }}" method="POST"
                                         enctype="multipart/form-data">

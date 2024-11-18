@@ -216,8 +216,17 @@ class AsetController extends Controller
     {
         $aset = Aset::find($id);
 
+
         if (!$aset) {
             Alert::error('Error', 'Data Aset Tidak Ditemukan');
+            return redirect()->route('aset.index');
+        }
+
+        //jika ada relasi maka batalkan
+        $peminjaman = Peminjaman::where('aset_id', $id)->first();
+        $maintenance = JadwalPemeliharaan::where('aset_id', $id)->first();
+        if ($peminjaman || $maintenance) {
+            Alert::error('Error', 'Data Aset Tidak Bisa Dihapus Karena Memiliki Relasi');
             return redirect()->route('aset.index');
         }
 
