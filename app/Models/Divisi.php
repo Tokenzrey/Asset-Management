@@ -12,7 +12,7 @@ class Divisi extends Model
     protected $table = 'divisi';
 
     protected $primaryKey = 'id';
-    protected $fillable = ['nama', 'aktif'];
+    protected $fillable = ['nama', 'aktif', 'duplicateID'];
 
     protected $hidden = [];
 
