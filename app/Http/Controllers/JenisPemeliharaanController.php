@@ -20,7 +20,7 @@ class JenisPemeliharaanController extends Controller
             'nama' => 'required'
         ]);
         // Check if 'nama' already exists
-        $exists = JenisPemeliharaan::where('nama', $request->nama)->exists();
+        $exists = JenisPemeliharaan::where('nama', $request->nama)->where('aktif', 'y')->exists();
 
         if ($exists) {
             // Trigger error alert if duplicate name is found
@@ -57,6 +57,7 @@ class JenisPemeliharaanController extends Controller
         // Check if another record with the same 'nama' already exists
         $exists = JenisPemeliharaan::where('nama', $request->nama)
         ->where('id', '!=', $id) // Exclude the current record
+        ->where('aktif', 'y')
         ->exists();
 
         if ($exists) {

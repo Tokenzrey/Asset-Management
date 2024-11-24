@@ -22,7 +22,7 @@ class RuangController extends Controller
             'nama' => 'required'
         ]);
         
-        $exists = Ruang::where('nama', $request->nama)->exists();
+        $exists = Ruang::where('nama', $request->nama)->where('aktif', 'y')->exists();
 
         if ($exists) {
             Alert::error('Error', 'Nama Lokasi sudah ada, silakan gunakan nama lain');
@@ -55,7 +55,7 @@ class RuangController extends Controller
             return redirect()->route('ruang.index');
         }
 
-        $exists = Ruang::where('nama', $request->nama)->where('id', '!=', $id)->exists();
+        $exists = Ruang::where('nama', $request->nama)->where('id', '!=', $id)->where('aktif', 'y')->exists();
 
         if ($exists) {
             // Trigger error alert if duplicate name is found

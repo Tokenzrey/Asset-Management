@@ -22,7 +22,7 @@ class KategoriController extends Controller
             'nama' => 'required'
         ]);
 
-        $exists = Kategori::where('nama', $request->nama)->exists();
+        $exists = Kategori::where('nama', $request->nama)->where('aktif', 'y')->exists();
 
         if ($exists) {
             // Trigger error alert if duplicate name is found
@@ -65,7 +65,7 @@ class KategoriController extends Controller
             Alert::error('Error', 'Kategori Tidak Ditemukan');
             return redirect()->route('kategori.index');
         }
-        $exists = Kategori::where('nama', $request->nama)->where('id', '!=', $id)->exists();
+        $exists = Kategori::where('nama', $request->nama)->where('id', '!=', $id)->where('aktif', 'y')->exists();
 
         if ($exists) {
             // Trigger error alert if duplicate name is found

@@ -35,8 +35,13 @@ class UserController extends Controller
             return redirect()->route('user.index');
         }
         // Check for duplicate email
-        $emailExists = User::where('email', $request->email)->exists();
-        $usernameExists = User::where('username', strtolower($request->username))->exists();
+        $emailExists = User::where('email', $request->email)
+            ->where('aktif', 'y')
+            ->exists();
+
+        $usernameExists = User::where('username', strtolower($request->username))
+            ->where('aktif', 'y')
+            ->exists();
 
         // Alert if both email and username exist
         if ($emailExists && $usernameExists) {
@@ -57,8 +62,8 @@ class UserController extends Controller
         }
 
         $this->validate($request, [
-            'email' => 'required|email|unique:users,email',
-            'username' => 'required|string|unique:users,username',
+            'email' => 'required|email',
+            'username' => 'required|string',
         ]);
 
         User::create([
@@ -110,8 +115,8 @@ class UserController extends Controller
             return redirect()->route('user.index');
         }
         // Check for duplicate email, excluding the current user
-        $emailExists = User::where('email', $request->email)->where('id', '!=', $id)->exists();
-        $usernameExists = User::where('username', strtolower($request->username))->where('id', '!=', $id)->exists();
+        $emailExists = User::where('email', $request->email)->where('id', '!=', $id)->where('aktif', 'y')->exists();
+        $usernameExists = User::where('username', strtolower($request->username))->where('id', '!=', $id)->where('aktif', 'y')->exists();
 
         // Alert if both email and username exist
         if ($emailExists && $usernameExists) {

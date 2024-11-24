@@ -22,7 +22,7 @@ class VendorController extends Controller
         $this->validate($request, [
             'nama' => 'required'
          ]);
-         $exists = Vendor::where('nama', $request->nama)->exists();
+         $exists = Vendor::where('nama', $request->nama)->where('aktif', 'y')->exists();
          if ($exists) {
             // Trigger error alert if duplicate name is found
             Alert::error('Error', 'Nama Vendor sudah ada, silakan gunakan nama lain');

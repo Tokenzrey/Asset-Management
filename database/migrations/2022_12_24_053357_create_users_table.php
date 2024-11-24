@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('status')->comment('ADMIN;USER;');
             $table->enum('aktif', ['y', 't'])->default('y');
             $table->string('username', 100);
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('password');
             $table->string('gambar', 200);
             $table->timestamps();
