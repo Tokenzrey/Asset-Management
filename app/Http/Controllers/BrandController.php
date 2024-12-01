@@ -34,7 +34,7 @@ class BrandController extends Controller
     public function store(Request $request): RedirectResponse
     {
        // Check if the name already exists in the divisis table
-    $exists = Brand::where('name', $request->name)->where('aktif', 'y')->exists();
+    $exists = Brand::where('name', $request->name)->exists();
 
     if ($exists) {
         // Trigger error alert if duplicate is found
@@ -72,7 +72,7 @@ class BrandController extends Controller
      */
     public function update(Request $request, int $id): RedirectResponse
     {
-        $exists = Brand::where('name', $request->name)->where('id', '!=', $id)->where('aktif', 'y')->exists();
+        $exists = Brand::where('name', $request->name)->where('id', '!=', $id)->exists();
 
         if ($exists) {
             // Trigger error alert if duplicate name is found
