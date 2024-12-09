@@ -88,7 +88,7 @@
                 {{-- sidebar --}}
                 @include('includes.sidebar')
                 <div class="copyright">
-                    <p><strong>SIMAS PT ABC </strong> ©
+                    <p><strong>SIMAS PT. XYZ Sidoarjo Jawa Timur </strong> ©
                         <script>
                             document.write(new Date().getFullYear())
                         </script> All Rights Reserved

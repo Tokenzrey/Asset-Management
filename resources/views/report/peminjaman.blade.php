@@ -27,6 +27,7 @@
                 <th>Tanggal Pinjam</th>
                 <th>Tanggal Kembali</th>
                 <th>Keperluan</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -47,6 +48,7 @@
                     <td>{{ $item->tanggal_pinjam }}</td>
                     <td>{{ $item->tanggal_kembali }}</td>
                     <td>{{ $item->keperluan }}</td>
+                    <td><span class="text-center">{{ $item->status }}</span>
                 </tr>
             @endforeach
         </tbody>

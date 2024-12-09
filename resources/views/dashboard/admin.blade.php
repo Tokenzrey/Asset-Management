@@ -1,7 +1,7 @@
 @extends('includes.template')
 
 @section('title')
-SIMAS PT ABC
+SIMAS PT. XYZ Sidoarjo Jawa Timur
 @endsection
 
 @section('header')
