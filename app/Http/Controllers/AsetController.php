@@ -216,28 +216,38 @@ class AsetController extends Controller
     {
         $aset = Aset::find($id);
 
-
         if (!$aset) {
             Alert::error('Error', 'Data Aset Tidak Ditemukan');
             return redirect()->route('aset.index');
         }
-
-        //jika ada relasi maka batalkan
-        $peminjaman = Peminjaman::where('aset_id', $id)->first();
-        $maintenance = JadwalPemeliharaan::where('aset_id', $id)->first();
-        if ($peminjaman || $maintenance) {
-            Alert::error('Error', 'Data Aset Tidak Bisa Dihapus Karena Memiliki Relasi');
+    
+        // Cek relasi dengan peminjaman
+        $peminjamanAktif = Peminjaman::where('aset_id', $id)
+            ->where('status', '!=', 'SELESAI')
+            ->where('aktif', 'y') // Hanya cek peminjaman aktif
+            ->exists();
+    
+        // Cek relasi dengan jadwal pemeliharaan
+        $pemeliharaanAktif = JadwalPemeliharaan::where('aset_id', $id)
+            ->where('status', '!=', 'SELESAI')
+            ->where('aktif', 'y') // Hanya cek pemeliharaan aktif
+            ->exists();
+    
+        // Jika ada relasi yang belum selesai dan aktif, cegah penghapusan
+        if ($peminjamanAktif || $pemeliharaanAktif) {
+            Alert::error('Error', 'Data Aset Tidak Bisa Dihapus Karena Masih Memiliki Relasi yang Belum Selesai atau Aktif');
             return redirect()->route('aset.index');
         }
-
-        $isUpdated = $aset->where('id', $id)->update(['aktif' => 't']);
-
+    
+        // Soft delete aset (ubah status 'aktif' menjadi 't')
+        $isUpdated = $aset->update(['aktif' => 't']);
+    
         if ($isUpdated) {
             Alert::success('Success', 'Data Aset Berhasil Dihapus');
         } else {
             Alert::error('Error', 'Gagal Menghapus Data Aset');
         }
-
+    
         return redirect()->route('aset.index');
     }
 

@@ -67,21 +67,22 @@ class VendorController extends Controller
 
     public function destroy($id)
     {
-        $vendor = Vendor::find($id);
-
-        if (!$vendor) {
-            Alert::error('Error', 'Vendor Tidak Ditemukan');
-            return redirect()->route('vendor.index');
-        }
-
-        $isUpdated = $vendor->update(['aktif' => 't']);
-
-        if ($isUpdated) {
+        try {
+            $vendor = Vendor::findOrFail($id);
+    
+            // Attempt to delete the vendor
+            $vendor->delete();
+    
             Alert::success('Success', 'Data Vendor Berhasil Dihapus');
-        } else {
-            Alert::error('Error', 'Gagal Menghapus Data Vendor');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Check for foreign key constraint violation (SQLSTATE 23000)
+            if ($e->getCode() == 23000) {
+                Alert::error('Error', 'Data Vendor Tidak Bisa Dihapus Karena Masih Berelasi dengan Data Lain');
+            } else {
+                Alert::error('Error', 'Terjadi Kesalahan saat Menghapus Data Vendor');
+            }
         }
-
-        return redirect()->route('vendor.index');
+    
+        return redirect()->route('vendor.index');   
     }
 }

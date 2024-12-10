@@ -20,7 +20,7 @@ class AsetSeeder extends Seeder
                 'jumlah'                => '1',
                 'satuan'                => 'unit',
                 'tanggal_pembelian'     => Carbon::parse('2023-06-01'),
-                'brand'                 => 'Samsung',
+                'brand_id'              => '1',
                 'kondisi'               => 'Baik',
                 'gambar'                => 'gambar_aset/monitor.jpg',
                 'nama_penerima'         => 'testing',

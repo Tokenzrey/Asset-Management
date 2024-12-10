@@ -85,20 +85,22 @@ class KategoriController extends Controller
 
     public function destroy($id)
     {
-        $kategori = Kategori::find($id);
-
-        if (!$kategori) {
-            Alert::error('Error', 'Kategori Tidak Ditemukan');
-            return redirect()->route('kategori.index');
+        try {
+            $kategori = Kategori::findOrFail($id);
+    
+            // Attempt to delete the kategori
+            $kategori->delete();
+    
+            Alert::success('Success', 'Data Kategori Berhasil Dihapus');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Check for foreign key constraint violation
+            if ($e->getCode() == 23000) {
+                Alert::error('Error', 'Data Kategori Tidak Bisa Dihapus Karena Masih Berelasi dengan Data Lain');
+            } else {
+                Alert::error('Error', 'Terjadi Kesalahan saat Menghapus Data Kategori');
+            }
         }
-
-        // Cek apakah update berhasil
-        if ($kategori->update(['aktif' => 't'])) {
-            Alert::success('Success', 'Data Berhasil Dihapus');
-        } else {
-            Alert::error('Error', 'Gagal Menghapus Data');
-        }
-
+    
         return redirect()->route('kategori.index');
     }
 }

@@ -225,7 +225,7 @@
 
                                                 <div class="row">
                                                     <div class="col-xl-12 mt-2">
-                                                        <label><b>Deskripsi</b></label>
+                                                        <label><b>Serial Number</b></label>
                                                         <textarea name="deskripsi" id="deskripsi" cols="30" rows="5"
                                                             class="form-control"
                                                             placeholder="Masukkan Serial Number Aset"
@@ -553,7 +553,7 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-xl-12 mt-2">
-                                                                    <label><b>Deskripsi</b></label>
+                                                                    <label><b>Serial Number</b></label>
                                                                     <textarea name="deskripsi" id="deskripsi" cols="30"
                                                                         rows="5" class="form-control"
                                                                         placeholder="Masukkan Deskripsi">{{ $item->deskripsi }}

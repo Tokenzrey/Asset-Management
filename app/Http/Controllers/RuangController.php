@@ -76,20 +76,22 @@ class RuangController extends Controller
 
     public function destroy($id)
     {
-        $ruang = Ruang::find($id);
-
-        if (!$ruang) {
-            Alert::error('Error', 'Lokasi Tidak Ditemukan');
-            return redirect()->route('ruang.index');
+        try {
+            $ruang = Ruang::findOrFail($id);
+    
+            // Attempt to delete the ruang
+            $ruang->delete();
+    
+            Alert::success('Success', 'Data Lokasi Berhasil Dihapus');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Check for foreign key constraint violation
+            if ($e->getCode() == 23000) {
+                Alert::error('Error', 'Data Lokasi Tidak Bisa Dihapus Karena Masih Berelasi dengan Data Lain');
+            } else {
+                Alert::error('Error', 'Terjadi Kesalahan saat Menghapus Data Lokasi');
+            }
         }
-
-        // Coba lakukan update, dan cek apakah update berhasil
-        if ($ruang->update(['aktif' => 't'])) {
-            Alert::success('Success', 'Data Lokasi Berhasil dihapus');
-        } else {
-            Alert::error('Error', 'Gagal Menghapus Data Lokasi');
-        }
-
+    
         return redirect()->route('ruang.index');
     }
 }

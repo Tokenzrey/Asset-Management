@@ -162,7 +162,7 @@
                                             </div>
 
                                             <div class="col-md-6">
-                                                <h5 class="mt-2">Deskripsi :
+                                                <h5 class="mt-2">Serial Number :
                                                     {{ $aset->deskripsi }}
                                                 </h5>
                                             </div>
@@ -338,7 +338,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-xl-12 mt-2">
-                                                            <label><b>Deskripsi</b></label>
+                                                            <label><b>Serial Number</b></label>
                                                             <textarea name="deskripsi" id="deskripsi" cols="30" rows="5" class="form-control"
                                                                 placeholder="Masukkan Deskripsi">{{ $aset->deskripsi }}
                                                             </textarea>
