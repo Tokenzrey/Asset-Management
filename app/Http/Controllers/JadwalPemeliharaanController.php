@@ -58,7 +58,7 @@ class JadwalPemeliharaanController extends Controller
         }
 
         $data_jadwal_pemeliharaan = [
-            'aset_id' => $request->aset_id,
+            // 'aset_id' => $request->aset_id,
             'tanggal_mulai' => $request->tanggal_mulai,
             'tanggal_selesai' => $request->tanggal_selesai,
             'status' => $request->status
