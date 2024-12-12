@@ -136,12 +136,14 @@
                                                         {{-- <input type="text" class="form-control" id="brand"
                                                             placeholder="Masukkan Brand Aset" name="brand"
                                                             value="{{ old('brand') }}" required> --}}
-                                                        <select class="form-control" name="brand_id" id="brand_id" required>
+                                                        <select class="form-control" name="brand_id" id="brand_id"
+                                                            required>
                                                             <option value="" hidden>
                                                                 Data Brand
                                                             </option>
                                                             @foreach ($brands as $data)
-                                                            <option value="{{ $data->id }}" {{ $jp==$data->id ? 'selected' : '' }}>
+                                                            <option value="{{ $data->id }}" {{ $jp==$data->id ?
+                                                                'selected' : '' }}>
                                                                 {{ $data->name }}
                                                             </option>
                                                             @endforeach
@@ -271,7 +273,8 @@
                                                     <div class="col-xl-12 mt-2">
                                                         <input class="form-control" type="file" name="file"
                                                             placeholder="Pilih Gambar" required>
-                                                        <a href="{{ route('download-sample') }}" >Download File Contoh</a>
+                                                        <a href="{{ route('download-sample') }}">Download File
+                                                            Contoh</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -381,10 +384,9 @@
                                                                     <label><b>Kode</b></label>
                                                                     <input type="text" class="form-control" id="kode"
                                                                         placeholder="Masukkan Kode"
-                                                                        value="{{ $item->kode }}"
-                                                                        disabled
-                                                                        >
-                                                                    <input type="hidden" name="kode" value="{{ $item->kode }}">
+                                                                        value="{{ $item->kode }}" disabled>
+                                                                    <input type="hidden" name="kode"
+                                                                        value="{{ $item->kode }}">
                                                                 </div>
 
                                                                 <div class="col-xl-6 mt-2">
@@ -420,10 +422,10 @@
                                                                             Penerima</b></label>
                                                                     <input type="text" class="form-control"
                                                                         id="nama_penerima"
-                                                                        placeholder="Masukkan Nama Penerima"
-                                                                        disabled
+                                                                        placeholder="Masukkan Nama Penerima" disabled
                                                                         value="{{ $item->nama_penerima }}" required>
-                                                                    <input type="hidden" name="nama_penerima" value="{{ $item->nama_penerima }}">
+                                                                    <input type="hidden" name="nama_penerima"
+                                                                        value="{{ $item->nama_penerima }}">
                                                                 </div>
                                                             </div>
 
@@ -457,15 +459,18 @@
                                                             <div class="row">
                                                                 <div class="col-xl-6 mt-2">
                                                                     <label><b>Brand</b></label>
-                                                                    {{-- <input type="text" class="form-control" id="brand"
-                                                                        placeholder="Masukkan Brand Aset" name="brand"
-                                                                        value="{{ $item->brand }}" required> --}}
-                                                                    <select class="form-control" name="brand_id" id="brand_id" required>
+                                                                    {{-- <input type="text" class="form-control"
+                                                                        id="brand" placeholder="Masukkan Brand Aset"
+                                                                        name="brand" value="{{ $item->brand }}"
+                                                                        required> --}}
+                                                                    <select class="form-control" name="brand_id"
+                                                                        id="brand_id" required>
                                                                         <option value="{{ $item->brand->id }}" hidden>
                                                                             {{ $item->brand->name }}
                                                                         </option>
                                                                         @foreach ($brands as $data)
-                                                                        <option value="{{ $data->id }}" {{ $jp==$data->id ? 'selected' : '' }}>
+                                                                        <option value="{{ $data->id }}" {{ $jp==$data->
+                                                                            id ? 'selected' : '' }}>
                                                                             {{ $data->name }}
                                                                         </option>
                                                                         @endforeach
