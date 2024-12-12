@@ -8,7 +8,7 @@
         </div>
         <div class="col-sm-10 text-center">
             <h3>Testing</h3>
-            <h5>Kota Surabaya</h5>
+            <h5>Kota Sidoarjo</h5>
             <p>Jawa Timur
                 <br>email : testing@gmail.com
             </p>
