@@ -224,6 +224,7 @@ class AsetController extends Controller
         // Cek relasi dengan peminjaman
         $peminjamanAktif = Peminjaman::where('aset_id', $id)
             ->where('status', '!=', 'SELESAI')
+            ->where('status', '!=', 'DITOLAK')
             ->where('aktif', 'y') // Hanya cek peminjaman aktif
             ->exists();
     
