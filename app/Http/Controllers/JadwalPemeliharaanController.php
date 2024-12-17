@@ -14,17 +14,23 @@ class JadwalPemeliharaanController extends Controller
 {
     public function index()
     {
+        // Only include maintenance schedules for active assets
         $aset = Aset::where('aktif', '=', 'y')->get();
-        $jadwal_pemeliharaan = JadwalPemeliharaan::where('aktif', '=', 'y')->get();
+        $jadwal_pemeliharaan = JadwalPemeliharaan::whereHas('aset', function ($query) {
+            $query->where('aktif', '=', 'y');
+        })->where('aktif', '=', 'y')->get();
+
         $today = date('Y-m-d');
-        $total_jp = JadwalPemeliharaan::where('status', '=', 'belum')->count();
+        $total_jp = JadwalPemeliharaan::whereHas('aset', function ($query) {
+            $query->where('aktif', '=', 'y');
+        })->where('status', '=', 'belum')->count();
 
         return view('jadwal_pemeliharaan.index', [
             'jp' => $jadwal_pemeliharaan,
             'aset' => $aset,
             'status' => ['Belum', 'Proses', 'Selesai'],
             'today' => $today,
-            'total_jp' => $total_jp
+            'total_jp' => $total_jp,
         ]);
     }
 

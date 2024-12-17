@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "346aa96b61b8c8f4fc2f4483cf271f6c",
+    "content-hash": "bf6fbd865a4f18aee907131c0102806e",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
-            "version": "4.9.2",
+            "version": "4.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/algolia/algoliasearch-client-php.git",
-                "reference": "16504069c3a03bd0922bfd3226c7f2f3188cd55c"
+                "reference": "02d02128ee85b4d197f9a36448218d5957854445"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/16504069c3a03bd0922bfd3226c7f2f3188cd55c",
-                "reference": "16504069c3a03bd0922bfd3226c7f2f3188cd55c",
+                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/02d02128ee85b4d197f9a36448218d5957854445",
+                "reference": "02d02128ee85b4d197f9a36448218d5957854445",
                 "shasum": ""
             },
             "require": {
@@ -69,9 +69,9 @@
             ],
             "support": {
                 "issues": "https://github.com/algolia/algoliasearch-client-php/issues",
-                "source": "https://github.com/algolia/algoliasearch-client-php/tree/4.9.2"
+                "source": "https://github.com/algolia/algoliasearch-client-php/tree/4.11.1"
             },
-            "time": "2024-11-19T21:38:33+00:00"
+            "time": "2024-12-12T12:50:42+00:00"
         },
         {
             "name": "asm89/stack-cors",

@@ -46,110 +46,116 @@ SIMAS PT. XYZ Sidoarjo Jawa Timur
                 </div>
                 <div class="modal-body">
                     @foreach($alert_maintenance_time as $amt)
+                    @if($amt->status !== 't')
                         <tr>
                             <div style='padding:5px' style='width:50px' >
                                 <i class='bi bi-info-circle icon-Glyphicon-info'></i> <br>
                                 Aset dengan nama <span class="fw-bold">{{$amt->nama}}</span> telah memasuki masa pemeliharaan dengan umur <span class="fw-bolder">{{$amt->umur}}</span> tahun, dengan masa manfaat {{$amt->kategori->masa_manfaat}} tahun. <br>
                                 <button class='badge badge-primary' onclick="window.location.href='{{route('aset.index')}}'">
                                 Check
-                                </button>
+                                </button> 
                             </div>
                         </tr>
+                    @endif
                     @endforeach
                     @foreach ($alert_maintenance as $alert)
-                    <tr>
-                        <?php
-                                $nama_aset = $alert->aset->nama;
-                                if ($alert->tanggal_mulai == date('Y-m-d', strtotime('+1 day'))) {
-                                    $tanggal_mulai = $alert->tanggal_mulai;
-                                    echo "
-                                        <div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>Aset
-                                            <a style='color:red'>" .$nama_aset ."</a>
-                                            Besok akan dilakukan maintenance di tanggal
-                                            <a style='color:red'>" .date('d-m-Y', strtotime($alert->tanggal_mulai)) ."</a>,
-                                            Tolong dipersiapkan!  ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
-                                                Check
-                                            </button>
-                                        </div>";
-                                } elseif ($alert->tanggal_mulai == date('Y-m-d', strtotime('+2 day'))) {
-                                    echo "
-                                        <div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
-                                            Aset
-                                            <a style='color:red'>" .$nama_aset ."</a>
-                                            2 hari lagi akan dilakukan maintenance di tanggal
-                                            <a style='color:red'>" .date('d-m-Y', strtotime($alert->tanggal_mulai)) ."</a>,
-                                            Tolong dipersiapkan!  ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
-                                                Check
-                                            </button>
-                                        </div>";
-                                } elseif ($alert->tanggal_mulai == date('Y-m-d', strtotime('+3 day'))) {
-                                    echo "
-                                        <div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
-                                            Aset
-                                            <a style='color:red'>" .$nama_aset ."</a>
-                                            3 hari lagi akan dilakukan maintenance di tanggal
-                                            <a style='color:red'>" .date('d-m-Y', strtotime($alert->tanggal_mulai)) ."</a>,
-                                            Tolong dipersiapkan!  ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
-                                                Check
-                                            </button>
-                                        </div>";
-                                } elseif ($alert->tanggal_mulai == $today) {
-                                    echo "
-                                        <div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
-                                            Hari ini adalah waktunya maintenance Aset
-                                            <a style='color:red'>" .$nama_aset ."</a>
-                                            tepat di tanggal
-                                            <a style='color:red'>" .date('d-m-Y', strtotime($alert->tanggal_mulai)) ."</a>
-                                            , Segera lakukan maintenance!  ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
-                                                Check
-                                            </button>
-                                        </div>";
-                                } elseif ($alert->tanggal_selesai == $today) {
-                                    echo "
-                                        <div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
-                                            Hari ini adalah batas waktu selesai maintenance Aset
-                                            <a style='color:red'>" .$nama_aset ."</a>
-                                            tepat di tanggal
-                                            <a style='color:red'>" .date('d-m-Y', strtotime($alert->tanggal_selesai)) ."</a>
-                                            , Segera lakukan konfirmasi perubahan maintenance!  ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
-                                                Check
-                                            </button>
-                                        </div>";
-                                } elseif ($alert->tanggal_mulai < $today) {
-                                    $datetime1 = new DateTime($today);
-                                    $datetime2 = new DateTime($alert->tanggal_mulai);
-                                    $interval = $datetime1->diff($datetime2);
-                                    $daysDiff = $interval->format('%a');
-                                    echo "
-                                        <div style='padding:5px' style='width:50px'>
-                                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
-                                            Aset
-                                            <a style='color:red'>
-                                                " .$nama_aset ."
-                                                <span style='color:black'> Jadwal maintenance </span>
-                                                " .date('d-m-Y', strtotime($alert->tanggal_mulai)) ."
-                                            </a>
-                                            , Telah melewati batas maintenance aset yang dijadwalkan selama {$daysDiff} hari ||
-                                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
-                                                Check
-                                            </button>
-                                        </div>";
-                                } else {
-                                    echo '';
-                                }
-                                ?>
-                    </tr>
-                    @endforeach
+        <tr>
+        @if($alert->aset->status !== 't')
+            <?php
+                $nama_aset = $alert->aset->nama;
+                if ($alert->tanggal_mulai == date('Y-m-d', strtotime('+1 day'))) {
+                    $tanggal_mulai = $alert->tanggal_mulai;
+                    echo "
+                        <div style='padding:5px' style='width:50px'>
+                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>Aset
+                            <a style='color:red'>" .$nama_aset ."</a>
+                            Besok akan dilakukan maintenance di tanggal
+                            <a style='color:red'>" .date('d-m-Y', strtotime($alert->tanggal_mulai)) ."</a>,
+                            Tolong dipersiapkan!  ||
+                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
+                                Check
+                            </button>
+                        </div>";
+                } elseif ($alert->tanggal_mulai == date('Y-m-d', strtotime('+2 day'))) {
+                    echo "
+                        <div style='padding:5px' style='width:50px'>
+                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
+                            Aset
+                            <a style='color:red'>" .$nama_aset ."</a>
+                            2 hari lagi akan dilakukan maintenance di tanggal
+                            <a style='color:red'>" .date('d-m-Y', strtotime($alert->tanggal_mulai)) ."</a>,
+                            Tolong dipersiapkan!  ||
+                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
+                                Check
+                            </button>
+                        </div>";
+                } elseif ($alert->tanggal_mulai == date('Y-m-d', strtotime('+3 day'))) {
+                    echo "
+                        <div style='padding:5px' style='width:50px'>
+                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
+                            Aset
+                            <a style='color:red'>" .$nama_aset ."</a>
+                            3 hari lagi akan dilakukan maintenance di tanggal
+                            <a style='color:red'>" .date('d-m-Y', strtotime($alert->tanggal_mulai)) ."</a>,
+                            Tolong dipersiapkan!  ||
+                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
+                                Check
+                            </button>
+                        </div>";
+                } elseif ($alert->tanggal_mulai == $today) {
+                    echo "
+                        <div style='padding:5px' style='width:50px'>
+                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
+                            Hari ini adalah waktunya maintenance Aset
+                            <a style='color:red'>" .$nama_aset ."</a>
+                            tepat di tanggal
+                            <a style='color:red'>" .date('d-m-Y', strtotime($alert->tanggal_mulai)) ."</a>
+                            , Segera lakukan maintenance!  ||
+                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
+                                Check
+                            </button>
+                        </div>";
+                } elseif ($alert->tanggal_selesai == $today) {
+                    echo "
+                        <div style='padding:5px' style='width:50px'>
+                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
+                            Hari ini adalah batas waktu selesai maintenance Aset
+                            <a style='color:red'>" .$nama_aset ."</a>
+                            tepat di tanggal
+                            <a style='color:red'>" .date('d-m-Y', strtotime($alert->tanggal_selesai)) ."</a>
+                            , Segera lakukan konfirmasi perubahan maintenance!  ||
+                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
+                                Check
+                            </button>
+                        </div>";
+                } elseif ($alert->tanggal_mulai < $today) {
+                    $datetime1 = new DateTime($today);
+                    $datetime2 = new DateTime($alert->tanggal_mulai);
+                    $interval = $datetime1->diff($datetime2);
+                    $daysDiff = $interval->format('%a');
+                    echo "
+                        <div style='padding:5px' style='width:50px'>
+                            <i class='bi bi-info-circle icon-Glyphicon-info'></i>
+                            Aset
+                            <a style='color:red'>   
+                                " .$nama_aset ."
+                                <span style='color:black'> Jadwal maintenance </span>
+                                " .date('d-m-Y', strtotime($alert->tanggal_mulai)) ."
+                            </a>
+                            , Sedang tahap maintenance yang sudah berlangsung {$daysDiff} hari ||
+                            <button class='badge badge-primary' onclick=\"window.location.href='" .route('jadwal_pemeliharaan.index') ."'\">
+                                Check
+                            </button>
+                        </div>";
+                } else {
+                    echo '';
+                }
+            ?>
+        @endif
+        </tr>
+        
+@endforeach
+
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

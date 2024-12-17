@@ -25,14 +25,14 @@ class ReportController extends Controller
     {
         // Query dasar
         $query = Aset::where('aktif', '=', 'y');
-
+    
         // Filter berdasarkan bulan dan tahun jika tidak memilih "ALL"
         if (!$request->has('all_data_aset')) {
             if ($request->month_aset) {
-                $query->whereMonth('created_at', $request->month_aset);
+                $query->whereMonth('tanggal_pembelian', $request->month_aset);
             }
             if ($request->year_aset) {
-                $query->whereYear('created_at', $request->year_aset);
+                $query->whereYear('tanggal_pembelian', $request->year_aset);
             }
         }
 
@@ -64,10 +64,10 @@ class ReportController extends Controller
         // Filter berdasarkan bulan dan tahun jika tidak memilih "ALL"
         if (!$request->has('all_data_peminjaman')) {
             if ($request->month_peminjaman) {
-                $query->whereMonth('created_at', $request->month_peminjaman);
+                $query->whereMonth('tanggal_pinjam', $request->month_peminjaman);
             }
             if ($request->year_peminjaman) {
-                $query->whereYear('created_at', $request->year_peminjaman);
+                $query->whereYear('tanggal_pinjam', $request->year_peminjaman);
             }
         }
 

@@ -28,7 +28,7 @@
                 <th>Tempat</th>
                 <th>Kategori</th>
                 <th>Vendor</th>
-                <th>Dibuat</th>
+                <th>Tanggal Beli</th>
             </tr>
         </thead>
         <tbody>
@@ -51,7 +51,7 @@
                     <td>{{ $item->tempat }}</td>
                     <td>{{ $item->kategori->nama }}</td>
                     <td>{{ $item->vendor->nama }}</td>
-                    <td>{{ $item->created_at }}</td>
+                    <td>{{ $item->tanggal_pembelian }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -74,3 +74,39 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Cara Menjalankan secara lokal
+## Persyaratan
+
+Sebelum menjalankan proyek ini, pastikan Anda telah menginstal perangkat berikut:
+
+- [PHP](https://www.php.net/downloads) >= 8.0
+- [Composer](https://getcomposer.org/)
+- [Node.js dan NPM](https://nodejs.org/)
+- [MySQL](https://www.mysql.com/) atau database lain yang kompatibel dengan Laravel
+
+**Install Dependensi PHP**
+   Jalankan perintah berikut untuk menginstal semua dependensi PHP yang dibutuhkan oleh Laravel:
+   ```bash
+   composer install
+   ```
+   Lalu Jalankan
+    ```bash
+    composer update
+    ```
+**Buat File Konfigurasi .env**
+   Salin file `.env.example` menjadi `.env`:
+
+**buat db nama db yang sesuai dengan db name pada .env**
+**Migrasi dan Seed Database**
+   Jalankan perintah berikut untuk membuat tabel di database:
+   ```bash
+   php artisan migrate --seed
+   ```
+   
+**Jalankan Server Lokal**
+    Jalankan perintah berikut untuk menjalankan aplikasi:
+    ```bash
+    php artisan serve
+    ```
