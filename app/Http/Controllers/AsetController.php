@@ -16,6 +16,7 @@ use App\Imports\AsetImport;
 use Illuminate\Http\Request;
 use App\Models\JenisPemeliharaan;
 use App\Models\Brand;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -77,7 +78,7 @@ class AsetController extends Controller
             }
             $gambar = $request->file('gambar')->store('public/gambar_user');
             $gambar = str_replace('public/', '', $gambar);
-        }else{
+        } else {
             Alert::error('Error', 'Gambar wajib diunggah!');
             return redirect()->route('aset.index');
         }
@@ -143,15 +144,13 @@ class AsetController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Find the asset by ID or return error
         $aset = Aset::find($id);
         if (!$aset) {
             Alert::error('Error', 'Aset Tidak Ditemukan');
             return redirect()->route('aset.index');
         }
 
-        // Validate the request data before proceeding
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'tanggal_pembelian' => 'required|date',
             'brand_id' => 'required',
@@ -162,29 +161,21 @@ class AsetController extends Controller
             'jenis_pemeliharaan_id' => 'required|integer',
             'ruang_id' => 'required|integer',
             'vendor_id' => 'required|integer',
-            'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048' // Image validation
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
-        // Handle image upload if present
-        $gambar = null;
-        if ($request->file('gambar')) {
-            $gambar_extension = $request->file('gambar')->extension();
-            if (in_array($gambar_extension, array('jpg', 'jpeg', 'png')) == false) {
-                Alert::error('Error', 'Type gambar yang diijinkan jpg,jpeg,png');
-                return redirect()->route('user.index');
-            }
-            $gambar = $request->file('gambar')->store('public/gambar_aset');
-            $gambar = str_replace('public/', '', $gambar);
-        } else {
-            Alert::error('Error', 'Gambar wajib diunggah!');
-            return redirect()->route('aset.show', $id);
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+            $errorMessage = implode('<br>', $errors);
+            Alert::error('Validasi Gagal', $errorMessage);
+
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Prepare the data to update
         $data_aset = [
             'nama' => $request->nama,
-            'jumlah' => 1,  // Assuming static values, adjust if needed
-            'satuan' => 'unit',  // Static value, adjust if needed
+            'jumlah' => 1,
+            'satuan' => 'unit',
             'tanggal_pembelian' => $request->tanggal_pembelian,
             'brand_id' => $request->brand_id,
             'kondisi' => $request->kondisi,
@@ -196,21 +187,24 @@ class AsetController extends Controller
             'vendor_id' => $request->vendor_id,
         ];
 
-        // Only update the image if a new one was uploaded
-        if ($gambar) {
+        // Hanya update gambar jika ada file yang diunggah
+        if ($request->hasFile('gambar')) {
+            $gambar_extension = $request->file('gambar')->extension();
+            if (!in_array($gambar_extension, ['jpg', 'jpeg', 'png'])) {
+                Alert::error('Error', 'Tipe gambar yang diijinkan: jpg, jpeg, png');
+                return redirect()->route('user.index');
+            }
+            $gambar = $request->file('gambar')->store('public/gambar_aset');
+            $gambar = str_replace('public/', '', $gambar);
+
             $data_aset['gambar'] = $gambar;
         }
 
-        // Update the asset
         $aset->update($data_aset);
 
-        // Flash success message
         Alert::success('Success', 'Aset Berhasil Di Update!');
-
-        // Redirect back to the asset index
         return redirect()->route('aset.show', $id);
     }
-
 
     public function destroy($id)
     {
@@ -220,35 +214,35 @@ class AsetController extends Controller
             Alert::error('Error', 'Data Aset Tidak Ditemukan');
             return redirect()->route('aset.index');
         }
-    
+
         // Cek relasi dengan peminjaman
         $peminjamanAktif = Peminjaman::where('aset_id', $id)
             ->where('status', '!=', 'SELESAI')
             ->where('status', '!=', 'DITOLAK')
             ->where('aktif', 'y') // Hanya cek peminjaman aktif
             ->exists();
-    
+
         // Cek relasi dengan jadwal pemeliharaan
         $pemeliharaanAktif = JadwalPemeliharaan::where('aset_id', $id)
             ->where('status', '!=', 'SELESAI')
             ->where('aktif', 'y') // Hanya cek pemeliharaan aktif
             ->exists();
-    
+
         // Jika ada relasi yang belum selesai dan aktif, cegah penghapusan
         if ($peminjamanAktif || $pemeliharaanAktif) {
             Alert::error('Error', 'Data Aset Tidak Bisa Dihapus Karena Masih Memiliki Relasi yang Belum Selesai atau Aktif');
             return redirect()->route('aset.index');
         }
-    
+
         // Soft delete aset (ubah status 'aktif' menjadi 't')
         $isUpdated = $aset->update(['aktif' => 't']);
-    
+
         if ($isUpdated) {
             Alert::success('Success', 'Data Aset Berhasil Dihapus');
         } else {
             Alert::error('Error', 'Gagal Menghapus Data Aset');
         }
-    
+
         return redirect()->route('aset.index');
     }
 
