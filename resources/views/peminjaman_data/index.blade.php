@@ -66,23 +66,29 @@
                                 <tbody>
                                     @foreach ($peminjaman as $item)
                                     <?php
-                                            $btn = '';
-                                            if ($item->status == 'PROSES'):
-                                                $badge = 'badge-info';
-                                                $btn =
-                                                    '<button data-id="' . $item->id . '" data-status="diterima" data-href="' .
-                                                        url('peminjaman/update?id=' . $item->id . '&status=diterima'. '&id_aset=' . $item->aset_id) . '" class="btn btn-success btn-sm btn-terima">Diterima</button>
-                                                    <button data-id="' . $item->id . '" data-status="ditolak" data-href="' .
-                                                        url('peminjaman/update?id=' . $item->id . '&status=ditolak'. '&id_aset=' . $item->aset_id) . '" class="btn btn-danger btn-sm btn-tolak">Ditolak</button>';
-                                            elseif ($item->status == 'DITERIMA'):
-                                                $badge = 'badge-success';
-                                                $btn = '<button data-id="' . $item->id . '" data-status="selesai" data-href="' . url('peminjaman/update?id=' . $item->id . '&status=selesai'. '&id_aset=' . $item->aset_id) . '" class="btn btn-selesai btn-sm">Selesai</button>';
-                                            elseif ($item->status == 'SELESAI'):
-                                                $badge = 'badge-success';
-                                            else:
-                                                $badge = 'badge-danger';
-                                            endif;
-                                            ?>
+                                    $btn = '';
+                                    if ($item->status == 'PROSES'):
+                                        $badge = 'badge-info';
+                                        $btn = '<a href="' . url('peminjaman/update?id=' . $item->id . '&status=diterima&id_aset=' . $item->aset_id) . '"
+                                                  data-id="' . $item->id . '"
+                                                  data-status="diterima"
+                                                  class="btn btn-success btn-sm btn-terima">Diterima</a>
+                                                <a href="' . url('peminjaman/update?id=' . $item->id . '&status=ditolak&id_aset=' . $item->aset_id) . '"
+                                                  data-id="' . $item->id . '"
+                                                  data-status="ditolak"
+                                                  class="btn btn-danger btn-sm btn-tolak">Ditolak</a>';
+                                    elseif ($item->status == 'DITERIMA'):
+                                        $badge = 'badge-success';
+                                        $btn = '<a href="' . url('peminjaman/update?id=' . $item->id . '&status=selesai&id_aset=' . $item->aset_id) . '"
+                                                  data-id="' . $item->id . '"
+                                                  data-status="selesai"
+                                                  class="btn btn-selesai btn-sm">Selesai</a>';
+                                    elseif ($item->status == 'SELESAI'):
+                                        $badge = 'badge-success';
+                                    else:
+                                        $badge = 'badge-danger';
+                                    endif;
+                                    ?>
                                     <tr class="text-center">
                                         <td>{{ $no++ }}</td>
                                         <td><span class="badge {{ $badge }} text-center">

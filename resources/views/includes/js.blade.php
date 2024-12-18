@@ -1,65 +1,65 @@
- <!-- Required vendors -->
- <script src="{{ asset('simas/vendor/global/global.min.js') }}"></script>
- <script src="{{ asset('simas/vendor/chart.js/Chart.bundle.min.js') }}"></script>
- <script src="{{ asset('simas/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
+<!-- Required vendors -->
+<script src="{{ asset('simas/vendor/global/global.min.js') }}"></script>
+<script src="{{ asset('simas/vendor/chart.js/Chart.bundle.min.js') }}"></script>
+<script src="{{ asset('simas/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
 
- <!-- Apex Chart -->
- <script src="{{ asset('simas/vendor/apexchart/apexchart.js') }}"></script>
- <script src="{{ asset('simas/vendor/chart.js/Chart.bundle.min.js') }}"></script>
+<!-- Apex Chart -->
+<script src="{{ asset('simas/vendor/apexchart/apexchart.js') }}"></script>
+<script src="{{ asset('simas/vendor/chart.js/Chart.bundle.min.js') }}"></script>
 
- <!-- Chart piety plugin files -->
- <script src="{{ asset('simas/vendor/peity/jquery.peity.min.js') }}"></script>
+<!-- Chart piety plugin files -->
+<script src="{{ asset('simas/vendor/peity/jquery.peity.min.js') }}"></script>
 
- <!-- Dashboard 1 -->
- <script src="{{ asset('/simas/vendor/owl-carousel/owl.carousel.js') }}"></script>
+<!-- Dashboard 1 -->
+<script src="{{ asset('/simas/vendor/owl-carousel/owl.carousel.js') }}"></script>
 
- <!-- Datatable -->
- <script src="{{ asset('simas/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
- <script src="{{ asset('simas/js/plugins-init/datatables.init.js') }}"></script>
+<!-- Datatable -->
+<script src="{{ asset('simas/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('simas/js/plugins-init/datatables.init.js') }}"></script>
 
- <!-- Required datatable js -->
- <script src="{{ asset('simas/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
- <script src="{{ asset('simas/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
- <!-- Datatable init js -->
- <script src="{{ asset('simas/js/pages/datatables.init.js') }}"></script>
+<!-- Required datatable js -->
+<script src="{{ asset('simas/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('simas/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<!-- Datatable init js -->
+<script src="{{ asset('simas/js/pages/datatables.init.js') }}"></script>
 
- <!-- momment js is must -->
- <script src="{{ asset('simas/vendor/moment/moment.min.js') }}"></script>
- <script src="{{ asset('simas/vendor/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<!-- momment js is must -->
+<script src="{{ asset('simas/vendor/moment/moment.min.js') }}"></script>
+<script src="{{ asset('simas/vendor/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
- <script src="{{ asset('simas/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}">
- </script>
+<script src="{{ asset('simas/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}">
+</script>
 
- <!-- Daterangepicker -->
- <script src="{{ asset('simas/js/plugins-init/bs-daterange-picker-init.js') }}"></script>
- <!-- Clockpicker init -->
- {{-- <script src="{{ asset('simas/js/plugins-init/clock-picker-init.js') }}"></script> --}}
- <!-- asColorPicker init -->
- <script src="{{ asset('simas/js/plugins-init/jquery-asColorPicker.init.js') }}"></script>
- <!-- Material color picker init -->
- <script src="{{ asset('simas/js/plugins-init/material-date-picker-init.js') }}"></script>
- <!-- Pickdate -->
+<!-- Daterangepicker -->
+<script src="{{ asset('simas/js/plugins-init/bs-daterange-picker-init.js') }}"></script>
+<!-- Clockpicker init -->
+{{-- <script src="{{ asset('simas/js/plugins-init/clock-picker-init.js') }}"></script> --}}
+<!-- asColorPicker init -->
+<script src="{{ asset('simas/js/plugins-init/jquery-asColorPicker.init.js') }}"></script>
+<!-- Material color picker init -->
+<script src="{{ asset('simas/js/plugins-init/material-date-picker-init.js') }}"></script>
+<!-- Pickdate -->
 
- <!-- Sweetalert -->
- <script src="{{ asset('simas/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+<!-- Sweetalert -->
+<script src="{{ asset('simas/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
 
 
- <script src="{{ asset('simas/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('simas/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
 
- <script src="{{ asset('simas/js/custom.min.js') }}"></script>
- <script src="{{ asset('simas/js/dlabnav-init.js') }}"></script>
- <script src="{{ asset('simas/js/demo.js') }}"></script>
- {{-- <script src="{{ asset('simas/js/styleSwitcher.js') }}"></script> --}}
+<script src="{{ asset('simas/js/custom.min.js') }}"></script>
+<script src="{{ asset('simas/js/dlabnav-init.js') }}"></script>
+<script src="{{ asset('simas/js/demo.js') }}"></script>
+{{-- <script src="{{ asset('simas/js/styleSwitcher.js') }}"></script> --}}
 
- <script>
+<script>
     function showTable() {
         var table = document.getElementById("myTable");
         table.classList.remove("hidden");
     }
 </script>
 
- <script>
-     function cardsCenter() {
+<script>
+    function cardsCenter() {
          /*  testimonial one function by = owl.carousel.js */
          jQuery('.card-slider').owlCarousel({
              loop: true,
@@ -102,10 +102,10 @@
      $(document).ready(function() {
          $('.mdb-select').materialSelect();
      });
- </script>
+</script>
 
- <script>
-     var serverClock = jQuery("#jamServer");
+<script>
+    var serverClock = jQuery("#jamServer");
      if (serverClock.length > 0) {
          showServerTime(serverClock, serverClock.text());
      }
@@ -139,9 +139,9 @@
          }
          methods.displayTime();
      }
- </script>
+</script>
 
- <script>
+<script>
     function printDiv(divName) {
         var printContents = document.getElementById(divName).innerHTML;
         var originalContents = document.body.innerHTML;
@@ -151,12 +151,12 @@
     }
 </script>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
-     integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
-     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+    integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
- <script>
-     function confirmation(ev) {
+<script>
+    function confirmation(ev) {
          ev.preventDefault();
          var urlToRedirect = ev.currentTarget.getAttribute('href');
          console.log(urlToRedirect);
@@ -179,10 +179,10 @@
                  }
              });
      }
- </script>
+</script>
 
- <script>
-     function confirmation_restore(ev) {
+<script>
+    function confirmation_restore(ev) {
          ev.preventDefault();
          var urlToRedirect = ev.currentTarget.getAttribute('href');
          console.log(urlToRedirect);
@@ -205,11 +205,11 @@
                  }
              });
      }
- </script>
+</script>
 
- <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
- <script>
-     function onScanSuccess(decodedText, decodedResult) {
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<script>
+    function onScanSuccess(decodedText, decodedResult) {
          // handle the scanned code as you like, for example:
          //console.log(`Code matched = ${decodedText}`, decodedResult);
          $("#result").val(decodedText)
@@ -234,53 +234,56 @@
          /* verbose= */
          false);
      html5QrcodeScanner.render(onScanSuccess, onScanFailure);
- </script>
+</script>
 
- <!-- Main JS-->
- <script src="{{ asset('simas/js/main.js') }}"></script>
+<!-- Main JS-->
+<script src="{{ asset('simas/js/main.js') }}"></script>
 
- <script>
-     $(document).ready(function() {
-         $(".btn-peminjaman").click(function(e) {
-             e.preventDefault();
-             let aset_id = $(this).attr("data-id");
-             let nama_aset = $(this).attr("data-nama");
-             $("#form-peminjaman [name=aset_id]").val(aset_id);
-             $("#form-peminjaman [name=nama]").val(nama_aset);
-             $("#peminjamanModal").modal("show");
-         })
+<script>
+    $(document).ready(function() {
+        $(".btn-peminjaman").click(function(e) {
+            e.preventDefault();
+            let aset_id = $(this).attr("data-id");
+            let nama_aset = $(this).attr("data-nama");
+            $("#form-peminjaman [name=aset_id]").val(aset_id);
+            $("#form-peminjaman [name=nama]").val(nama_aset);
+            $("#peminjamanModal").modal("show");
+        });
 
-         $(".btn-terima, .btn-tolak, .btn-selesai").click(function(e) {
-             e.preventDefault();
-             let status = $(this).attr('data-status');
-             let id = $(this).attr('data-id');
-             let conf = confirm("Apakah anda yakin merubah status menjadi " + status
-                 .toLocaleUpperCase() + " data ini?");
-             if (conf) {
-                 let link = $(this).attr("data-href");
-                 window.location.href = link;
-             }
-         })
+        // Gunakan event delegation untuk tombol yang bermasalah
+        $(document).on('click', '.btn-terima, .btn-tolak, .btn-selesai', function(e) {
+            e.preventDefault();
+            let status = $(this).attr('data-status');
+            let id = $(this).attr('data-id');
+            let conf = confirm("Apakah anda yakin merubah status menjadi " + status.toUpperCase() + " data ini?");
+            if (conf) {
+                let link = $(this).attr("href"); // Pastikan Anda sudah mengubah button menjadi <a> dan gunakan 'href'
+                if (!link || link === '#') {
+                    link = $(this).attr("data-href");
+                }
+                window.location.href = link;
+            }
+        });
 
-         $(".btn-mutasi-tambah").click(function(e) {
-             e.preventDefault();
-             let aset_id = $(this).attr("data-id");
-             let nama_aset = $(this).attr("data-nama");
-             $("#form-mutasi-tambah [name=aset_id]").val(aset_id);
-             $("#form-mutasi-tambah [name=nama]").val(nama_aset);
-             $("#mutasiTambahModal").modal("show");
-         })
+        $(".btn-mutasi-tambah").click(function(e) {
+            e.preventDefault();
+            let aset_id = $(this).attr("data-id");
+            let nama_aset = $(this).attr("data-nama");
+            $("#form-mutasi-tambah [name=aset_id]").val(aset_id);
+            $("#form-mutasi-tambah [name=nama]").val(nama_aset);
+            $("#mutasiTambahModal").modal("show");
+        });
 
-         $(".btn-mutasi-kurang").click(function(e) {
-             e.preventDefault();
-             let aset_id = $(this).attr("data-id");
-             let nama_aset = $(this).attr("data-nama");
-             $("#form-mutasi-kurang [name=aset_id]").val(aset_id);
-             $("#form-mutasi-kurang [name=nama]").val(nama_aset);
-             $("#mutasiKurangModal").modal("show");
-         })
-     })
- </script>
+        $(".btn-mutasi-kurang").click(function(e) {
+            e.preventDefault();
+            let aset_id = $(this).attr("data-id");
+            let nama_aset = $(this).attr("data-nama");
+            $("#form-mutasi-kurang [name=aset_id]").val(aset_id);
+            $("#form-mutasi-kurang [name=nama]").val(nama_aset);
+            $("#mutasiKurangModal").modal("show");
+        });
+    });
+</script>
 
 <script>
     document.getElementById("modalTrigger").addEventListener("click", function() {
