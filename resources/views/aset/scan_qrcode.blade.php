@@ -2,7 +2,7 @@
 
 @section('menunya')
 <h2>
-    Aset <i class="fa fa-solid fa-arrow-right"></i> Scann Qr-Code
+Scann Qr-Code
 </h2>
 @endsection
 

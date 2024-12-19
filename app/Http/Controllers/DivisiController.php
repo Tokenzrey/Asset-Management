@@ -18,21 +18,18 @@ class DivisiController extends Controller
 
 
     public function store(Request $request)
-    {
-        $this->validate($request, [
-            'nama' => 'required'
-        ]);
+{
+    $this->validate($request, [
+        'nama' => 'required'
+    ]);
 
-        // Check for existing active divisi with the same name
-        $existingActiveDivisi = Divisi::where('nama', $request->nama)
-            ->where('aktif', 'y')
-            ->first();
+    // Cek apakah nama divisi sudah ada (baik aktif maupun tidak aktif)
+    $existingDivisi = Divisi::where('nama', $request->nama)->exists();
 
-        if ($existingActiveDivisi) {
-            Alert::error('Error', 'Nama Divisi sudah ada');
-            return redirect()->route('divisi.index');
-        }
-
+    if ($existingDivisi) {
+        Alert::error('Error', 'Nama Divisi sudah ada');
+        return redirect()->route('divisi.index');
+    }
         // // Check for existing inactive divisi with the same name
         // $inactiveDivisi = Divisi::where('nama', $request->nama)
         //     ->where('aktif', 't')
@@ -86,18 +83,32 @@ class DivisiController extends Controller
             Alert::error('Error', 'Data Divisi Tidak Ditemukan');
             return redirect()->route('divisi.index');
         }
-
+    
+        $this->validate($request, [
+            'nama' => 'required'
+        ]);
+    
+        // Cek apakah nama baru sudah digunakan oleh divisi lain
+        $existingDivisi = Divisi::where('nama', $request->nama)
+            ->where('id', '!=', $id) // Pastikan tidak memeriksa divisi yang sedang diupdate
+            ->exists();
+    
+        if ($existingDivisi) {
+            Alert::error('Error', 'Nama Divisi sudah ada');
+            return redirect()->route('divisi.index');
+        }
+    
         // Perbarui data divisi
         $data_divisi = [
             'nama' => $request->nama,
         ];
-
+    
         if ($divisi->update($data_divisi)) {
             Alert::success('Success', 'Data Divisi Berhasil Di Update!');
         } else {
             Alert::error('Error', 'Gagal memperbarui Data Divisi');
         }
-
+    
         return redirect()->route('divisi.index');
     }
 

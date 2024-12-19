@@ -47,7 +47,7 @@
         <ul aria-expanded="false">
             <li><a href="{{ route('aset.index') }}">Data Aset</a></li>
             {{-- <li><a href="{{ route('aset.history') }}">History Aset</a></li> --}}
-            <li><a href="{{ route('aset.scan_qrcode') }}">Scann QrCode</a></li>
+            {{--<li><a href="{{ route('aset.scan_qrcode') }}">Scann QrCode</a></li>--}}
             @if (session('userdata')['status'] == 'ADMIN')
             <li><a href="{{ route('jadwal_pemeliharaan.index') }}">Penjadwalan Pemeliharaan</a></li>
             @endif
@@ -86,6 +86,7 @@
             <li><a href="{{ route('peminjaman.qrcode') }}">Peminjaman Qr-Code</a></li>
             @endif
             <li><a href="{{ route('peminjaman.data') }}">Data Peminjaman</a></li>
+            <li><a href="{{ route('aset.scan_qrcode') }}">Scann QrCode</a></li>
             <li><a href="{{ route('peminjaman.data-history') }}">History Peminjaman</a></li>
         </ul>
     </li>

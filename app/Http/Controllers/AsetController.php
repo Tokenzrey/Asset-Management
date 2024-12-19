@@ -234,12 +234,10 @@ class AsetController extends Controller
             return redirect()->route('aset.index');
         }
 
-        // Soft delete aset (ubah status 'aktif' menjadi 't')
-        $isUpdated = $aset->update(['aktif' => 't']);
-
-        if ($isUpdated) {
+        try {
+            $aset->delete();
             Alert::success('Success', 'Data Aset Berhasil Dihapus');
-        } else {
+        } catch (\Exception $e) {
             Alert::error('Error', 'Gagal Menghapus Data Aset');
         }
 
