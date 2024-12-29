@@ -279,11 +279,17 @@ class AsetController extends Controller
 
     public function cetakqrcode(Request $request)
     {
-        $id = $request->id;
-        $qrcode = Aset::where('kode', $id)->firstOrFail();
+        // Ambil kode dari request
+        $kode = $request->kode;
+
+        // Cari data aset berdasarkan kode
+        $qrcode = Aset::where('kode', $kode)->firstOrFail();
+
+        // Kirim data ke view
         return view('aset.cetakqrcode', [
             'qrcode' => $qrcode
         ]);
+
     }
 
     // public function history()

@@ -37,12 +37,12 @@
                                     class="mdi mdi-plus me-1"></i>Tambah Data
                             </button>
                             @endif
-                            <a href="{{ route('aset.scan_qrcode') }}">
+                           {{-- <a href="{{ route('aset.scan_qrcode') }}">
                                 <button type="button" class="btn btn-qrcode mb-2 text-white"
                                     style="margin-bottom: 1rem;">
                                     <i class="fa fa-qrcode"></i> By Qr-Code
                                 </button>
-                            </a>
+                            </a>--}}
                             <a href="{{ route('aset.export') }}">
                                 <button type="button" class="btn btn-export-excel mb-2 text-white"
                                     style="margin-bottom: 1rem;">

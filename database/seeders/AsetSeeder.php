@@ -13,25 +13,25 @@ class AsetSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
         Aset::truncate();
-        Aset::create(
-            [
-                'kode'                  =>'01010101',
-                'nama'                  => 'Komputer',
-                'jumlah'                => '1',
-                'satuan'                => 'unit',
-                'tanggal_pembelian'     => Carbon::parse('2023-06-01'),
-                'brand_id'              => '1',
-                'kondisi'               => 'Baik',
-                'gambar'                => 'gambar_aset/monitor.jpg',
-                'nama_penerima'         => 'testing',
-                'tempat'                => 'Testing',
-                'deskripsi'             => '',
-                'kategori_id'           =>  1,
-                'jenis_pemeliharaan_id' =>  1,
-                'ruang_id'              =>  1,
-                'vendor_id'             =>  1
-            ]
-        );
+        // Aset::create(
+        //     [
+        //         'kode'                  =>'01010101',
+        //         'nama'                  => 'Komputer',
+        //         'jumlah'                => '1',
+        //         'satuan'                => 'unit',
+        //         'tanggal_pembelian'     => Carbon::parse('2023-06-01'),
+        //         'brand_id'              => '1',
+        //         'kondisi'               => 'Baik',
+        //         'gambar'                => 'gambar_aset/monitor.jpg',
+        //         'nama_penerima'         => 'testing',
+        //         'tempat'                => 'Testing',
+        //         'deskripsi'             => '',
+        //         'kategori_id'           =>  1,
+        //         'jenis_pemeliharaan_id' =>  1,
+        //         'ruang_id'              =>  1,
+        //         'vendor_id'             =>  1
+        //     ]
+        // );
 
         // Aset::create(
         //     [
