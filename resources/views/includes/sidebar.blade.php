@@ -82,9 +82,6 @@
         </a>
         <ul aria-expanded="false">
             <li><a href="{{ route('peminjaman.index') }}">Peminjaman</a></li>
-            @if (session('userdata')['status'] == 'DIREKSI')
-            <li><a href="{{ route('peminjaman.qrcode') }}">Peminjaman Qr-Code</a></li>
-            @endif
             <li><a href="{{ route('peminjaman.data') }}">Data Peminjaman</a></li>
             <li><a href="{{ route('aset.scan_qrcode') }}">Scann QrCode</a></li>
             <li><a href="{{ route('peminjaman.data-history') }}">History Peminjaman</a></li>
