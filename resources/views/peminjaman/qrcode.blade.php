@@ -125,13 +125,13 @@
                                         placeholder="Tanggal Pinjam" name="tanggal_pinjam" required>
                                 </div>
                             </div>
-                            <div class="row">
+                           {{-- <div class="row">
                                 <div class="col-xl-12 mt-2">
                                     <label for="tanggal_kembali"><b>Tanggal Pengembalian</b></label>
                                     <input type="date" class="form-control" id="tanggal_kembali"
                                         placeholder="Tanggal Pengembalian" name="tanggal_kembali" required>
                                 </div>
-                            </div>
+                            </div>--}}
                             <div class="row">
                                 <div class="col-xl-12 mt-2">
                                     <label for="keperluan"><b>Keperluan</b></label>
