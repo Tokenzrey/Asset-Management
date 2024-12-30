@@ -2,7 +2,7 @@
 <div class="container mt-3">
     <div class="row">
         <h3><img class="img-fluid" src="{{ asset('simas/images/inventory.png') }}" width="50px" alt="Logo" /> Aset PT
-            ABCD</h3>
+            XYZ Sidoarjo</h3>
     </div>
     <hr>
     <div class="mt-2 mb-5">
