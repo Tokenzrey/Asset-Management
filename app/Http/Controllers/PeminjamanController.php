@@ -64,7 +64,7 @@ class PeminjamanController extends Controller
     public function qrcode(Request $request)
     {
         if ($request->keyword) {
-            $aset = Aset::search($request->keyword)->get();
+            $aset = Aset::where('kode',$request->keyword)->get();
         } else {
             $aset = Aset::where('aktif', '=', 'y')->get();
         }
