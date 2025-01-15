@@ -303,6 +303,7 @@
                                         <th>Gambar</th>
                                         <th>Kondisi</th>
                                         <th>Lokasi</th>
+                                        <th>Kategori</th>
                                         <th>Status</th>
                                         <th>Waktu Pemeliharaan</th>
                                         <th>Aksi</th>
@@ -325,6 +326,7 @@
                                         </td>
                                         <td>{{ $item->kondisi }}</td>
                                         <td>{{ $item->ruang->nama }}</td>
+                                        <td>{{ $item->kategori->nama}}</td>
                                         @if($item->DITERIMA)
                                         <td style="color:red">Sedang Dipinjam</td>
                                         @else
