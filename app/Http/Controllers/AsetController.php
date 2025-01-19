@@ -154,7 +154,7 @@ class AsetController extends Controller
             'nama' => 'required|string|max:255',
             'tanggal_pembelian' => 'required|date',
             'brand_id' => 'required',
-            'kondisi' => 'required|string',
+            'kondisi' => 'required',
             'tempat' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
             'kategori_id' => 'required|integer',
