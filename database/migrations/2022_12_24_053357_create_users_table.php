@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('nama', 100);
             $table->string('jenis_kelamin', 20);
-            $table->bigInteger('no_telepon');
+            $table->string('no_telepon');
             $table->text('alamat');
             $table->string('status')->comment('ADMIN;USER;');
             $table->enum('aktif', ['y', 't'])->default('y');
