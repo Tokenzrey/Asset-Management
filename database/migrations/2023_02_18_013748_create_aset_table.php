@@ -22,7 +22,7 @@ class CreateAsetTable extends Migration
             $table->date('tanggal_pembelian');
             // $table->bigInteger('nilai_harga');
             $table->string('brand', 100);
-            $table->enum('kondisi', ['Baik', 'Rusak Ringan', 'Rusak Berat']);
+            $table->string('kondisi', 100);
             $table->string('gambar', 200);
             // $table->date('tanggal_akhir_garansi');
             $table->string('nama_penerima');
